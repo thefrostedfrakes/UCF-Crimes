@@ -37,8 +37,9 @@
     "4250 WEST PLAZA DR": "Domino's Pizza at Knights Plaza",
     "12701 PEGASUS DR": "John C. Hitt Library",
     "4328 SCORPIUS ST": "L3Harris Building",
-    "4393 ANDROMEDA LOOP N": "Mathematical Sciences Building",
-    "4365 ANDROMEDA LOOP N": "Millican Hall",
+    "4393 ANDROMEDA LOOP NORTH": "Mathematical Sciences Building",
+    "MEMORY MALL": "Memory Mall",
+    "4365 ANDROMEDA LOOP NORTH": "Millican Hall",
     "PYXIS LN": "Near Apollo Community",
     "12715 PEGASUS": "Student Union",
     "4356 SCORPIUS ST": "UCF Global",
@@ -48,7 +49,7 @@
     
     "12722 RESEARCH PKWY": "Biomolecular Research Annex",
     "12100 CHALLENGER PKWY": "Bouce House Social Eats",
-    "3528 PERSEUS LOOP": "Facilities Operations",
+    "3528 PERSEUS LOOP": "Facilities & Operations",
     "3610 LIBRA DR": "UCFPD",
     "3000 NORTH ALAFAYA TRAIL": "Walgreens",
 
@@ -59,11 +60,14 @@
 
     "COLLEGE KNIGHT CT": "The Pointe at Central",
     "COLLEGE PARK TRAIL": "The Pointe at Central",
-    "3440 NORTH GOLDENROD RD": "Cranes Landing",
     
+    "NORTH GOLDENROD RD": "Cranes Landing",
     
+    "400 AMELIA ST WEST": "UCF Amelia I Parking Garage",
     "514 LIVINGSTON ST WEST": "Dr. Philips Academic Commons",
     "9907 UNIVERSAL BLVD": "Rosen College Apartments",
     "480 TERRY AVE NORTH": "The Julian",
-    "601 LIVINGSTON ST WEST": "UnionWest Student Living"
+    "401 LIVINGSTON ST WEST": "Bob Carr Theater",
+    "601 LIVINGSTON ST WEST": "UnionWest Student Living",
+    "601 WEST LIVINGSTON ST": "UnionWest Student Living"
 }
