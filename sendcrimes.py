@@ -22,7 +22,10 @@ async def crime_send(client, command_arg, config):
     with open('locations.json', 'r') as f:
         locations = json.load(f)
 
-    if (is_valid_date(command_arg)):
+    with open('emojis.json', 'r', encoding="utf-8") as f:
+        emojis = json.load(f)
+
+    if is_valid_date(command_arg):
         date_str = datetime.strptime(command_arg, "%m/%d/%y").strftime("%A, %B %d, %Y")
         dict_key = "Report Date"
         command_arg = datetime.strptime(command_arg, "%m/%d/%y").strftime("%m/%d/%y")
@@ -36,7 +39,7 @@ async def crime_send(client, command_arg, config):
                 command_arg = key
                 locFlag = True
 
-        if (locFlag == False):
+        if not locFlag:
             await channel.send("Please specify a date, location, etc!")
             return
  
@@ -51,18 +54,29 @@ async def crime_send(client, command_arg, config):
             except KeyError:
                 location = crime["Location"].lower().title()
 
+            # Modify dates/times
             report_time = datetime.strptime(crime["Report Time"], '%H:%M').strftime('%I:%M %p')
             start_time = datetime.strptime(crime["Start Time"], '%H:%M').strftime('%I:%M %p')
             end_time = datetime.strptime(crime["End Time"], '%H:%M').strftime('%I:%M %p')
+
+            # attach emojis to end of title
+            title = crime["Crime"].replace('PETIT', 'PETTY')
+            emoji_suffix = ''
+            for emoji_txt in emojis.keys():
+                if emoji_txt in title.lower():
+                    emoji_suffix += f' {emojis[emoji_txt]}' # Must use += and not .join() to preserve encoding
+            title += emoji_suffix
             
+            # Compose message
+            description = f"""Occurred at {crime['Campus']}, {location}
+Case: #{crime['Case #']}
+Reported on {crime['Report Date']} {report_time}
+Between {crime['Start Date']} {start_time} - {crime['End Date']} {end_time}
+Status: {crime['Disposition']}"""
+
             embed = discord.Embed(
-                title = crime["Crime"],
-                description = "Occurred at " + crime["Campus"] + ", " + location + "\n"
-                    + "Case # " + crime["Case #"] + "\n"
-                    + "Reported on " + crime["Report Date"] + " " + report_time + "\n"
-                    + "Between times " + crime["Start Date"] + " " + start_time
-                    + " - " + crime["End Date"] + " " + end_time + "\n"
-                    + "Status is " + crime["Disposition"] + "\n",
+                title=title,
+                description=description,
                     
                 color = discord.Color.red()
             ).set_image(url='attachment://caseout.png')
@@ -73,7 +87,7 @@ async def crime_send(client, command_arg, config):
             await channel.send("No reported crimes.")
 
 async def list_locations(message):
-    with open ('locations.json', 'r') as f:
+    with open('locations.json', 'r') as f:
         locations = json.load(f)
 
     embed = discord.Embed(title="All Locations in Database:", color=discord.Color.blue())
