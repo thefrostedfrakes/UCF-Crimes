@@ -69,10 +69,10 @@ async def crime_send(client, command_arg, config):
             
             # Compose message
             description = f"""Occurred at {crime['Campus']}, {location}
-            Case: #{crime['Case #']}
-            Reported on {crime['Report Date']} {report_time}
-            Between {crime['Start Date']} {start_time} - {crime['End Date']} {end_time}
-            Status: {crime['Disposition']}"""
+Case: #{crime['Case #']}
+Reported on {crime['Report Date']} {report_time}
+Between {crime['Start Date']} {start_time} - {crime['End Date']} {end_time}
+Status: {crime['Disposition']}"""
 
             embed = discord.Embed(
                 title=title,
