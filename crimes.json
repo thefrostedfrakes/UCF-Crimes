@@ -1,19 +1,6 @@
 {
     "Crimes": [
         {
-            "Disposition": "INACTIVE",
-            "Case #": "2023-0268",
-            "Report Date": "01/27/23",
-            "Report Time": "17:01",
-            "Crime": "PETIT THEFT, CRIMINAL MISCHIEF",
-            "Start Date": "01/26/23",
-            "Start Time": "14:30",
-            "Location": "3708 LIBRA DR",
-            "End Date": "01/27/2023",
-            "End Time": "15:53",
-            "Campus": "MAIN CAMPUS"
-        },
-        {
             "Disposition": "CLOSED",
             "Case #": "2023-0275",
             "Report Date": "01/29/23",
@@ -690,7 +677,7 @@
             "Campus": "MAIN CAMPUS"
         },
         {
-            "Disposition": "OPEN",
+            "Disposition": "EXC CLR - ADULT",
             "Case #": "2023-0688",
             "Report Date": "02/27/23",
             "Report Time": "00:08",
@@ -755,7 +742,7 @@
             "Campus": "MAIN CAMPUS"
         },
         {
-            "Disposition": "OPEN",
+            "Disposition": "INACTIVE",
             "Case #": "2023-0699",
             "Report Date": "02/28/23",
             "Report Time": "11:27",
@@ -846,7 +833,7 @@
             "Campus": "MAIN CAMPUS"
         },
         {
-            "Disposition": "OPEN",
+            "Disposition": "INACTIVE",
             "Case #": "2023-0750",
             "Report Date": "03/02/23",
             "Report Time": "16:29",
@@ -898,7 +885,7 @@
             "Campus": "MAIN CAMPUS"
         },
         {
-            "Disposition": "OPEN",
+            "Disposition": "INACTIVE",
             "Case #": "2023-0763",
             "Report Date": "03/03/23",
             "Report Time": "15:49",
@@ -1136,7 +1123,7 @@
             "Case #": "2023-0860",
             "Report Date": "03/15/23",
             "Report Time": "13:00",
-            "Crime": "SCHEME TO DEFRAUD (>$300) BY COMMUNICATION",
+            "Crime": "SCHEME TO DEFRAUD (&gt;$300) BY COMMUNICATION",
             "Start Date": "03/08/23",
             "Start Time": "11:00",
             "Location": "4365 ANDROMEDA LOOP NORTH",
@@ -1236,7 +1223,7 @@
             "Campus": "MAIN CAMPUS"
         },
         {
-            "Disposition": "ACTIVE",
+            "Disposition": "OPEN",
             "Case #": "2023-0900",
             "Report Date": "03/20/23",
             "Report Time": "16:24",
@@ -1266,7 +1253,7 @@
             "Case #": "2023-0906",
             "Report Date": "03/21/23",
             "Report Time": "12:49",
-            "Crime": "SCHEME TO DEFRAUD (<$300)",
+            "Crime": "SCHEME TO DEFRAUD (&lt;$300)",
             "Start Date": "03/07/23",
             "Start Time": "13:00",
             "Location": "12600 GEMINI BLVD NORTH",
@@ -1390,6 +1377,19 @@
             "End Date": "03/26/2023",
             "End Time": "00:18",
             "Campus": "UCF DOWNTOWN"
+        },
+        {
+            "Disposition": "OPEN",
+            "Case #": "2023-0959",
+            "Report Date": "03/27/23",
+            "Report Time": "17:22",
+            "Crime": "FLORIDA COMMUNICATIONS FRAUD ACT",
+            "Start Date": "03/25/23",
+            "Start Time": "08:00",
+            "Location": "12300 GOLDEN KNIGHT CIR",
+            "End Date": "03/27/2023",
+            "End Time": "16:23",
+            "Campus": "MAIN CAMPUS"
         }
     ]
 }

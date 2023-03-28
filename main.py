@@ -36,7 +36,7 @@ async def on_ready():
         if current_time == "00:05:00":
             today = date.today()
             yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
-            await crime_send(client, yesterday)
+            await crime_send(client, yesterday, config)
 
         await asyncio.sleep(1)
 
