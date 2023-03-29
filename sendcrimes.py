@@ -90,8 +90,17 @@ async def list_locations(message):
     with open('locations.json', 'r') as f:
         locations = json.load(f)
 
-    embed = discord.Embed(title="All Locations in Database:", color=discord.Color.blue())
+    fieldCount = 0
+    page = 1
+    embed = discord.Embed(title="All Locations in Database (Page " + str(page) + "):", color=discord.Color.blue())
     for key, val in locations.items():
+        fieldCount += 1
+        if (fieldCount > 25):
+            page += 1
+            await message.channel.send(embed=embed)
+            embed = discord.Embed(title="All Locations in Database (Page " + str(page) + "):", color=discord.Color.blue())
+            fieldCount = 0
+            
         embed.add_field(name=val, value=key, inline=False)
 
     await message.channel.send(embed=embed)
