@@ -2,6 +2,7 @@
 
 UCF Crimes: sendcrimes.py
 Written by Ethan Frakes
+and Maverick Reynolds
 
 '''
 

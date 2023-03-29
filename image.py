@@ -1,3 +1,10 @@
+'''
+
+UCF Crimes: image.py
+Written by Jack Sweeney
+
+'''
+
 import googlemaps
 import staticmaps
 from PIL import Image, ImageDraw, ImageFilter
