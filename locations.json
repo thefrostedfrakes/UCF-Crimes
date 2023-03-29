@@ -7,6 +7,7 @@
     "12898 NORTH GEMINI BLVD": "Garage D",
     "4220 MENSA LN": "Garage E",
     "4282 WEST PLAZA DR": "Garage G",
+    "4282 PLAZA DR WEST": "Garage G",
     "12638 GEMINI BLVD NORTH": "Garage H",
     "3820 LIBRA DR": "Libra Garage",
     
@@ -54,7 +55,7 @@
     "3000 NORTH ALAFAYA TRAIL": "Walgreens",
 
     "SILVER KNIGHT WAY": "Knights Circle",
-    "KNIGHTS KROSSING CIR": "Knights Circle",
+    "KROSSING": "Knights Circle",
     "GOLDEN KNIGHT CIR": "Knights Circle",
     "BLACK KNIGHT DR": "Knights Circle",
 

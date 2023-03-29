@@ -9,7 +9,7 @@ from PyPDF2 import PdfReader
 import requests
 from datetime import datetime
 import json
-from clean_addy import clean_address
+from adjust_address import replace_address
 
 # Returns if date string token passed is valid.
 def is_valid_date(date_string):
@@ -79,10 +79,6 @@ def parser(crime_list):
                     crime_list[i][j] += " " + crime_list[i][j+1]
                     crime_list[i].remove(crime_list[i][j+1])
 
-            try:
-                crime_list[i][j] = clean_address(crime_list[i][j])
-            except IndexError: pass
-
         try:
             if is_valid_date(crime_list[i][4][-8:]):
                     crime_list[i].insert(5, crime_list[i][4][-8:])
@@ -91,6 +87,10 @@ def parser(crime_list):
 
         if len(crime_list[i]) == 10 and is_valid_time_label(crime_list[i][-1]):
             crime_list[i].append("UNSPECIFIED CAMPUS")
+
+        try:
+            crime_list[i][7] = replace_address(crime_list[i][7])
+        except IndexError: pass
 
     return crime_list
 

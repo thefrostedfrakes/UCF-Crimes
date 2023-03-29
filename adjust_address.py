@@ -6,8 +6,9 @@ Written by Maverick Reynolds
 '''
 
 import re
+import json
 
-def clean_address(txt):
+def expand_address(txt):
     txt = ' ' + txt + ' '
 
     presubs = {
@@ -22,3 +23,14 @@ def clean_address(txt):
         txt = re.sub(key, value, txt)
 
     return txt.strip()
+
+def replace_address(txt):
+    txt = expand_address(txt)
+
+    with open('locations.json') as f:
+        locs = json.load(f)
+        for key in locs.keys():
+            if key in txt:
+                return locs[key]
+            
+        return txt

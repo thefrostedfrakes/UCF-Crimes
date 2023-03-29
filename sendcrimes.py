@@ -11,6 +11,7 @@ import discord
 from datetime import datetime
 from image import generate_image
 from loadcrimes import is_valid_date
+import re
 
 # Opens the json and sends all of the reported crimes from the previous day to the test
 # discord server.
@@ -37,7 +38,7 @@ async def crime_send(client, command_arg, config):
         for key, val in locations.items():
             if val == command_arg or key.lower().title() == command_arg or key == command_arg:
                 dict_key = "Location"
-                command_arg = key
+                command_arg = val
                 locFlag = True
 
         if not locFlag:
@@ -49,19 +50,16 @@ async def crime_send(client, command_arg, config):
         if crime[dict_key] == command_arg:
             crimeFlag = True
             generate_image(crime, config["GMaps API Key"])
-        
-            try:
-                location = locations[crime["Location"]]
-            except KeyError:
-                location = crime["Location"].lower().title()
 
             # Modify dates/times
             report_time = datetime.strptime(crime["Report Time"], '%H:%M').strftime('%I:%M %p')
             start_time = datetime.strptime(crime["Start Time"], '%H:%M').strftime('%I:%M %p')
             end_time = datetime.strptime(crime["End Time"], '%H:%M').strftime('%I:%M %p')
+            end_date = datetime.strptime(crime["End Date"], '%m/%d/%Y').strftime('%m/%d/%y')
 
             # attach emojis to end of title
             title = crime["Crime"].replace('PETIT', 'PETTY')
+            title = re.sub(',', ', ', title)
             emoji_suffix = ''
             for emoji_txt in emojis.keys():
                 if emoji_txt in title.lower():
@@ -69,10 +67,10 @@ async def crime_send(client, command_arg, config):
             title += emoji_suffix
             
             # Compose message
-            description = f"""Occurred at {crime['Campus']}, {location}
+            description = f"""Occurred at {crime['Campus'].lower().title()}, {crime['Location']}
 Case: #{crime['Case #']}
 Reported on {crime['Report Date']} {report_time}
-Between {crime['Start Date']} {start_time} - {crime['End Date']} {end_time}
+Between {crime['Start Date']} {start_time} - {end_date} {end_time}
 Status: {crime['Disposition']}"""
 
             embed = discord.Embed(

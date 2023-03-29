@@ -8,7 +8,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "01/29/23",
             "Start Time": "13:57",
-            "Location": "601 LIVINGSTON ST WEST",
+            "Location": "UnionWest Student Living",
             "End Date": "01/29/2023",
             "End Time": "13:57",
             "Campus": "UCF DOWNTOWN"
@@ -21,7 +21,7 @@
             "Crime": "EXTORTION",
             "Start Date": "01/30/23",
             "Start Time": "04:00",
-            "Location": "4290 WEST PLAZA DR",
+            "Location": "Tower 2",
             "End Date": "01/30/2023",
             "End Time": "06:59",
             "Campus": "MAIN CAMPUS"
@@ -34,7 +34,7 @@
             "Crime": "DRUG LAW REFERRAL",
             "Start Date": "01/26/23",
             "Start Time": "12:30",
-            "Location": "4290 WEST PLAZA DR",
+            "Location": "Tower 2",
             "End Date": "01/26/2023",
             "End Time": "12:41",
             "Campus": "MAIN CAMPUS"
@@ -47,7 +47,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "01/04/23",
             "Start Time": "21:00",
-            "Location": "4000 CENTRAL FLORIDA BLVD",
+            "Location": "UCF Main Campus",
             "End Date": "01/09/2023",
             "End Time": "00:00",
             "Campus": "MAIN CAMPUS"
@@ -60,7 +60,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "01/24/23",
             "Start Time": "20:00",
-            "Location": "3740 LIBRA DR",
+            "Location": "Nike 101",
             "End Date": "01/26/2023",
             "End Time": "08:30",
             "Campus": "MAIN CAMPUS"
@@ -96,10 +96,10 @@
             "Case #": "2023-0309",
             "Report Date": "01/31/23",
             "Report Time": "17:03",
-            "Crime": "PETIT THEFT",
+            "Crime": "PETIT THEFT (SCOOTER)",
             "Start Date": "01/31/23",
             "Start Time": "09:00",
-            "Location": "4356 SCORPIUS ST",
+            "Location": "UCF Global",
             "End Date": "01/31/2023",
             "End Time": "15:30",
             "Campus": "MAIN CAMPUS"
@@ -112,7 +112,7 @@
             "Crime": "MV THEFT, BURGLARY TO AUTO, GRAND THEFT",
             "Start Date": "01/31/23",
             "Start Time": "08:30",
-            "Location": "4799 HYDRA LN",
+            "Location": "Garage B",
             "End Date": "01/31/2023",
             "End Time": "10:14",
             "Campus": "MAIN CAMPUS"
@@ -125,7 +125,7 @@
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date": "01/31/23",
             "Start Time": "21:00",
-            "Location": "9907 UNIVERSAL BLVD",
+            "Location": "Rosen College Apartments",
             "End Date": "01/31/2023",
             "End Time": "21:22",
             "Campus": "ROSEN COLLEGE OF HOSPITALITY MANAGEMENT"
@@ -138,7 +138,7 @@
             "Crime": "POSS OF COUNTERFEIT DL",
             "Start Date": "01/31/23",
             "Start Time": "23:23",
-            "Location": "4511 SILVER KNIGHT WAY",
+            "Location": "Knights Circle",
             "End Date": "02/01/2023",
             "End Time": "00:00",
             "Campus": "MAIN CAMPUS"
@@ -151,7 +151,7 @@
             "Crime": "BATTERY , FALSE IMPRISONMENT",
             "Start Date": "02/01/23",
             "Start Time": "07:00",
-            "Location": "9907 UNIVERSAL BLVD",
+            "Location": "Rosen College Apartments",
             "End Date": "02/01/2023",
             "End Time": "07:30",
             "Campus": "ROSEN COLLEGE OF HOSPITALITY MANAGEMENT"
@@ -177,7 +177,7 @@
             "Crime": "BATTERY",
             "Start Date": "02/01/23",
             "Start Time": "23:00",
-            "Location": "12800 GEMINI BLVD SOUTH",
+            "Location": "UCF Gym",
             "End Date": "02/01/2023",
             "End Time": "23:00",
             "Campus": "MAIN CAMPUS"
@@ -190,7 +190,7 @@
             "Crime": "BATTERY (FONDLING)",
             "Start Date": "02/02/23",
             "Start Time": "13:00",
-            "Location": "12715 PEGASUS DR",
+            "Location": "Student Union",
             "End Date": "02/02/2023",
             "End Time": "13:30",
             "Campus": "MAIN CAMPUS"
@@ -216,7 +216,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "01/30/23",
             "Start Time": "12:20",
-            "Location": "4328 SCORPIUS ST",
+            "Location": "L3Harris Building",
             "End Date": "02/03/2023",
             "End Time": "12:18",
             "Campus": "MAIN CAMPUS"
@@ -255,7 +255,7 @@
             "Crime": "GRAND THEFT (MOTOR VEHICLE THEFT), CRIMINAL MISCHIEF",
             "Start Date": "02/02/23",
             "Start Time": "11:30",
-            "Location": "514 LIVINGSTON ST WEST",
+            "Location": "Dr. Philips Academic Commons",
             "End Date": "02/02/2023",
             "End Time": "13:25",
             "Campus": "UCF DOWNTOWN"
@@ -268,7 +268,7 @@
             "Crime": "DRUG LAW REFERRAL",
             "Start Date": "02/07/23",
             "Start Time": "23:20",
-            "Location": "4032 LIBRA DR",
+            "Location": "Libra Orange Hall",
             "End Date": "02/07/2023",
             "End Time": "23:58",
             "Campus": "MAIN CAMPUS"
@@ -281,7 +281,7 @@
             "Crime": "FLEEING ELUDING POLICE, RECKLESS DRIVING",
             "Start Date": "02/07/23",
             "Start Time": "21:15",
-            "Location": "4233 PLAZA DR EAST",
+            "Location": "Burger U",
             "End Date": "02/07/2023",
             "End Time": "21:16",
             "Campus": "MAIN CAMPUS"
@@ -294,7 +294,7 @@
             "Crime": "BATTERY (DATING VIOLENCE), FALSE IMPRISONMENT, GT",
             "Start Date": "02/08/23",
             "Start Time": "12:00",
-            "Location": "2714 COLLEGE KNIGHT CT",
+            "Location": "The Pointe at Central",
             "End Date": "02/08/2023",
             "End Time": "13:30",
             "Campus": "MAIN CAMPUS"
@@ -307,7 +307,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "01/19/23",
             "Start Time": "23:50",
-            "Location": "3528 PERSEUS LOOP",
+            "Location": "Facilities & Operations",
             "End Date": "01/19/2023",
             "End Time": "23:50",
             "Campus": "MAIN CAMPUS"
@@ -333,7 +333,7 @@
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date": "02/11/23",
             "Start Time": "01:30",
-            "Location": "12275 KNIGHTS KROSSING CIR",
+            "Location": "Knights Circle",
             "End Date": "02/11/2023",
             "End Time": "03:33",
             "Campus": "MAIN CAMPUS"
@@ -346,7 +346,7 @@
             "Crime": "STALKING",
             "Start Date": "12/16/22",
             "Start Time": "12:00",
-            "Location": "3610 LIBRA DR",
+            "Location": "UCFPD",
             "End Date": "02/13/2023",
             "End Time": "10:58",
             "Campus": "MAIN CAMPUS"
@@ -372,7 +372,7 @@
             "Crime": "EXTORTION",
             "Start Date": "02/14/23",
             "Start Time": "08:00",
-            "Location": "12263 KNIGHTS KROSSING CIR",
+            "Location": "Knights Circle",
             "End Date": "02/14/2023",
             "End Time": "08:18",
             "Campus": "MAIN CAMPUS"
@@ -385,7 +385,7 @@
             "Crime": "DRUG LAW REFERRAL",
             "Start Date": "02/14/23",
             "Start Time": "11:30",
-            "Location": "4290 WEST PLAZA DR",
+            "Location": "Tower 2",
             "End Date": "02/14/2023",
             "End Time": "11:45",
             "Campus": "MAIN CAMPUS"
@@ -398,7 +398,7 @@
             "Crime": "DRUG LAW REFERRAL",
             "Start Date": "02/14/23",
             "Start Time": "18:19",
-            "Location": "9907 UNIVERSAL BLVD",
+            "Location": "Rosen College Apartments",
             "End Date": "02/14/2023",
             "End Time": "19:16",
             "Campus": "ROSEN COLLEGE OF HOSPITALITY MANAGEMENT"
@@ -411,7 +411,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "02/14/23",
             "Start Time": "22:29",
-            "Location": "601 LIVINGSTON ST WEST",
+            "Location": "UnionWest Student Living",
             "End Date": "02/14/2023",
             "End Time": "22:32",
             "Campus": "UCF DOWNTOWN"
@@ -424,7 +424,7 @@
             "Crime": "POSS OF GROCERY CART",
             "Start Date": "02/14/23",
             "Start Time": "18:03",
-            "Location": "3724 LIBRA DR",
+            "Location": "Nike 103",
             "End Date": "02/14/2023",
             "End Time": "18:07",
             "Campus": "MAIN CAMPUS"
@@ -450,7 +450,7 @@
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date": "02/15/23",
             "Start Time": "16:05",
-            "Location": "4393 ANDROMEDA LOOP NORTH",
+            "Location": "Mathematical Sciences Building",
             "End Date": "02/15/2023",
             "End Time": "16:05",
             "Campus": "MAIN CAMPUS"
@@ -463,7 +463,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "02/16/23",
             "Start Time": "13:30",
-            "Location": "12715 PEGASUS DR",
+            "Location": "Student Union",
             "End Date": "02/16/2023",
             "End Time": "14:45",
             "Campus": "MAIN CAMPUS"
@@ -476,7 +476,7 @@
             "Crime": "STALKING (OFF CAMPUS)",
             "Start Date": "02/08/23",
             "Start Time": "23:59",
-            "Location": "3440 NORTH GOLDENROD RD",
+            "Location": "Cranes Landing",
             "End Date": "02/19/2023",
             "End Time": "14:49",
             "Campus": "MAIN CAMPUS"
@@ -489,7 +489,7 @@
             "Crime": "BATTERY , FALSE IMPRISONMENT",
             "Start Date": "02/19/23",
             "Start Time": "13:30",
-            "Location": "12777 GEMINI BLVD",
+            "Location": "Addition Arena",
             "End Date": "02/19/2023",
             "End Time": "13:30",
             "Campus": "MAIN CAMPUS"
@@ -502,7 +502,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "02/16/23",
             "Start Time": "12:00",
-            "Location": "4282 WEST PLAZA DR",
+            "Location": "Garage G",
             "End Date": "02/19/2023",
             "End Time": "22:00",
             "Campus": "MAIN CAMPUS"
@@ -515,7 +515,7 @@
             "Crime": "GRAND THEFT",
             "Start Date": "02/18/23",
             "Start Time": "20:30",
-            "Location": "12401 GOLDEN KNIGHT CIR",
+            "Location": "Knights Circle",
             "End Date": "02/19/2023",
             "End Time": "00:01",
             "Campus": "MAIN CAMPUS"
@@ -534,6 +534,19 @@
             "Campus": "MAIN CAMPUS"
         },
         {
+            "Disposition": "REPORT",
+            "Case #": "2023-CSA30",
+            "Report Date": "02/22/23",
+            "Report Time": "00:00",
+            "Crime": "DATING VIOLENCE",
+            "Start Date": "02/14/23",
+            "Start Time": "00:00",
+            "Location": "UnionWest Student Living",
+            "End Date": "02/19/2023",
+            "End Time": "00:00",
+            "Campus": "UCF DOWNTOWN"
+        },
+        {
             "Disposition": "EXC CLR - ADULT",
             "Case #": "2023-0636",
             "Report Date": "02/22/23",
@@ -541,7 +554,7 @@
             "Crime": "STALKING",
             "Start Date": "11/25/22",
             "Start Time": "17:00",
-            "Location": "4000 CENTRAL FLORIDA BLVD",
+            "Location": "UCF Main Campus",
             "End Date": "02/21/2023",
             "End Time": "16:11",
             "Campus": "MAIN CAMPUS"
@@ -554,7 +567,7 @@
             "Crime": "DRUG LAW REFERRAL",
             "Start Date": "02/22/23",
             "Start Time": "23:49",
-            "Location": "2624 COLLEGE KNIGHT CT",
+            "Location": "The Pointe at Central",
             "End Date": "02/23/2023",
             "End Time": "00:14",
             "Campus": "MAIN CAMPUS"
@@ -567,7 +580,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "02/22/23",
             "Start Time": "16:00",
-            "Location": "4144 GREEK PARK DR",
+            "Location": "Chi Omega",
             "End Date": "02/23/2023",
             "End Time": "10:00",
             "Campus": "MAIN CAMPUS"
@@ -580,7 +593,7 @@
             "Crime": "BATTERY",
             "Start Date": "02/23/23",
             "Start Time": "13:00",
-            "Location": "MEMORY MALL",
+            "Location": "Memory Mall",
             "End Date": "02/23/2023",
             "End Time": "13:13",
             "Campus": "MAIN CAMPUS"
@@ -593,7 +606,7 @@
             "Crime": "FRAUD",
             "Start Date": "07/23/22",
             "Start Time": "06:00",
-            "Location": "12715 PEGASUS DR",
+            "Location": "Student Union",
             "End Date": "02/02/2023",
             "End Time": "06:00",
             "Campus": "MAIN CAMPUS"
@@ -606,7 +619,7 @@
             "Crime": "BATTERY, PETIT THEFT",
             "Start Date": "02/23/23",
             "Start Time": "13:33",
-            "Location": "MEMORY MALL",
+            "Location": "Memory Mall",
             "End Date": "02/23/2023",
             "End Time": "13:33",
             "Campus": "MAIN CAMPUS"
@@ -619,7 +632,7 @@
             "Crime": "FRAUD",
             "Start Date": "02/14/23",
             "Start Time": "23:57",
-            "Location": "4501 BLACK KNIGHT DR",
+            "Location": "Knights Circle",
             "End Date": "02/23/2019",
             "End Time": "17:56",
             "Campus": "MAIN CAMPUS"
@@ -632,7 +645,7 @@
             "Crime": "DATING VIOLENCE",
             "Start Date": "02/23/23",
             "Start Time": "00:00",
-            "Location": "3700 LIBRA DR",
+            "Location": "Nike 107",
             "End Date": "02/23/2023",
             "End Time": "00:00",
             "Campus": "MAIN CAMPUS"
@@ -645,7 +658,7 @@
             "Crime": "DUI",
             "Start Date": "02/24/23",
             "Start Time": "02:40",
-            "Location": "480 TERRY AVE NORTH",
+            "Location": "The Julian",
             "End Date": "02/24/2023",
             "End Time": "06:40",
             "Campus": "UCF DOWNTOWN"
@@ -658,7 +671,7 @@
             "Crime": "DUI",
             "Start Date": "02/25/23",
             "Start Time": "05:56",
-            "Location": "2635 COLLEGE KNIGHT CT",
+            "Location": "The Pointe at Central",
             "End Date": "02/25/2023",
             "End Time": "05:56",
             "Campus": "MAIN CAMPUS"
@@ -684,7 +697,7 @@
             "Crime": "POINTING LASER AT PERSON",
             "Start Date": "02/26/23",
             "Start Time": "20:53",
-            "Location": "PYXIS LN",
+            "Location": "Near Apollo Community",
             "End Date": "02/26/2023",
             "End Time": "20:59",
             "Campus": "MAIN CAMPUS"
@@ -710,7 +723,7 @@
             "Crime": "GRAND THEFT",
             "Start Date": "02/26/23",
             "Start Time": "20:30",
-            "Location": "2701 COLLEGE KNIGHT CT",
+            "Location": "The Pointe at Central",
             "End Date": "02/27/2023",
             "End Time": "07:15",
             "Campus": "MAIN CAMPUS"
@@ -723,7 +736,7 @@
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date": "02/27/23",
             "Start Time": "11:00",
-            "Location": "12998 GEMINI BLVD",
+            "Location": "Garage C",
             "End Date": "02/27/2023",
             "End Time": "16:20",
             "Campus": "MAIN CAMPUS"
@@ -746,7 +759,7 @@
             "Case #": "2023-0699",
             "Report Date": "02/28/23",
             "Report Time": "11:27",
-            "Crime": "PETIT THEFT",
+            "Crime": "PETIT THEFT (SCOOTER)",
             "Start Date": "02/28/23",
             "Start Time": "12:30",
             "Location": "12612 GEMINI NORTH BLVD",
@@ -775,7 +788,7 @@
             "Crime": "GRAND THEFT",
             "Start Date": "02/28/23",
             "Start Time": "12:00",
-            "Location": "12715 PEGASUS DR",
+            "Location": "Student Union",
             "End Date": "02/28/2023",
             "End Time": "12:30",
             "Campus": "MAIN CAMPUS"
@@ -788,7 +801,7 @@
             "Crime": "DRUG LAW REFERRAL",
             "Start Date": "03/01/23",
             "Start Time": "00:08",
-            "Location": "4282 PLAZA DR WEST",
+            "Location": "Garage G",
             "End Date": "03/01/2023",
             "End Time": "01:08",
             "Campus": "MAIN CAMPUS"
@@ -827,7 +840,7 @@
             "Crime": "WRITTEN INTIMIDATION",
             "Start Date": "03/01/23",
             "Start Time": "14:00",
-            "Location": "4274 PLAZA DR WEST",
+            "Location": "Tower 1",
             "End Date": "03/02/2023",
             "End Time": "10:09",
             "Campus": "MAIN CAMPUS"
@@ -853,7 +866,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "03/01/23",
             "Start Time": "19:30",
-            "Location": "12701 PEGASUS DR",
+            "Location": "John C. Hitt Library",
             "End Date": "03/02/2023",
             "End Time": "00:30",
             "Campus": "MAIN CAMPUS"
@@ -866,7 +879,7 @@
             "Crime": "BURGLARY TO AUTO, PETIT THEFT",
             "Start Date": "03/02/23",
             "Start Time": "08:00",
-            "Location": "12722 RESEARCH PKWY",
+            "Location": "Biomolecular Research Annex",
             "End Date": "03/02/2023",
             "End Time": "15:00",
             "Campus": "MAIN CAMPUS"
@@ -892,7 +905,7 @@
             "Crime": "BURGLARY , CRIMINAL MISCHIEF",
             "Start Date": "01/28/23",
             "Start Time": "08:00",
-            "Location": "3820 LIBRA DR",
+            "Location": "Libra Garage",
             "End Date": "03/03/2023",
             "End Time": "14:12",
             "Campus": "MAIN CAMPUS"
@@ -918,7 +931,7 @@
             "Crime": ".02/NOS",
             "Start Date": "03/05/23",
             "Start Time": "02:01",
-            "Location": "B8 PARKING LOT",
+            "Location": "Hercules Parking Lot",
             "End Date": "03/05/2023",
             "End Time": "03:41",
             "Campus": "MAIN CAMPUS"
@@ -931,7 +944,7 @@
             "Crime": "DRIV WHILE LIC SUSPEND REVOCATION EQUIV STATUS",
             "Start Date": "03/05/23",
             "Start Time": "02:26",
-            "Location": "480 TERRY AVE NORTH",
+            "Location": "The Julian",
             "End Date": "03/05/2023",
             "End Time": "03:14",
             "Campus": "UCF DOWNTOWN"
@@ -944,7 +957,7 @@
             "Crime": "DRUG LAW VIOLATION, LOITERING AND PROWLING",
             "Start Date": "03/05/23",
             "Start Time": "01:38",
-            "Location": "601 LIVINGSTON ST WEST",
+            "Location": "UnionWest Student Living",
             "End Date": "03/05/2023",
             "End Time": "02:10",
             "Campus": "UCF DOWNTOWN"
@@ -957,7 +970,7 @@
             "Crime": "TRAFFIC ARREST, VIOLATION OF PROBATION, DRUG LAW VIOLATION",
             "Start Date": "03/05/23",
             "Start Time": "10:05",
-            "Location": "4250 WEST PLAZA DR",
+            "Location": "Domino's Pizza at Knights Plaza",
             "End Date": "03/05/2023",
             "End Time": "10:05",
             "Campus": "MAIN CAMPUS"
@@ -970,7 +983,7 @@
             "Crime": "DUI",
             "Start Date": "03/05/23",
             "Start Time": "02:23",
-            "Location": "12800 GEMINI BLVD SOUTH",
+            "Location": "UCF Gym",
             "End Date": "03/02/2023",
             "End Time": "02:23",
             "Campus": "MAIN CAMPUS"
@@ -983,7 +996,7 @@
             "Crime": "CRUELTY TO ANIMALS",
             "Start Date": "03/05/23",
             "Start Time": "02:59",
-            "Location": "4120 URSA MINOR ST",
+            "Location": "Hercules 113",
             "End Date": "03/05/2023",
             "End Time": "03:18",
             "Campus": "MAIN CAMPUS"
@@ -996,7 +1009,7 @@
             "Crime": "GRAND THEFT, CRIMINAL MISCHIEF",
             "Start Date": "02/19/23",
             "Start Time": "00:00",
-            "Location": "11727 COLLEGE PARK TRAIL",
+            "Location": "The Pointe at Central",
             "End Date": "03/06/2023",
             "End Time": "16:00",
             "Campus": "MAIN CAMPUS"
@@ -1022,7 +1035,7 @@
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date": "11/06/22",
             "Start Time": "08:00",
-            "Location": "4799 HYDRA LN",
+            "Location": "Garage B",
             "End Date": "03/07/2023",
             "End Time": "16:26",
             "Campus": "MAIN CAMPUS"
@@ -1045,13 +1058,13 @@
             "Case #": "2023-0828",
             "Report Date": "03/09/23",
             "Report Time": "04:18",
-            "Crime": "FALSE IMPRISONMENT (DATING VIOLENCE),BATTERY (DATING VIOLENCE)",
+            "Crime": "FALSE IMPRISONMENT (DATING VIOLENCE), BATTERY",
             "Start Date": "10/01/22",
             "Start Time": "00:00",
-            "Location": "4290 WEST PLAZA DR",
+            "Location": "Tower 2",
             "End Date": "03/09/2023",
             "End Time": "19:13",
-            "Campus": "MAIN CAMPUS"
+            "Campus": "UCF DOWNTOWN"
         },
         {
             "Disposition": "ARREST - ADULT",
@@ -1061,7 +1074,7 @@
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date": "03/08/23",
             "Start Time": "15:26",
-            "Location": "601 LIVINGSTON ST WEST",
+            "Location": "UnionWest Student Living",
             "End Date": "03/08/2023",
             "End Time": "15:27",
             "Campus": "UCF DOWNTOWN"
@@ -1074,7 +1087,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "03/10/23",
             "Start Time": "04:30",
-            "Location": "12491 UNIVERSITY BLVD",
+            "Location": "Garage A",
             "End Date": "03/10/2023",
             "End Time": "18:00",
             "Campus": "MAIN CAMPUS"
@@ -1123,10 +1136,10 @@
             "Case #": "2023-0860",
             "Report Date": "03/15/23",
             "Report Time": "13:00",
-            "Crime": "SCHEME TO DEFRAUD (&gt;$300) BY COMMUNICATION",
+            "Crime": "FRAUD",
             "Start Date": "03/08/23",
             "Start Time": "11:00",
-            "Location": "4365 ANDROMEDA LOOP NORTH",
+            "Location": "Millican Hall",
             "End Date": "03/09/2023",
             "End Time": "09:00",
             "Campus": "MAIN CAMPUS"
@@ -1165,7 +1178,7 @@
             "Crime": "DRUG ARREST, DUI",
             "Start Date": "03/17/23",
             "Start Time": "22:46",
-            "Location": "12100 CHALLENGER PKWY",
+            "Location": "Bouce House Social Eats",
             "End Date": "03/17/2023",
             "End Time": "22:46",
             "Campus": "MAIN CAMPUS"
@@ -1178,7 +1191,7 @@
             "Crime": ".02/NOS",
             "Start Date": "03/18/23",
             "Start Time": "01:15",
-            "Location": "3000 NORTH ALAFAYA TRAIL",
+            "Location": "Walgreens",
             "End Date": "03/18/2023",
             "End Time": "02:26",
             "Campus": "MAIN CAMPUS"
@@ -1191,7 +1204,7 @@
             "Crime": "DRUG LAW REFERRAL",
             "Start Date": "03/18/23",
             "Start Time": "21:49",
-            "Location": "3708 LIBRA DR",
+            "Location": "Nike 106",
             "End Date": "03/18/2023",
             "End Time": "21:49",
             "Campus": "MAIN CAMPUS"
@@ -1214,10 +1227,10 @@
             "Case #": "2023-0887",
             "Report Date": "03/19/23",
             "Report Time": "22:53",
-            "Crime": "GRAND THEFT 3RD DEGREE- MOTOR VEHICLE,BURGLARY OF CONVEYANCE,PETIT THEFT",
+            "Crime": "MOTOR VEHICLE THEFT, BURGLARY TO AUTO, PETIT THEFT",
             "Start Date": "03/18/23",
             "Start Time": "21:00",
-            "Location": "4220 MENSA LN",
+            "Location": "Garage E",
             "End Date": "03/19/2023",
             "End Time": "17:45",
             "Campus": "MAIN CAMPUS"
@@ -1230,7 +1243,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "03/15/23",
             "Start Time": "08:00",
-            "Location": "12638 GEMINI BLVD NORTH",
+            "Location": "Garage H",
             "End Date": "03/17/2023",
             "End Time": "23:59",
             "Campus": "MAIN CAMPUS"
@@ -1253,10 +1266,10 @@
             "Case #": "2023-0906",
             "Report Date": "03/21/23",
             "Report Time": "12:49",
-            "Crime": "SCHEME TO DEFRAUD (&lt;$300)",
+            "Crime": "FRAUD",
             "Start Date": "03/07/23",
             "Start Time": "13:00",
-            "Location": "12600 GEMINI BLVD NORTH",
+            "Location": "Lake Claire Building 57",
             "End Date": "03/09/2023",
             "End Time": "18:00",
             "Campus": "MAIN CAMPUS"
@@ -1269,7 +1282,7 @@
             "Crime": "PETIT THEFT OF $100 OR MORE",
             "Start Date": "03/20/23",
             "Start Time": "12:00",
-            "Location": "4120 PYXIS LN",
+            "Location": "Apollo Lake Hall",
             "End Date": "03/21/2023",
             "End Time": "14:50",
             "Campus": "MAIN CAMPUS"
@@ -1282,7 +1295,7 @@
             "Crime": "LOITERING OR PROWLING,POSSESSION OF COCAINE,POSSESSION OF BURGLARY TOOLS,POSSESSION OF DRUG PARAPHERNALIA",
             "Start Date": "03/21/22",
             "Start Time": "21:40",
-            "Location": "401 LIVINGSTON ST WEST",
+            "Location": "Bob Carr Theater",
             "End Date": "03/21/2022",
             "End Time": "21:40",
             "Campus": "UCF DOWNTOWN"
@@ -1292,10 +1305,10 @@
             "Case #": "2023-0915",
             "Report Date": "03/22/23",
             "Report Time": "14:52",
-            "Crime": "PETIT THEFT",
+            "Crime": "PETIT THEFT (ELECTRIC SCOOTER)",
             "Start Date": "03/21/23",
             "Start Time": "23:00",
-            "Location": "4120 PYXIS LN",
+            "Location": "Apollo Lake Hall",
             "End Date": "03/22/2023",
             "End Time": "09:00",
             "Campus": "MAIN CAMPUS"
@@ -1321,7 +1334,7 @@
             "Crime": "SCHEME TO DEFRAUD (>$300) BY COMMUNICATION",
             "Start Date": "03/23/23",
             "Start Time": "18:19",
-            "Location": "3610 LIBRA DR NORTH",
+            "Location": "UCFPD",
             "End Date": "03/24/2023",
             "End Time": "12:00",
             "Campus": "MAIN CAMPUS"
@@ -1334,7 +1347,7 @@
             "Crime": "TRESPASS",
             "Start Date": "03/24/23",
             "Start Time": "17:34",
-            "Location": "400 AMELIA ST WEST",
+            "Location": "UCF Amelia I Parking Garage",
             "End Date": "03/24/2023",
             "End Time": "18:00",
             "Campus": "UCF DOWNTOWN"
@@ -1360,7 +1373,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "03/25/23",
             "Start Time": "12:00",
-            "Location": "4799 HYDRA LN",
+            "Location": "Garage B",
             "End Date": "03/25/2023",
             "End Time": "14:30",
             "Campus": "MAIN CAMPUS"
@@ -1373,7 +1386,7 @@
             "Crime": "EXTORTION",
             "Start Date": "03/25/23",
             "Start Time": "12:00",
-            "Location": "601 WEST LIVINGSTON ST",
+            "Location": "UnionWest Student Living",
             "End Date": "03/26/2023",
             "End Time": "00:18",
             "Campus": "UCF DOWNTOWN"
@@ -1386,9 +1399,22 @@
             "Crime": "FLORIDA COMMUNICATIONS FRAUD ACT",
             "Start Date": "03/25/23",
             "Start Time": "08:00",
-            "Location": "12300 GOLDEN KNIGHT CIR",
+            "Location": "Knights Circle",
             "End Date": "03/27/2023",
             "End Time": "16:23",
+            "Campus": "MAIN CAMPUS"
+        },
+        {
+            "Disposition": "OPEN",
+            "Case #": "2023-0963",
+            "Report Date": "03/28/23",
+            "Report Time": "01:32",
+            "Crime": "BURGLARY OF CONVEYANCE,PETIT THEFT",
+            "Start Date": "03/27/23",
+            "Start Time": "18:45",
+            "Location": "Knights Circle",
+            "End Date": "03/27/2023",
+            "End Time": "23:30",
             "Campus": "MAIN CAMPUS"
         }
     ]
