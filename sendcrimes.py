@@ -16,8 +16,8 @@ import re
 
 # Opens the json and sends all of the reported crimes from the previous day to the test
 # discord server.
-async def crime_send(client, command_arg, config):
-    channel = client.get_channel(config["Crime Channel ID"])
+async def crime_send(client, command_arg, channel_id, GMaps_Key):
+    channel = client.get_channel(int(channel_id))
 
     with open('crimes.json', 'r') as f:
         crimes = json.load(f)
@@ -50,7 +50,7 @@ async def crime_send(client, command_arg, config):
     for i, crime in enumerate(crimes["Crimes"]):
         if crime[dict_key] == command_arg:
             crimeFlag = True
-            generate_image(crime, config["GMaps API Key"])
+            generate_image(crime, GMaps_Key)
 
             # Modify dates/times
             report_time = datetime.strptime(crime["Report Time"], '%H:%M').strftime('%I:%M %p')

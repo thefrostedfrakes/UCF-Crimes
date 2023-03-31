@@ -1,9 +1,7 @@
 '''
 
-UCF Crimes
-Maverick Reynolds
-03.30.2023
-adjust_address.py
+UCF Crimes: adjust_address.py
+Written by Maverick Reynol
 
 '''
 
