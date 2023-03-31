@@ -1,8 +1,9 @@
 {
     ".02": "🚗🧪💨",
+    "NOS": "🚗🧪💨",
     "cannabis": "🌿🚬",
-    "counterfeit dl": "🚫🆔",
-    "defraud": "💵",
+    "dl": "🚫🆔",
+    "fraud": "💵",
     "drug": "💊",
     "dui": "🍸🚗",
     "fire": "🔥",
@@ -11,8 +12,24 @@
     "imprisonment": "⛓️",
     "petty": "💲",
     "reckless": "💥🚗",
+    "scooter": "🛴",
     "stalking": "🕶️",
     "traffic": "🚗🚓",
-    "trespass": "🚧🚧",
-    "vehicle": "🚗"
+    "trespass": "🚧🚫",
+    "vehicle": "🚗",
+    "written": "📄",
+    
+    "burglary": "💰",
+    "cyber": "💻",
+    "embezzlement": "💸💼",
+    "forgery": "🖋️📄",
+    "graffiti": "🖌️🏢",
+    "identity theft": "🙎💻",
+    "indecency": "👀",
+    "jaywalking": "🚶🚦",
+    "laundering": "💸💼",
+    "robbery": "💰",
+    "shoplifting": "🛍️",
+    "speeding": "🚗💨",
+    "vandalism": "🖌️🏢"
 }

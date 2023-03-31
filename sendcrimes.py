@@ -11,6 +11,7 @@ import discord
 from datetime import datetime
 from image import generate_image
 from loadcrimes import is_valid_date
+from Title import gen_title
 import re
 
 # Opens the json and sends all of the reported crimes from the previous day to the test
@@ -57,8 +58,12 @@ async def crime_send(client, command_arg, channel_id, GMaps_Key):
             end_time = datetime.strptime(crime["End Time"], '%H:%M').strftime('%I:%M %p')
             end_date = datetime.strptime(crime["End Date"], '%m/%d/%Y').strftime('%m/%d/%y')
 
-            # attach emojis to end of title
             title = crime["Crime"].replace('PETIT', 'PETTY')
+            title = re.sub(',', ', ', title) # Space after comma
+            title = re.sub('  ', ' ', title) # Remove double spaces
+            title = re.sub(' ,', ',', title) # Remove space before comma
+    
+            # attach emojis to end of title
             title = re.sub(',', ', ', title)
             emoji_suffix = ''
             for emoji_txt in emojis.keys():
@@ -67,11 +72,11 @@ async def crime_send(client, command_arg, channel_id, GMaps_Key):
             title += emoji_suffix
             
             # Compose message
-            description = f"""Occurred at {crime['Campus'].lower().title()}, {crime['Location']}
-Case: #{crime['Case #']}
+            description = f"""Occurred at {gen_title(crime['Campus'])}, {crime['Location']}
+Case: {crime['Case #']}
 Reported on {crime['Report Date']} {report_time}
 Between {crime['Start Date']} {start_time} - {end_date} {end_time}
-Status: {crime['Disposition']}"""
+Status: {crime['Disposition'].title()}"""
 
             embed = discord.Embed(
                 title=title,

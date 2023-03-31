@@ -7,8 +7,8 @@
     "12898 NORTH GEMINI BLVD": "Garage D",
     "4220 MENSA LN": "Garage E",
     "4282 WEST PLAZA DR": "Garage G",
-    "4282 PLAZA DR WEST": "Garage G",
     "12638 GEMINI BLVD NORTH": "Garage H",
+    "4277 GEMINI BLVD W": "Garage I",
     "3820 LIBRA DR": "Libra Garage",
     
     "3740 LIBRA DR": "Nike 101",
@@ -23,7 +23,7 @@
     "4024 LIBRA DR": "Libra Citrus Hall",
     "4032 LIBRA DR": "Libra Orange Hall",
 
-    "12612 GENIMI BLVD NORTH": "Lake Claire Building 55",
+    "12612 GEMINI BLVD NORTH": "Lake Claire Building 55",
     "12600 GEMINI BLVD NORTH": "Lake Claire Building 57",
     
     "4274 PLAZA DR WEST": "Tower 1",
@@ -41,21 +41,22 @@
     "4393 ANDROMEDA LOOP NORTH": "Mathematical Sciences Building",
     "MEMORY MALL": "Memory Mall",
     "4365 ANDROMEDA LOOP NORTH": "Millican Hall",
-    "PYXIS LN": "Near Apollo Community",
+    "PYXIS LN": "near Apollo Community",
     "12715 PEGASUS": "Student Union",
+    "12704 PEGASUS": "Tech Commons",
     "4356 SCORPIUS ST": "UCF Global",
     "12800 GEMINI BLVD SOUTH": "UCF Gym",
-    "12800 GEMINI BLVD NORTH": "Near Addition Arena",
-    "12800 GEMINI BLVD WEST": "Near Garage A",
+    "12800 GEMINI BLVD NORTH": "near Addition Arena",
+    "12800 GEMINI BLVD WEST": "near Garage A",
     
     "12722 RESEARCH PKWY": "Biomolecular Research Annex",
     "12100 CHALLENGER PKWY": "Bouce House Social Eats",
     "3528 PERSEUS LOOP": "Facilities & Operations",
     "3610 LIBRA DR": "UCFPD",
-    "3000 NORTH ALAFAYA TRAIL": "Walgreens North Alafaya Trail",
+    "3000 NORTH ALAFAYA TRAIL": "Walgreens",
 
     "SILVER KNIGHT WAY": "Knights Circle",
-    "KROSSING": "Knights Circle",
+    "KROSSING CIR": "Knights Circle",
     "GOLDEN KNIGHT CIR": "Knights Circle",
     "BLACK KNIGHT DR": "Knights Circle",
 
@@ -69,6 +70,6 @@
     "9907 UNIVERSAL BLVD": "Rosen College Apartments",
     "480 TERRY AVE NORTH": "The Julian",
     "401 LIVINGSTON ST WEST": "Bob Carr Theater",
-    "601 LIVINGSTON ST WEST": "UnionWest Student Living",
-    "601 WEST LIVINGSTON ST": "UnionWest Student Living"
+    "601 LIVINGSTON ST": "UnionWest Student Living",
+    "323 PARRAMORE": "Parramore Parking Garage"
 }

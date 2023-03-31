@@ -3,5 +3,6 @@ AllDailyCrimeLog.pdf
 case.png
 caseout.png
 casez.png
-message_test.py
+test_message.py
+test_cases.json
 /__pycache__
