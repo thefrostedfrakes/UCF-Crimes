@@ -11,6 +11,7 @@ import time
 from datetime import date, timedelta
 import asyncio
 import json
+from configparser import ConfigParser
 from loadcrimes import crime_load
 from sendcrimes import crime_send, list_locations
 
@@ -18,8 +19,8 @@ intents = discord.Intents.all()
 client = commands.Bot(intents=intents, command_prefix = '-')
 client.remove_command('help')
 
-with open('config.json', 'r') as f:
-    config = json.load(f)
+main_config = ConfigParser()
+main_config.read('config.ini')
 
 @client.event
 async def on_ready():
@@ -36,7 +37,7 @@ async def on_ready():
         if current_time == "00:05:00":
             today = date.today()
             yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
-            await crime_send(client, yesterday, config)
+            await crime_send(client, yesterday, main_config.get("DISCORD", "CRIME_CHANNEL_ID"), main_config.get("DISCORD", "GMAPS_API_KEY"))
 
         await asyncio.sleep(1)
 
@@ -52,9 +53,9 @@ async def on_message(message):
     
     elif message.content.startswith('-crimes'):
         str = message.content[8:]
-        await crime_send(client, str, config)
+        await crime_send(client, str, main_config.get("DISCORD", "CRIME_CHANNEL_ID"), main_config.get("DISCORD", "GMAPS_API_KEY"))
 
     elif message.content.startswith('-locations'):
         await list_locations(message)
 
-client.run(config["Token"])
+client.run(main_config.get("DISCORD", "TOKEN"))
