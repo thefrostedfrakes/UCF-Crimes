@@ -88,38 +88,42 @@ def parser(crime_list):
         if len(crime_list[i]) == 10 and is_valid_time_label(crime_list[i][-1]):
             crime_list[i].append("UNSPECIFIED CAMPUS")
 
-        try:
+        if len(crime_list[i]) == 11:
             crime_list[i][7] = replace_address(crime_list[i][7])
-        except IndexError: pass
 
     return crime_list
 
 # Converts crimes list to a dictionary, then dumps to a json file.
-def add_to_json(crime_list):
+def load_to_json(crime_list, command_str):
     keys = ["Disposition", "Case #", "Report Date", 
             "Report Time", "Crime", "Start Date", 
             "Start Time", "Location", "End Date", 
             "End Time", "Campus"]
     
-    crimes_dict = {"Crimes":[]}
-    crime_dict = {}
+    if command_str == '-loadcrimes':
+        crimes_dict = {"Crimes":[]}
+
+    elif command_str == '-addcrimes':
+        with open('crimes.json', 'r') as f:
+            crimes_dict = json.load(f)
     
     for crime in crime_list:
         if len(crime) == 11:
-            i= 0
-            for key in keys:
-                crime_dict[key] = crime[i]
-                i += 1
-
-            crimes_dict["Crimes"].append(crime_dict)
             crime_dict = {}
+            for i, key in enumerate(keys):
+                crime_dict[key] = crime[i]
+
+            if command_str == '-loadcrimes':
+                crimes_dict["Crimes"].append(crime_dict)
+            elif command_str == '-addcrimes' and crime_dict not in crimes_dict["Crimes"]:
+                crimes_dict["Crimes"].append(crime_dict)
 
     with open('crimes.json', 'w') as f:
         json.dump(crimes_dict, f, indent=4)
 
 # Requests the url of the daily crime log, opens the file, calls PdfReader to read the pdf's
 # contents, calls the tokenizer and parser, then adds the parsed list to a json.
-def crime_load():
+def crime_load(command_str):
     pdf_filename = 'AllDailyCrimeLog.pdf'
     crime_url = 'https://police.ucf.edu/sites/default/files/logs/ALL%20DAILY%20crime%20log.pdf'
 
@@ -141,5 +145,5 @@ def crime_load():
 
         print(crime, '\n')
 
-    # add_to_json called to convert the list of crimes to a dictionary, then to a json file.
-    add_to_json(crime_list)
+    # load_to_json called to convert the list of crimes to a dictionary, then to a json file.
+    load_to_json(crime_list, command_str)

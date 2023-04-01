@@ -45,12 +45,12 @@ async def on_ready():
 async def on_message(message):
     print('User %s just sent this message in %s: %s' % (message.author, message.channel.name, message.content))
 
-    if message.content.startswith('-loadcrimes'):
+    if message.content.startswith('-loadcrimes') or message.content.startswith('-addcrimes'):
         if not message.author.guild_permissions.administrator:
             await message.reply('Sorry, you do not have permission to use this command!')
             return
-        crime_load()
-    
+        crime_load(message.content)
+
     elif message.content.startswith('-crimes'):
         str = message.content[8:]
         await crime_send(client, str, main_config.get("DISCORD", "CRIME_CHANNEL_ID"), main_config.get("DISCORD", "GMAPS_API_KEY"))
