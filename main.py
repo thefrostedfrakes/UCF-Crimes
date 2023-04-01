@@ -32,7 +32,7 @@ async def on_ready():
         current_time = time.strftime("%H:%M:%S", t)
 
         if current_time == "00:04:30":
-            crime_load()
+            crime_load('-addcrimes')
 
         if current_time == "00:05:00":
             today = date.today()
