@@ -1429,6 +1429,45 @@
             "End Date": "03/31/2023",
             "End Time": "09:43",
             "Campus": "MAIN CAMPUS"
+        },
+        {
+            "Disposition": "ARREST - ADULT",
+            "Case #": "2023-0828",
+            "Report Date": "03/09/23",
+            "Report Time": "04:18",
+            "Crime": "FALSE IMPRISONMENT (DATING VIOLENCE), BATTERY",
+            "Start Date": "10/01/22",
+            "Start Time": "00:00",
+            "Location": "Tower 2",
+            "End Date": "03/09/2023",
+            "End Time": "19:13",
+            "Campus": "UCF DOWNTOWN"
+        },
+        {
+            "Disposition": "ARREST - ADULT",
+            "Case #": "2023-0944",
+            "Report Date": "03/25/23",
+            "Report Time": "09:10",
+            "Crime": "THEFT GRAND (ELECTRIC SCOOTER MV),",
+            "Start Date": "03/25/23",
+            "Start Time": "08:37",
+            "Location": "Garage G",
+            "End Date": "03/25/2023",
+            "End Time": "08:41",
+            "Campus": "MAIN CAMPUS"
+        },
+        {
+            "Disposition": "OPEN",
+            "Case #": "2023-01008",
+            "Report Date": "04/01/23",
+            "Report Time": "06:42",
+            "Crime": "BURGLARY OF DWELLING,PETIT THEFT",
+            "Start Date": "03/30/23",
+            "Start Time": "17:00",
+            "Location": "12203 Kings Knight Way",
+            "End Date": "03/30/2023",
+            "End Time": "23:00",
+            "Campus": "MAIN CAMPUS"
         }
     ]
 }
