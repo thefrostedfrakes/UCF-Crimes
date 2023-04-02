@@ -7,7 +7,7 @@ Written by Ethan Frakes
 
 from PyPDF2 import PdfReader
 import requests
-from datetime import datetime
+from datetime import datetime, date
 import json
 from adjust_address import replace_address
 
@@ -154,3 +154,14 @@ def crime_load(command_str):
 
     # load_to_json called to convert the list of crimes to a dictionary, then to a json file.
     load_to_json(crimes_list, command_str)
+
+# Simple function to copy current crimes.json file to backups folder with added date.
+def backup_crimes():
+    with open('crimes.json', 'r') as f:
+        crime_dict = json.load(f)
+
+    today = date.today().strftime("%m-%d-%Y")
+    backup_json_name = "crimes-" + today + ".json"
+    
+    with open(('./backups/' + backup_json_name), 'w') as f:
+        json.dump(crime_dict, f, indent=4)
