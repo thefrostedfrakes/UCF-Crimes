@@ -347,6 +347,7 @@
             "Start Date": "02/08/23",
             "Start Time": "23:59",
             "Location": "Cranes Landng",
+            "Location": "Cranes Landing",
             "End Date": "02/19/2023",
             "End Time": "14:49",
             "Campus": "MAIN CAMPUS"
@@ -1113,7 +1114,7 @@
             "Crime": "CRIMINAL MISCHIEF (<=$200)",
             "Start Date": "03/20/23",
             "Start Time": "07:50",
-            "Location": "Andomeda Loop",
+            "Location": "Andromeda Loop",
             "End Date": "03/20/2023",
             "End Time": "08:01",
             "Campus": "MAIN CAMPUS"
