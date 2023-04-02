@@ -20,7 +20,7 @@ def expand_address(raw_addr):
         ' N ': ' NORTH ',
         ' S ': ' SOUTH ',
         'BLD' : 'BLVD',
-        ' ?(?:and|\/) ?': ' & '     # Change intersection of streets to &
+        ' ?(?: and |\/) ?': ' & '     # Change intersection of streets to &
     }
 
     for key, value in presubs.items():

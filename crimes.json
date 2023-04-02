@@ -320,7 +320,7 @@
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date": "02/15/23",
             "Start Time": "16:05",
-            "Location": "4393 & Romeda Loop North",
+            "Location": "Mathematical Sciences Building",
             "End Date": "02/15/2023",
             "End Time": "16:05",
             "Campus": "MAIN CAMPUS"
@@ -346,7 +346,7 @@
             "Crime": "STALKING (OFF CAMPUS)",
             "Start Date": "02/08/23",
             "Start Time": "23:59",
-            "Location": "Cranes L & Ing",
+            "Location": "Cranes Landing",
             "End Date": "02/19/2023",
             "End Time": "14:49",
             "Campus": "MAIN CAMPUS"
@@ -1009,7 +1009,7 @@
             "Crime": "FRAUD",
             "Start Date": "03/08/23",
             "Start Time": "11:00",
-            "Location": "4365 & Romeda Loop North",
+            "Location": "Millican Hall",
             "End Date": "03/09/2023",
             "End Time": "09:00",
             "Campus": "MAIN CAMPUS"
@@ -1113,7 +1113,7 @@
             "Crime": "CRIMINAL MISCHIEF (<=$200)",
             "Start Date": "03/20/23",
             "Start Time": "07:50",
-            "Location": "& Romeda Loop",
+            "Location": "Andromeda Loop",
             "End Date": "03/20/2023",
             "End Time": "08:01",
             "Campus": "MAIN CAMPUS"
