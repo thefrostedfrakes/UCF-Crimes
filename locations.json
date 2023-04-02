@@ -1,5 +1,6 @@
 {
     "4000 CENTRAL FLORIDA BLVD": "UCF Main Campus",
+    "4000 UNIVERSITY BLVD": "UCF Main Campus",
     
     "12491 UNIVERSITY BLVD": "Garage A",
     "4799 HYDRA LN": "Garage B",
@@ -33,7 +34,7 @@
     "4144 GREEK PARK DR": "Chi Omega",
     
     "12777 GEMINI BLVD": "Addition Arena",
-    "4233 PLAZA DR EAST": "Burger U",
+    "4233 PLAZA DR EAST": "Burger U.",
     "4090 LIBRA DR": "CAPS Building",
     "4250 WEST PLAZA DR": "Domino's Pizza at Knights Plaza",
     "12701 PEGASUS DR": "John C. Hitt Library",
@@ -45,18 +46,18 @@
     "12715 PEGASUS": "Student Union",
     "12704 PEGASUS": "Tech Commons",
     "4356 SCORPIUS ST": "UCF Global",
-    "12800 GEMINI BLVD SOUTH": "UCF Gym",
     "12800 GEMINI BLVD NORTH": "near Addition Arena",
     "12800 GEMINI BLVD WEST": "near Garage A",
+    "12800 GEMINI BLVD": "UCF Gym",
     
     "12722 RESEARCH PKWY": "Biomolecular Research Annex",
     "12100 CHALLENGER PKWY": "Bouce House Social Eats",
-    "3528 PERSEUS LOOP": "Facilities & Operations",
+    "3528 PERSEUS LOOP": "Facilities Operations",
     "3610 LIBRA DR": "UCFPD",
-    "3000 NORTH ALAFAYA TRAIL": "Walgreens",
+    "3000 NORTH ALAFAYA TRAIL": "Walgreens on Alafaya Trl",
 
     "SILVER KNIGHT WAY": "Knights Circle",
-    "KROSSING CIR": "Knights Circle",
+    "KROSSING": "Knights Circle",
     "GOLDEN KNIGHT CIR": "Knights Circle",
     "BLACK KNIGHT DR": "Knights Circle",
 
@@ -64,6 +65,7 @@
     "COLLEGE PARK TRAIL": "The Pointe at Central",
     
     "NORTH GOLDENROD RD": "Cranes Landing",
+    "3600 KHAYYAM AVE": "Phi Delta Theta",
     
     "400 AMELIA ST WEST": "UCF Amelia I Parking Garage",
     "514 LIVINGSTON ST WEST": "Dr. Philips Academic Commons",
