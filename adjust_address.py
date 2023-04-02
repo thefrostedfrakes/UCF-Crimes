@@ -20,7 +20,7 @@ def expand_address(raw_addr):
         ' N ': ' NORTH ',
         ' S ': ' SOUTH ',
         'BLD' : 'BLVD',
-        ' ?(?:and|\/) ?': ' & '     # Change intersection of streets to &
+        ' ?(?: and |\/) ?': ' & '     # Change intersection of streets to &
     }
 
     for key, value in presubs.items():
@@ -42,8 +42,6 @@ def replace_address(expanded_addr):
         # Do this with every key
         for key in locs.keys():
             key_tokens = key.split()
-
-            # Assume true until proven false
             is_match = True
 
             # If numerical start, make sure it matches exactly
@@ -54,6 +52,7 @@ def replace_address(expanded_addr):
             # Go through each token in key
             for key_token in key_tokens:
                 token_distances = [editdistance.eval(key_token, txt_token) for txt_token in txt_tokens]
+                # Fail if no token is within tokerance for all key tokens
                 if min(token_distances) > TYPO_TOLERANCE:
                     is_match = False
                     break
@@ -62,7 +61,7 @@ def replace_address(expanded_addr):
                 #     is_match = False
                 #     break
 
-            # If all tokens match, locations is found
+            # If all tokenswithin tolerance, locations is found
             if is_match:
                 return locs[key]
         
