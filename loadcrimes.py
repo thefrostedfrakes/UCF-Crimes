@@ -33,9 +33,10 @@ def is_valid_time_label(time_str):
 
 # Tokenizes each crime into separate elements of a 2D string array, where each 1st dimension
 # element is each crime and each 2nd dimension element is each space/newline delimited string.
-def tokenizer(page, crime_list):
+def tokenizer(page):
 
     # Text extracted from page and split between spaces and newlines.
+    crime_list = []
     text = page.extract_text()
     textToken = text.split()
     buffer_list = []
@@ -46,7 +47,11 @@ def tokenizer(page, crime_list):
     # (end of one crime and beginning of another), buffer list is added to the crime list.
     for elem in range(len(textToken)):
         for delimiter in valid_delimiters:
-            if textToken[elem] == delimiter and textToken[elem-1] != "TRAFFIC":
+            if delimiter == "ARREST" and textToken[elem] == delimiter and textToken[elem+1] == "-":
+                crime_list.append(buffer_list)
+                buffer_list = []
+
+            elif delimiter != "ARREST" and textToken[elem] == delimiter:
                 crime_list.append(buffer_list)
                 buffer_list = []
             
@@ -134,16 +139,18 @@ def crime_load(command_str):
     reader = PdfReader(pdf_filename)
 
     # Each page in the pdf is tokenized and parsed.
-    crime_list = []
+    crimes_list = []
     for i in range(len(reader.pages)):
-        crime_list = tokenizer(reader.pages[i], crime_list)
+        crime_list = tokenizer(reader.pages[i])
         crime_list = parser(crime_list)
+        for crime in crime_list:
+            crimes_list.append(crime)
 
     # Just to test each list element to ensure it was properly parsed.
-    for crime in crime_list:
+    for crime in crimes_list:
         if len(crime) == 11: print("CORRECT FORMAT")
 
         print(crime, '\n')
 
     # load_to_json called to convert the list of crimes to a dictionary, then to a json file.
-    load_to_json(crime_list, command_str)
+    load_to_json(crimes_list, command_str)

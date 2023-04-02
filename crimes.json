@@ -66,11 +66,24 @@
             "Campus": "MAIN CAMPUS"
         },
         {
+            "Disposition": "CLOSED",
+            "Case #": "2023-0352",
+            "Report Date": "02/03/23",
+            "Report Time": "04:01",
+            "Crime": "DISORDERLY INTOXICATION, RESISTING ARREST W/O VIOLENCE",
+            "Start Date": "02/03/23",
+            "Start Time": "02:43",
+            "Location": "Tower 3",
+            "End Date": "02/03/2023",
+            "End Time": "04:21",
+            "Campus": "MAIN CAMPUS"
+        },
+        {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0354",
             "Report Date": "02/03/23",
             "Report Time": "12:42",
-            "Crime": "AGGRAVATED ASSAULT, WEAPON LAW VIOLATION",
+            "Crime": "AGGRA V ATED ASSAULT, WEAPON LAW VIOLATION",
             "Start Date": "02/03/23",
             "Start Time": "09:24",
             "Location": "Gemini Blvd South",
@@ -125,7 +138,7 @@
             "Crime": "GRAND THEFT (MOTOR VEHICLE THEFT), CRIMINAL MISCHIEF",
             "Start Date": "02/02/23",
             "Start Time": "11:30",
-            "Location": "Dr Philips Academic Commons",
+            "Location": "Dr. Philips Academic Commons",
             "End Date": "02/02/2023",
             "End Time": "13:25",
             "Campus": "UCF DOWNTOWN"
@@ -164,7 +177,7 @@
             "Crime": "BATTERY (DATING VIOLENCE), FALSE IMPRISONMENT, GT",
             "Start Date": "02/08/23",
             "Start Time": "12:00",
-            "Location": "The Pointe At Central",
+            "Location": "The Pointe at Central",
             "End Date": "02/08/2023",
             "End Time": "13:30",
             "Campus": "MAIN CAMPUS"
@@ -281,7 +294,7 @@
             "Crime": "PETIT THEFT",
             "Start Date": "02/14/23",
             "Start Time": "22:29",
-            "Location": "Unionwest Student Living",
+            "Location": "UnionWest Student Living",
             "End Date": "02/14/2023",
             "End Time": "22:32",
             "Campus": "UCF DOWNTOWN"
@@ -346,7 +359,6 @@
             "Crime": "STALKING (OFF CAMPUS)",
             "Start Date": "02/08/23",
             "Start Time": "23:59",
-            "Location": "Cranes Landng",
             "Location": "Cranes Landing",
             "End Date": "02/19/2023",
             "End Time": "14:49",
@@ -438,7 +450,7 @@
             "Crime": "DRUG LAW REFERRAL",
             "Start Date": "02/22/23",
             "Start Time": "23:49",
-            "Location": "The Pointe At Central",
+            "Location": "The Pointe at Central",
             "End Date": "02/23/2023",
             "End Time": "00:14",
             "Campus": "MAIN CAMPUS"
@@ -542,7 +554,7 @@
             "Crime": "DUI",
             "Start Date": "02/25/23",
             "Start Time": "05:56",
-            "Location": "The Pointe At Central",
+            "Location": "The Pointe at Central",
             "End Date": "02/25/2023",
             "End Time": "05:56",
             "Campus": "MAIN CAMPUS"
@@ -594,7 +606,7 @@
             "Crime": "GRAND THEFT",
             "Start Date": "02/26/23",
             "Start Time": "20:30",
-            "Location": "The Pointe At Central",
+            "Location": "The Pointe at Central",
             "End Date": "02/27/2023",
             "End Time": "07:15",
             "Campus": "MAIN CAMPUS"
@@ -646,7 +658,7 @@
             "Crime": "STALKING (DATING VIOLENCE)",
             "Start Date": "02/28/23",
             "Start Time": "15:35",
-            "Location": "Garage I",
+            "Location": "4277 Gemini Blvd West",
             "End Date": "02/28/2023",
             "End Time": "15:35",
             "Campus": "MAIN CAMPUS"
@@ -841,7 +853,7 @@
             "Crime": "TRAFFIC ARREST, VIOLATION OF PROBATION, DRUG LAW VIOLATION",
             "Start Date": "03/05/23",
             "Start Time": "10:05",
-            "Location": "Domino's Pizza At Knights Plaza",
+            "Location": "Domino's Pizza at Knights Plaza",
             "End Date": "03/05/2023",
             "End Time": "10:05",
             "Campus": "MAIN CAMPUS"
@@ -880,7 +892,7 @@
             "Crime": "GRAND THEFT, CRIMINAL MISCHIEF",
             "Start Date": "02/19/23",
             "Start Time": "00:00",
-            "Location": "The Pointe At Central",
+            "Location": "The Pointe at Central",
             "End Date": "03/06/2023",
             "End Time": "16:00",
             "Campus": "MAIN CAMPUS"
@@ -1202,7 +1214,7 @@
             "Case #": "2023-0923",
             "Report Date": "03/24/23",
             "Report Time": "01:17",
-            "Crime": ".02/NOS",
+            "Crime": ".02 OS",
             "Start Date": "03/24/23",
             "Start Time": "00:44",
             "Location": "Gemini Blvd & Centaurus Dr",
@@ -1235,6 +1247,19 @@
             "End Date": "03/23/2023",
             "End Time": "18:15",
             "Campus": "MAIN CAMPUS"
+        },
+        {
+            "Disposition": "ARREST - ADULT",
+            "Case #": "2023-0940",
+            "Report Date": "03/24/23",
+            "Report Time": "17:34",
+            "Crime": "TRESPASSING ARREST",
+            "Start Date": "03/24/23",
+            "Start Time": "17:34",
+            "Location": "UCF Amelia I Parking Garage",
+            "End Date": "03/24/2023",
+            "End Time": "18:00",
+            "Campus": "UCF DOWNTOWN"
         },
         {
             "Disposition": "ARREST - ADULT",
