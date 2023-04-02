@@ -39,6 +39,9 @@ async def on_ready():
             yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
             await crime_send(client, yesterday, main_config.get("DISCORD", "CRIME_CHANNEL_ID"), main_config.get("DISCORD", "GMAPS_API_KEY"))
 
+        if current_time == "00:06:00":
+            backup_crimes()
+
         await asyncio.sleep(1)
 
 @client.event
