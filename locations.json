@@ -16,17 +16,15 @@
     "3724 LIBRA DR": "Nike 103",
     "3708 LIBRA DR": "Nike 106",
     "3700 LIBRA DR": "Nike 107",
+    "PARKING LOT B15": "Nike Parking Lot",
+    "4125 URSA MINOR ST": "Hercules 109",
     "4120 URSA MINOR ST": "Hercules 113",
     "B8 PARKING LOT": "Hercules Parking Lot",
-    "PARKING LOT B15": "Nike Parking Lot",
-    
     "4120 PYXIS LN": "Apollo Lake Hall",
     "4024 LIBRA DR": "Libra Citrus Hall",
     "4032 LIBRA DR": "Libra Orange Hall",
-
     "12612 GEMINI BLVD NORTH": "Lake Claire Building 55",
     "12600 GEMINI BLVD NORTH": "Lake Claire Building 57",
-    
     "4274 PLAZA DR WEST": "Tower 1",
     "4290 WEST PLAZA DR": "Tower 2",
     "4167 MENSA LN": "Tower 3",
@@ -37,7 +35,9 @@
     "4233 PLAZA DR EAST": "Burger U.",
     "4090 LIBRA DR": "CAPS Building",
     "4250 WEST PLAZA DR": "Domino's Pizza at Knights Plaza",
+    "12585 GEMINI BLVD SOUTH": "Duke Energy Welcome Center",
     "12701 PEGASUS DR": "John C. Hitt Library",
+    "12795 AQUARIUS AGORA DR": "John T. Washington Center Breezeway",
     "4328 SCORPIUS ST": "L3Harris Building",
     "4393 ANDROMEDA LOOP NORTH": "Mathematical Sciences Building",
     "MEMORY MALL": "Memory Mall",
@@ -56,7 +56,7 @@
     "3610 LIBRA DR": "UCFPD",
     "3000 NORTH ALAFAYA TRAIL": "Walgreens on Alafaya Trl",
 
-    "SILVER KNIGHT WAY": "Knights Circle",
+    "KNIGHT WAY": "Knights Circle",
     "KROSSING": "Knights Circle",
     "GOLDEN KNIGHT CIR": "Knights Circle",
     "BLACK KNIGHT DR": "Knights Circle",
