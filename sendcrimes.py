@@ -50,9 +50,8 @@ async def crime_send(client, command_arg, channel_id, GMaps_Key):
 
             # Reformat dates and times
             report_time = datetime.strptime(crime["Report Time"], '%H:%M').strftime('%I:%M %p')
-            start_time = datetime.strptime(crime["Start Time"], '%H:%M').strftime('%I:%M %p')
-            end_time = datetime.strptime(crime["End Time"], '%H:%M').strftime('%I:%M %p')
-            end_date = datetime.strptime(crime["End Date"], '%m/%d/%Y').strftime('%m/%d/%y')
+            start_date_time = datetime.strptime(crime["Start Date/Time"], '%m/%d/%y %H:%M').strftime('%m/%d/%y %I:%M %p')
+            end_date_time = datetime.strptime(crime["End Date/Time"], '%m/%d/%Y %H:%M').strftime('%m/%d/%y %I:%M %p')
 
             # Format title
             case_title = stradj.case_title_format(crime["Crime"])
@@ -63,7 +62,7 @@ async def crime_send(client, command_arg, channel_id, GMaps_Key):
             description = f"""Occurred at {stradj.gen_title(crime['Campus'])}, {crime['Location']}
 Case: {crime['Case #']}
 Reported on {crime['Report Date']} {report_time}
-Between {crime['Start Date']} {start_time} - {end_date} {end_time}
+Between {start_date_time} - {end_date_time}
 Status: {crime['Disposition'].title()}"""
 
             embed = discord.Embed(
