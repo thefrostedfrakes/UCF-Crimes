@@ -3,8 +3,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0365",
-            "Report Date": "02/05/23",
-            "Report Time": "04:52",
+            "Report Date/Time": "02/05/23 04:52",
             "Crime": "DUI",
             "Start Date/Time": "02/05/23 01:43",
             "Location": "University Blvd. / Gemini Blvd.",
@@ -14,8 +13,7 @@
         {
             "Disposition": "REPORT",
             "Case #": "2023-CSA24",
-            "Report Date": "02/06/23",
-            "Report Time": "01:00",
+            "Report Date/Time": "02/06/23 01:00",
             "Crime": "SEXUAL BATTERY",
             "Start Date/Time": "01/30/23 00:00",
             "Location": "Phi Delta Theta",
@@ -25,8 +23,7 @@
         {
             "Disposition": "ARREST - JUV",
             "Case #": "2023-0344",
-            "Report Date": "02/06/23",
-            "Report Time": "12:16",
+            "Report Date/Time": "02/06/23 12:16",
             "Crime": "GRAND THEFT (MOTOR VEHICLE THEFT), CRIMINAL MISCHIEF",
             "Start Date/Time": "02/02/23 11:30",
             "Location": "Dr. Philips Academic Commons",
@@ -36,8 +33,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0409",
-            "Report Date": "02/08/23",
-            "Report Time": "02:28",
+            "Report Date/Time": "02/08/23 02:28",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "02/07/23 23:20",
             "Location": "Libra Orange Hall",
@@ -47,8 +43,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0410",
-            "Report Date": "02/08/23",
-            "Report Time": "03:57",
+            "Report Date/Time": "02/08/23 03:57",
             "Crime": "FLEEING ELUDING POLICE, RECKLESS DRIVING",
             "Start Date/Time": "02/07/23 21:15",
             "Location": "Burger U.",
@@ -58,8 +53,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0419",
-            "Report Date": "02/08/23",
-            "Report Time": "07:27",
+            "Report Date/Time": "02/08/23 07:27",
             "Crime": "BATTERY (DATING VIOLENCE), FALSE IMPRISONMENT, GT",
             "Start Date/Time": "02/08/23 12:00",
             "Location": "The Pointe at Central",
@@ -69,8 +63,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0372",
-            "Report Date": "02/08/23",
-            "Report Time": "16:48",
+            "Report Date/Time": "02/08/23 16:48",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "01/19/23 23:50",
             "Location": "Facilities Operations",
@@ -80,8 +73,7 @@
         {
             "Disposition": "REPORT",
             "Case #": "2023-CSA27",
-            "Report Date": "02/09/23",
-            "Report Time": "00:00",
+            "Report Date/Time": "02/09/23 00:00",
             "Crime": "STALKING",
             "Start Date/Time": "02/09/23 00:00",
             "Location": "On Campus",
@@ -91,8 +83,7 @@
         {
             "Disposition": "EXC CLR - ADULT",
             "Case #": "2023-0479",
-            "Report Date": "02/11/23",
-            "Report Time": "03:52",
+            "Report Date/Time": "02/11/23 03:52",
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date/Time": "02/11/23 01:30",
             "Location": "Knights Circle",
@@ -102,8 +93,7 @@
         {
             "Disposition": "UNFOUNDED",
             "Case #": "2023-0492",
-            "Report Date": "02/13/23",
-            "Report Time": "12:05",
+            "Report Date/Time": "02/13/23 12:05",
             "Crime": "STALKING",
             "Start Date/Time": "12/16/22 12:00",
             "Location": "UCFPD",
@@ -113,8 +103,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0507",
-            "Report Date": "02/14/23",
-            "Report Time": "04:55",
+            "Report Date/Time": "02/14/23 04:55",
             "Crime": "POSS OF COUNTERFEIT DL",
             "Start Date/Time": "02/14/23 02:48",
             "Location": "Gemini/University Blvd E",
@@ -124,8 +113,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0509",
-            "Report Date": "02/14/23",
-            "Report Time": "09:14",
+            "Report Date/Time": "02/14/23 09:14",
             "Crime": "EXTORTION",
             "Start Date/Time": "02/14/23 08:00",
             "Location": "Knights Circle",
@@ -135,8 +123,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0514",
-            "Report Date": "02/14/23",
-            "Report Time": "12:58",
+            "Report Date/Time": "02/14/23 12:58",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "02/14/23 11:30",
             "Location": "Tower 2",
@@ -146,8 +133,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0522",
-            "Report Date": "02/14/23",
-            "Report Time": "22:19",
+            "Report Date/Time": "02/14/23 22:19",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "02/14/23 18:19",
             "Location": "Rosen College Apartments",
@@ -157,8 +143,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0528",
-            "Report Date": "02/15/23",
-            "Report Time": "01:16",
+            "Report Date/Time": "02/15/23 01:16",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "02/14/23 22:29",
             "Location": "UnionWest Student Living",
@@ -168,8 +153,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0523",
-            "Report Date": "02/15/23",
-            "Report Time": "02:57",
+            "Report Date/Time": "02/15/23 02:57",
             "Crime": "POSS OF GROCERY CART",
             "Start Date/Time": "02/14/23 18:03",
             "Location": "Nike 103",
@@ -179,8 +163,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0527",
-            "Report Date": "02/15/23",
-            "Report Time": "04:03",
+            "Report Date/Time": "02/15/23 04:03",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "02/15/23 00:11",
             "Location": "Lake Claire Building 55",
@@ -190,8 +173,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0545",
-            "Report Date": "02/15/23",
-            "Report Time": "16:36",
+            "Report Date/Time": "02/15/23 16:36",
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date/Time": "02/15/23 16:05",
             "Location": "Mathematical Sciences Building",
@@ -201,8 +183,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0557",
-            "Report Date": "02/16/23",
-            "Report Time": "14:47",
+            "Report Date/Time": "02/16/23 14:47",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "02/16/23 13:30",
             "Location": "Student Union",
@@ -212,8 +193,7 @@
         {
             "Disposition": "UNFOUNDED",
             "Case #": "2023-0589",
-            "Report Date": "02/19/23",
-            "Report Time": "14:55",
+            "Report Date/Time": "02/19/23 14:55",
             "Crime": "STALKING (OFF CAMPUS)",
             "Start Date/Time": "02/08/23 23:59",
             "Location": "Cranes Landing",
@@ -223,8 +203,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0588",
-            "Report Date": "02/19/23",
-            "Report Time": "17:24",
+            "Report Date/Time": "02/19/23 17:24",
             "Crime": "BATTERY , FALSE IMPRISONMENT",
             "Start Date/Time": "02/19/23 13:30",
             "Location": "Addition Arena",
@@ -234,8 +213,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0590",
-            "Report Date": "02/19/23",
-            "Report Time": "22:33",
+            "Report Date/Time": "02/19/23 22:33",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "02/16/23 12:00",
             "Location": "Garage G",
@@ -245,8 +223,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0618",
-            "Report Date": "02/21/23",
-            "Report Time": "12:15",
+            "Report Date/Time": "02/21/23 12:15",
             "Crime": "GRAND THEFT",
             "Start Date/Time": "02/18/23 20:30",
             "Location": "Knights Circle",
@@ -256,8 +233,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0628",
-            "Report Date": "02/21/23",
-            "Report Time": "23:50",
+            "Report Date/Time": "02/21/23 23:50",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "02/21/23 23:10",
             "Location": "Central Florida Blvd. & Gemini Blvd.",
@@ -267,8 +243,7 @@
         {
             "Disposition": "REPORT",
             "Case #": "2023-CSA30",
-            "Report Date": "02/22/23",
-            "Report Time": "00:00",
+            "Report Date/Time": "02/22/23 00:00",
             "Crime": "DATING VIOLENCE",
             "Start Date/Time": "02/14/23 00:00",
             "Location": "UnionWest Student Living",
@@ -278,8 +253,7 @@
         {
             "Disposition": "EXC CLR - ADULT",
             "Case #": "2023-0636",
-            "Report Date": "02/22/23",
-            "Report Time": "13:34",
+            "Report Date/Time": "02/22/23 13:34",
             "Crime": "STALKING",
             "Start Date/Time": "11/25/22 17:00",
             "Location": "UCF Main Campus",
@@ -289,8 +263,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0643",
-            "Report Date": "02/23/23",
-            "Report Time": "04:32",
+            "Report Date/Time": "02/23/23 04:32",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "02/22/23 23:49",
             "Location": "The Pointe at Central",
@@ -300,8 +273,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0651",
-            "Report Date": "02/23/23",
-            "Report Time": "12:01",
+            "Report Date/Time": "02/23/23 12:01",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "02/22/23 16:00",
             "Location": "Chi Omega",
@@ -311,8 +283,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0654",
-            "Report Date": "02/23/23",
-            "Report Time": "14:11",
+            "Report Date/Time": "02/23/23 14:11",
             "Crime": "BATTERY",
             "Start Date/Time": "02/23/23 13:00",
             "Location": "Memory Mall",
@@ -322,8 +293,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0640",
-            "Report Date": "02/23/23",
-            "Report Time": "15:29",
+            "Report Date/Time": "02/23/23 15:29",
             "Crime": "FRAUD",
             "Start Date/Time": "07/23/22 06:00",
             "Location": "Student Union",
@@ -333,8 +303,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0653",
-            "Report Date": "02/23/23",
-            "Report Time": "16:45",
+            "Report Date/Time": "02/23/23 16:45",
             "Crime": "BATTERY, PETIT THEFT",
             "Start Date/Time": "02/23/23 13:33",
             "Location": "Memory Mall",
@@ -344,8 +313,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0657",
-            "Report Date": "02/23/23",
-            "Report Time": "19:53",
+            "Report Date/Time": "02/23/23 19:53",
             "Crime": "FRAUD",
             "Start Date/Time": "02/14/23 23:57",
             "Location": "Knights Circle",
@@ -355,8 +323,7 @@
         {
             "Disposition": "REPORT",
             "Case #": "2023-CSA32",
-            "Report Date": "02/24/23",
-            "Report Time": "00:00",
+            "Report Date/Time": "02/24/23 00:00",
             "Crime": "DATING VIOLENCE",
             "Start Date/Time": "02/23/23 00:00",
             "Location": "Nike 107",
@@ -366,8 +333,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0661",
-            "Report Date": "02/24/23",
-            "Report Time": "03:01",
+            "Report Date/Time": "02/24/23 03:01",
             "Crime": "DUI",
             "Start Date/Time": "02/24/23 02:40",
             "Location": "The Julian",
@@ -377,8 +343,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0680",
-            "Report Date": "02/25/23",
-            "Report Time": "11:07",
+            "Report Date/Time": "02/25/23 11:07",
             "Crime": "DUI",
             "Start Date/Time": "02/25/23 05:56",
             "Location": "The Pointe at Central",
@@ -388,8 +353,7 @@
         {
             "Disposition": "REPORT",
             "Case #": "2023-CSA37",
-            "Report Date": "02/27/23",
-            "Report Time": "00:00",
+            "Report Date/Time": "02/27/23 00:00",
             "Crime": "SEXUAL BATTERY",
             "Start Date/Time": "02/20/23 00:00",
             "Location": "UCF Main Campus",
@@ -399,8 +363,7 @@
         {
             "Disposition": "EXC CLR - ADULT",
             "Case #": "2023-0688",
-            "Report Date": "02/27/23",
-            "Report Time": "00:08",
+            "Report Date/Time": "02/27/23 00:08",
             "Crime": "POINTING LASER AT PERSON",
             "Start Date/Time": "02/26/23 20:53",
             "Location": "near Apollo Community",
@@ -410,8 +373,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0689",
-            "Report Date": "02/27/23",
-            "Report Time": "01:12",
+            "Report Date/Time": "02/27/23 01:12",
             "Crime": ".02/NOS, LIQUOR LAW ARREST",
             "Start Date/Time": "02/27/23 00:06",
             "Location": "Parramore Parking Garage",
@@ -421,8 +383,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0691",
-            "Report Date": "02/27/23",
-            "Report Time": "15:17",
+            "Report Date/Time": "02/27/23 15:17",
             "Crime": "GRAND THEFT",
             "Start Date/Time": "02/26/23 20:30",
             "Location": "The Pointe at Central",
@@ -432,8 +393,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0696",
-            "Report Date": "02/27/23",
-            "Report Time": "17:26",
+            "Report Date/Time": "02/27/23 17:26",
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date/Time": "02/27/23 11:00",
             "Location": "Garage C",
@@ -443,8 +403,7 @@
         {
             "Disposition": "REPORT",
             "Case #": "2023-CSA38",
-            "Report Date": "02/28/23",
-            "Report Time": "00:00",
+            "Report Date/Time": "02/28/23 00:00",
             "Crime": "STALKING",
             "Start Date/Time": "01/20/23 00:00",
             "Location": "UCF Gym",
@@ -454,8 +413,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0699",
-            "Report Date": "02/28/23",
-            "Report Time": "11:27",
+            "Report Date/Time": "02/28/23 11:27",
             "Crime": "PETIT THEFT (SCOOTER)",
             "Start Date/Time": "02/28/23 12:30",
             "Location": "Lake Claire Building 55",
@@ -465,8 +423,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0701",
-            "Report Date": "02/28/23",
-            "Report Time": "15:07",
+            "Report Date/Time": "02/28/23 15:07",
             "Crime": "STALKING (DATING VIOLENCE)",
             "Start Date/Time": "02/28/23 15:35",
             "Location": "4277 Gemini Blvd W",
@@ -476,8 +433,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0702",
-            "Report Date": "02/28/23",
-            "Report Time": "15:17",
+            "Report Date/Time": "02/28/23 15:17",
             "Crime": "GRAND THEFT",
             "Start Date/Time": "02/28/23 12:00",
             "Location": "Student Union",
@@ -487,8 +443,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0710",
-            "Report Date": "03/01/23",
-            "Report Time": "03:12",
+            "Report Date/Time": "03/01/23 03:12",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "03/01/23 00:08",
             "Location": "Garage G",
@@ -498,8 +453,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0727",
-            "Report Date": "03/02/23",
-            "Report Time": "08:43",
+            "Report Date/Time": "03/02/23 08:43",
             "Crime": "POSESSION OF COUNTERFEIT DL",
             "Start Date/Time": "03/01/23 13:19",
             "Location": "Gemini Blvd E",
@@ -509,8 +463,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0742",
-            "Report Date": "03/02/23",
-            "Report Time": "11:15",
+            "Report Date/Time": "03/02/23 11:15",
             "Crime": "FLEEING ELUDING LEO, RECKLESS DRIVING",
             "Start Date/Time": "03/02/23 08:35",
             "Location": "Libra Dr And Perseus Loop",
@@ -520,8 +473,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0743",
-            "Report Date": "03/02/23",
-            "Report Time": "11:31",
+            "Report Date/Time": "03/02/23 11:31",
             "Crime": "WRITTEN INTIMIDATION",
             "Start Date/Time": "03/01/23 14:00",
             "Location": "Tower 1",
@@ -531,8 +483,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0750",
-            "Report Date": "03/02/23",
-            "Report Time": "16:29",
+            "Report Date/Time": "03/02/23 16:29",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "02/20/23 18:30",
             "Location": "UCF Gym",
@@ -542,8 +493,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0752",
-            "Report Date": "03/02/23",
-            "Report Time": "17:00",
+            "Report Date/Time": "03/02/23 17:00",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "03/01/23 19:30",
             "Location": "John C. Hitt Library",
@@ -553,8 +503,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0751",
-            "Report Date": "03/02/23",
-            "Report Time": "17:06",
+            "Report Date/Time": "03/02/23 17:06",
             "Crime": "BURGLARY TO AUTO, PETIT THEFT",
             "Start Date/Time": "03/02/23 08:00",
             "Location": "Biomolecular Research Annex",
@@ -564,8 +513,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0755",
-            "Report Date": "03/03/23",
-            "Report Time": "05:07",
+            "Report Date/Time": "03/03/23 05:07",
             "Crime": "DUI",
             "Start Date/Time": "03/03/23 01:12",
             "Location": "Greek Park Dr N",
@@ -575,8 +523,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0763",
-            "Report Date": "03/03/23",
-            "Report Time": "15:49",
+            "Report Date/Time": "03/03/23 15:49",
             "Crime": "BURGLARY , CRIMINAL MISCHIEF",
             "Start Date/Time": "01/28/23 08:00",
             "Location": "Libra Garage",
@@ -586,8 +533,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0773",
-            "Report Date": "03/05/23",
-            "Report Time": "00:14",
+            "Report Date/Time": "03/05/23 00:14",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "03/04/23 23:13",
             "Location": "Greek Park Dr. / Gemini Blvd.",
@@ -597,8 +543,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0777",
-            "Report Date": "03/05/23",
-            "Report Time": "03:46",
+            "Report Date/Time": "03/05/23 03:46",
             "Crime": ".02/NOS",
             "Start Date/Time": "03/05/23 02:01",
             "Location": "Hercules Parking Lot",
@@ -608,8 +553,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0776",
-            "Report Date": "03/05/23",
-            "Report Time": "04:38",
+            "Report Date/Time": "03/05/23 04:38",
             "Crime": "TRAFFIC ARREST",
             "Start Date/Time": "03/05/23 02:26",
             "Location": "The Julian",
@@ -619,8 +563,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0774",
-            "Report Date": "03/05/23",
-            "Report Time": "05:02",
+            "Report Date/Time": "03/05/23 05:02",
             "Crime": "DRUG LAW VIOLATION, LOITERING AND PROWLING",
             "Start Date/Time": "03/05/23 01:38",
             "Location": "UnionWest Student Living",
@@ -630,8 +573,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0779",
-            "Report Date": "03/05/23",
-            "Report Time": "10:18",
+            "Report Date/Time": "03/05/23 10:18",
             "Crime": "TRAFFIC ARREST, VIOLATION OF PROBATION, DRUG LAW VIOLATION",
             "Start Date/Time": "03/05/23 10:05",
             "Location": "Domino's Pizza at Knights Plaza",
@@ -641,8 +583,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0775",
-            "Report Date": "03/05/23",
-            "Report Time": "18:21",
+            "Report Date/Time": "03/05/23 18:21",
             "Crime": "DUI",
             "Start Date/Time": "03/05/23 02:23",
             "Location": "UCF Gym",
@@ -652,8 +593,7 @@
         {
             "Disposition": "UNFOUNDED",
             "Case #": "2023-0794",
-            "Report Date": "03/06/23",
-            "Report Time": "16:27",
+            "Report Date/Time": "03/06/23 16:27",
             "Crime": "CRUELTY TO ANIMALS",
             "Start Date/Time": "03/05/23 02:59",
             "Location": "Hercules 113",
@@ -663,8 +603,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0796",
-            "Report Date": "03/06/23",
-            "Report Time": "20:02",
+            "Report Date/Time": "03/06/23 20:02",
             "Crime": "GRAND THEFT, CRIMINAL MISCHIEF",
             "Start Date/Time": "02/19/23 00:00",
             "Location": "The Pointe at Central",
@@ -674,8 +613,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0799",
-            "Report Date": "03/07/23",
-            "Report Time": "10:42",
+            "Report Date/Time": "03/07/23 10:42",
             "Crime": "BURGLARY, PETIT THEFT",
             "Start Date/Time": "03/06/23 08:30",
             "Location": "Tower 2",
@@ -685,8 +623,7 @@
         {
             "Disposition": "INACTIVE",
             "Case #": "2023-0802",
-            "Report Date": "03/07/23",
-            "Report Time": "17:35",
+            "Report Date/Time": "03/07/23 17:35",
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date/Time": "11/06/22 08:00",
             "Location": "Garage B",
@@ -696,8 +633,7 @@
         {
             "Disposition": "EXC CLR - ADULT",
             "Case #": "2023-0803",
-            "Report Date": "03/07/23",
-            "Report Time": "18:53",
+            "Report Date/Time": "03/07/23 18:53",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "03/07/23 14:43",
             "Location": "UCF Gym",
@@ -707,8 +643,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0828",
-            "Report Date": "03/09/23",
-            "Report Time": "04:18",
+            "Report Date/Time": "03/09/23 04:18",
             "Crime": "FALSE IMPRISONMENT (DATING VIOLENCE), BATTERY",
             "Start Date/Time": "10/01/22 00:00",
             "Location": "Tower 2",
@@ -718,8 +653,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0821",
-            "Report Date": "03/09/23",
-            "Report Time": "15:40",
+            "Report Date/Time": "03/09/23 15:40",
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date/Time": "03/08/23 15:26",
             "Location": "UnionWest Student Living",
@@ -729,8 +663,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0837",
-            "Report Date": "03/10/23",
-            "Report Time": "18:34",
+            "Report Date/Time": "03/10/23 18:34",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "03/10/23 04:30",
             "Location": "Garage A",
@@ -740,8 +673,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0844",
-            "Report Date": "03/11/23",
-            "Report Time": "23:04",
+            "Report Date/Time": "03/11/23 23:04",
             "Crime": "TRAFFIC ARREST",
             "Start Date/Time": "03/11/23 22:18",
             "Location": "N Parramore Ave And W Amelia St",
@@ -751,8 +683,7 @@
         {
             "Disposition": "ARREST - JUV",
             "Case #": "2023-0846",
-            "Report Date": "03/12/23",
-            "Report Time": "00:28",
+            "Report Date/Time": "03/12/23 00:28",
             "Crime": "INTERFERING W/ FIREFIGHTER EQUIPMENT",
             "Start Date/Time": "03/11/23 19:20",
             "Location": "Parramore Parking Garage",
@@ -762,8 +693,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0848",
-            "Report Date": "03/12/23",
-            "Report Time": "04:30",
+            "Report Date/Time": "03/12/23 04:30",
             "Crime": "TRAFFIC ARREST",
             "Start Date/Time": "03/12/23 04:30",
             "Location": "UCF Amelia I Parking Garage",
@@ -773,8 +703,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0860",
-            "Report Date": "03/15/23",
-            "Report Time": "13:00",
+            "Report Date/Time": "03/15/23 13:00",
             "Crime": "FRAUD",
             "Start Date/Time": "03/08/23 11:00",
             "Location": "Millican Hall",
@@ -784,8 +713,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0866",
-            "Report Date": "03/17/23",
-            "Report Time": "00:26",
+            "Report Date/Time": "03/17/23 00:26",
             "Crime": "TRAFFIC ARREST",
             "Start Date/Time": "03/17/23 21:35",
             "Location": "Gemini East And Libra Drive E",
@@ -795,8 +723,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0874",
-            "Report Date": "03/17/23",
-            "Report Time": "04:22",
+            "Report Date/Time": "03/17/23 04:22",
             "Crime": "DUI",
             "Start Date/Time": "03/17/23 21:48",
             "Location": "Alafaya/ Strategy Blvd",
@@ -806,8 +733,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0876",
-            "Report Date": "03/17/23",
-            "Report Time": "22:46",
+            "Report Date/Time": "03/17/23 22:46",
             "Crime": "DRUG ARREST, DUI",
             "Start Date/Time": "03/17/23 22:46",
             "Location": "Bouce House Social Eats",
@@ -817,8 +743,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0880",
-            "Report Date": "03/18/23",
-            "Report Time": "04:00",
+            "Report Date/Time": "03/18/23 04:00",
             "Crime": ".02/NOS",
             "Start Date/Time": "03/18/23 01:15",
             "Location": "Walgreens on Alafaya Trl",
@@ -828,8 +753,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0882",
-            "Report Date": "03/18/23",
-            "Report Time": "23:38",
+            "Report Date/Time": "03/18/23 23:38",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "03/18/23 21:49",
             "Location": "Nike 106",
@@ -839,8 +763,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0883",
-            "Report Date": "03/18/23",
-            "Report Time": "23:50",
+            "Report Date/Time": "03/18/23 23:50",
             "Crime": "PETIT THEFT,RESISTING OFFICER WITHOUT VIOLENCE",
             "Start Date/Time": "03/18/23 23:50",
             "Location": "W Livingston St/ N Terry Ave",
@@ -850,8 +773,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0887",
-            "Report Date": "03/19/23",
-            "Report Time": "22:53",
+            "Report Date/Time": "03/19/23 22:53",
             "Crime": "MOTOR VEHICLE THEFT, BURGLARY TO AUTO, PETIT THEFT",
             "Start Date/Time": "03/18/23 21:00",
             "Location": "Garage E",
@@ -861,8 +783,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0890",
-            "Report Date": "03/20/23",
-            "Report Time": "11:00",
+            "Report Date/Time": "03/20/23 11:00",
             "Crime": "CRIMINAL MISCHIEF (<=$200)",
             "Start Date/Time": "03/20/23 07:50",
             "Location": "Andromeda Loop",
@@ -872,8 +793,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0900",
-            "Report Date": "03/20/23",
-            "Report Time": "16:24",
+            "Report Date/Time": "03/20/23 16:24",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "03/15/23 08:00",
             "Location": "Garage H",
@@ -883,8 +803,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0902",
-            "Report Date": "03/20/23",
-            "Report Time": "23:34",
+            "Report Date/Time": "03/20/23 23:34",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "03/20/23 23:16",
             "Location": "UnionWest Student Living",
@@ -894,8 +813,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0906",
-            "Report Date": "03/21/23",
-            "Report Time": "12:49",
+            "Report Date/Time": "03/21/23 12:49",
             "Crime": "FRAUD",
             "Start Date/Time": "03/07/23 13:00",
             "Location": "Lake Claire Building 57",
@@ -905,8 +823,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0907",
-            "Report Date": "03/21/23",
-            "Report Time": "17:05",
+            "Report Date/Time": "03/21/23 17:05",
             "Crime": "PETIT THEFT OF $100 OR MORE",
             "Start Date/Time": "03/20/23 12:00",
             "Location": "Apollo Lake Hall",
@@ -916,8 +833,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0909",
-            "Report Date": "03/21/23",
-            "Report Time": "21:40",
+            "Report Date/Time": "03/21/23 21:40",
             "Crime": "DRUG ARREST; LOITERING & PROWLING; POSS OF BURGLARY TOOLS",
             "Start Date/Time": "03/21/22 21:40",
             "Location": "Bob Carr Theater",
@@ -927,8 +843,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0915",
-            "Report Date": "03/22/23",
-            "Report Time": "14:52",
+            "Report Date/Time": "03/22/23 14:52",
             "Crime": "PETIT THEFT (ELECTRIC SCOOTER)",
             "Start Date/Time": "03/21/23 23:00",
             "Location": "Apollo Lake Hall",
@@ -938,8 +853,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0923",
-            "Report Date": "03/24/23",
-            "Report Time": "01:17",
+            "Report Date/Time": "03/24/23 01:17",
             "Crime": ".02 OS",
             "Start Date/Time": "03/24/23 00:44",
             "Location": "Gemini Blvd/Centaurus Dr",
@@ -949,8 +863,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0934",
-            "Report Date": "03/24/23",
-            "Report Time": "13:50",
+            "Report Date/Time": "03/24/23 13:50",
             "Crime": "FRAUD",
             "Start Date/Time": "03/23/23 18:19",
             "Location": "UCFPD",
@@ -960,8 +873,7 @@
         {
             "Disposition": "UNFOUNDED",
             "Case #": "2023-0928",
-            "Report Date": "03/24/23",
-            "Report Time": "15:10",
+            "Report Date/Time": "03/24/23 15:10",
             "Crime": "THEFT GRAND",
             "Start Date/Time": "03/23/23 17:09",
             "Location": "Garage H",
@@ -971,8 +883,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0940",
-            "Report Date": "03/24/23",
-            "Report Time": "17:34",
+            "Report Date/Time": "03/24/23 17:34",
             "Crime": "TRESPASSING ARREST",
             "Start Date/Time": "03/24/23 17:34",
             "Location": "UCF Amelia I Parking Garage",
@@ -982,8 +893,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-0944",
-            "Report Date": "03/25/23",
-            "Report Time": "09:10",
+            "Report Date/Time": "03/25/23 09:10",
             "Crime": "THEFT GRAND (ELECTRIC SCOOTER MV), TRESPASSING ARREST, POSS OF BURGARY TOOLS",
             "Start Date/Time": "03/25/23 08:37",
             "Location": "Garage G",
@@ -993,8 +903,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0945",
-            "Report Date": "03/25/23",
-            "Report Time": "14:57",
+            "Report Date/Time": "03/25/23 14:57",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "03/25/23 12:00",
             "Location": "Garage B",
@@ -1004,8 +913,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0949",
-            "Report Date": "03/25/23",
-            "Report Time": "23:29",
+            "Report Date/Time": "03/25/23 23:29",
             "Crime": "EXTORTION",
             "Start Date/Time": "03/25/23 12:00",
             "Location": "UnionWest Student Living",
@@ -1015,8 +923,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0959",
-            "Report Date": "03/27/23",
-            "Report Time": "17:22",
+            "Report Date/Time": "03/27/23 17:22",
             "Crime": "FRAUD",
             "Start Date/Time": "03/25/23 08:00",
             "Location": "Knights Circle",
@@ -1026,8 +933,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0963",
-            "Report Date": "03/28/23",
-            "Report Time": "01:32",
+            "Report Date/Time": "03/28/23 01:32",
             "Crime": "BURGLARY TO AUTO, PETIT THEFT",
             "Start Date/Time": "03/27/23 18:45",
             "Location": "Knights Circle",
@@ -1037,8 +943,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0977",
-            "Report Date": "03/29/23",
-            "Report Time": "10:27",
+            "Report Date/Time": "03/29/23 10:27",
             "Crime": "EXPOSURE OF SEXUAL ORGANS 1ST OFFENSE",
             "Start Date/Time": "03/29/23 05:00",
             "Location": "John C. Hitt Library",
@@ -1048,8 +953,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0984",
-            "Report Date": "03/29/23",
-            "Report Time": "23:03",
+            "Report Date/Time": "03/29/23 23:03",
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date/Time": "03/28/23 21:00",
             "Location": "Hercules Parking Lot",
@@ -1059,8 +963,7 @@
         {
             "Disposition": "CLOSED",
             "Case #": "2023-0986",
-            "Report Date": "03/30/23",
-            "Report Time": "01:56",
+            "Report Date/Time": "03/30/23 01:56",
             "Crime": "DRUG LAW REFERRAL",
             "Start Date/Time": "03/30/23 01:22",
             "Location": "University Blvd. & Alafaya Trl.",
@@ -1070,8 +973,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0980",
-            "Report Date": "03/30/23",
-            "Report Time": "15:20",
+            "Report Date/Time": "03/30/23 15:20",
             "Crime": "STALKING",
             "Start Date/Time": "02/07/23 08:00",
             "Location": "Tech Commons",
@@ -1081,8 +983,7 @@
         {
             "Disposition": "ACTIVE",
             "Case #": "2023-0994",
-            "Report Date": "03/30/23",
-            "Report Time": "18:00",
+            "Report Date/Time": "03/30/23 18:00",
             "Crime": "STALKING",
             "Start Date/Time": "10/19/22 12:00",
             "Location": "UCF Main Campus",
@@ -1092,8 +993,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-0999",
-            "Report Date": "03/31/23",
-            "Report Time": "05:02",
+            "Report Date/Time": "03/31/23 05:02",
             "Crime": "BURGLARY OF CONVEYANCE,CRIMINAL MISCHIEF (<=$200)",
             "Start Date/Time": "03/30/23 18:00",
             "Location": "Garage A",
@@ -1103,8 +1003,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-1003",
-            "Report Date": "03/31/23",
-            "Report Time": "17:09",
+            "Report Date/Time": "03/31/23 17:09",
             "Crime": "CRIMINAL MISCHIEF",
             "Start Date/Time": "03/31/23 04:30",
             "Location": "Knights Circle",
@@ -1114,8 +1013,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-1001",
-            "Report Date": "03/31/23",
-            "Report Time": "18:27",
+            "Report Date/Time": "03/31/23 18:27",
             "Crime": "FLEE/ELUDE POLICE-FLEE ELUDE LEO WITH LIGHTS SIREN ACTIVE",
             "Start Date/Time": "03/31/23 08:58",
             "Location": "Centaurus Dr W / Alafaya Trl",
@@ -1125,8 +1023,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-1008",
-            "Report Date": "04/01/23",
-            "Report Time": "06:42",
+            "Report Date/Time": "04/01/23 06:42",
             "Crime": "BURGLARY OF DWELLING,PETIT THEFT",
             "Start Date/Time": "03/30/23 17:00",
             "Location": "Knights Circle",
@@ -1136,8 +1033,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-1021",
-            "Report Date": "04/02/23",
-            "Report Time": "17:35",
+            "Report Date/Time": "04/02/23 17:35",
             "Crime": "RESISTING OFFICER WITHOUT VIOLENCE,TRESPASS ON PROPERTY AFTER WARNING",
             "Start Date/Time": "04/02/23 04:12",
             "Location": "John T. Washington Center Breezeway",
@@ -1147,8 +1043,7 @@
         {
             "Disposition": "ARREST - ADULT",
             "Case #": "2023-1020",
-            "Report Date": "04/03/23",
-            "Report Time": "03:28",
+            "Report Date/Time": "04/03/23 03:28",
             "Crime": "DL SUSPENDED FOR FINANCIAL RESPONSIBILITY",
             "Start Date/Time": "04/01/23 23:06",
             "Location": "Amelia St And Hughey Ave",
@@ -1158,8 +1053,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-1036",
-            "Report Date": "04/03/23",
-            "Report Time": "13:58",
+            "Report Date/Time": "04/03/23 13:58",
             "Crime": "CRIMINAL MISCHIEF (>$200, <$1000)",
             "Start Date/Time": "03/29/23 12:00",
             "Location": "Duke Energy Welcome Center",
@@ -1169,8 +1063,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-1039",
-            "Report Date": "04/03/23",
-            "Report Time": "16:10",
+            "Report Date/Time": "04/03/23 16:10",
             "Crime": "SCHEME TO DEFRAUD (<$300)",
             "Start Date/Time": "04/03/23 11:33",
             "Location": "Hercules 109",
@@ -1180,8 +1073,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-1038",
-            "Report Date": "04/03/23",
-            "Report Time": "16:24",
+            "Report Date/Time": "04/03/23 16:24",
             "Crime": "BURGLARY OF CONVEYANCE,PETIT THEFT OF $100 OR MORE",
             "Start Date/Time": "03/31/23 12:30",
             "Location": "2638 Gemini Blvd N",
@@ -1191,8 +1083,7 @@
         {
             "Disposition": "OPEN",
             "Case #": "2023-1042",
-            "Report Date": "04/03/23",
-            "Report Time": "16:36",
+            "Report Date/Time": "04/03/23 16:36",
             "Crime": "PETIT THEFT",
             "Start Date/Time": "03/31/23 20:00",
             "Location": "Libra Citrus Hall",

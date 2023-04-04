@@ -97,18 +97,20 @@ def parser(crime_list: list) -> list:
             # Replace address before pushing
             crime_list[i][7] = stradj.replace_address(crime_list[i][7])
 
+            crime_list[i][2] += " " + crime_list[i][3]
             crime_list[i][5] += " " + crime_list[i][6]
             crime_list[i][8] += " " + crime_list[i][9]
-            del crime_list[i][6]
-            del crime_list[i][8]
+            del crime_list[i][3]
+            del crime_list[i][5]
+            del crime_list[i][7]
 
     return crime_list
 
 # Converts crimes list to a dictionary, then dumps to a json file.
 def load_to_json(crime_list: list, command_str: str) -> None:
-    keys = ["Disposition", "Case #", "Report Date",
-            "Report Time", "Crime", "Start Date/Time", 
-            "Location", "End Date/Time", "Campus"]
+    keys = ["Disposition", "Case #", "Report Date/Time",
+            "Crime", "Start Date/Time", "Location", 
+            "End Date/Time", "Campus"]
     
     if command_str == '-loadcrimes':
         crimes_dict = {"Crimes":[]}
@@ -118,7 +120,7 @@ def load_to_json(crime_list: list, command_str: str) -> None:
             crimes_dict = json.load(f)
     
     for crime in crime_list:
-        if len(crime) == 9:
+        if len(crime) == 8:
             crime_dict = {}
             for i, key in enumerate(keys):
                 crime_dict[key] = crime[i]
@@ -153,7 +155,7 @@ def crime_load(command_str: str) -> None:
 
     # Just to test each list element to ensure it was properly parsed.
     for crime in crimes_list:
-        if len(crime) == 9: print("CORRECT FORMAT")
+        if len(crime) == 8: print("CORRECT FORMAT")
         print(crime, '\n')
 
     # load_to_json called to convert the list of crimes to a dictionary, then to a json file.
