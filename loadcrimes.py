@@ -9,7 +9,7 @@ from PyPDF2 import PdfReader
 import requests
 from datetime import datetime, date
 import json
-from adjust_address import replace_address
+import string_adjustments as stradj
 
 # Returns if date string token passed is valid.
 def is_valid_date(date_string):
@@ -94,7 +94,8 @@ def parser(crime_list):
             crime_list[i].append("UNSPECIFIED CAMPUS")
 
         if len(crime_list[i]) == 11:
-            crime_list[i][7] = replace_address(crime_list[i][7])
+            # Replace address before pushing
+            crime_list[i][7] = stradj.replace_address(crime_list[i][7])
 
     return crime_list
 
