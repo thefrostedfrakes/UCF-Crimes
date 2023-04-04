@@ -12,7 +12,7 @@ import json
 import string_adjustments as stradj
 
 # Returns if date string token passed is valid.
-def is_valid_date(date_string):
+def is_valid_date(date_string: str) -> bool:
     # First is for mm/dd/yy and second is for mm/dd/yyyy
     valid_formats = ['%m/%d/%y', '%m/%d/%Y']
     for date_format in valid_formats:
@@ -24,7 +24,7 @@ def is_valid_date(date_string):
     return False
 
 # Returns if time string token passed is valid.
-def is_valid_time_label(time_str):
+def is_valid_time_label(time_str: str) -> bool:
     try:
         datetime.strptime(time_str, '%H:%M')
         return True
@@ -33,7 +33,7 @@ def is_valid_time_label(time_str):
 
 # Tokenizes each crime into separate elements of a 2D string array, where each 1st dimension
 # element is each crime and each 2nd dimension element is each space/newline delimited string.
-def tokenizer(page):
+def tokenizer(page) -> list:
 
     # Text extracted from page and split between spaces and newlines.
     crime_list = []
@@ -62,7 +62,7 @@ def tokenizer(page):
 
 # Parses each crime element by grouping unjoined tokens together that correspond to the same
 # dictionary key.
-def parser(crime_list):
+def parser(crime_list: list) -> list:
     crime_list_len = len(crime_list)
 
     for i in range(crime_list_len):
@@ -105,7 +105,7 @@ def parser(crime_list):
     return crime_list
 
 # Converts crimes list to a dictionary, then dumps to a json file.
-def load_to_json(crime_list, command_str):
+def load_to_json(crime_list: list, command_str: str) -> None:
     keys = ["Disposition", "Case #", "Report Date",
             "Report Time", "Crime", "Start Date/Time", 
             "Location", "End Date/Time", "Campus"]
@@ -133,7 +133,7 @@ def load_to_json(crime_list, command_str):
 
 # Requests the url of the daily crime log, opens the file, calls PdfReader to read the pdf's
 # contents, calls the tokenizer and parser, then adds the parsed list to a json.
-def crime_load(command_str):
+def crime_load(command_str: str) -> None:
     pdf_filename = 'AllDailyCrimeLog.pdf'
     crime_url = 'https://police.ucf.edu/sites/default/files/logs/ALL%20DAILY%20crime%20log.pdf'
 
@@ -160,7 +160,7 @@ def crime_load(command_str):
     load_to_json(crimes_list, command_str)
 
 # Simple function to copy current crimes.json file to backups folder with added date.
-def backup_crimes():
+def backup_crimes() -> None:
     with open('crimes.json', 'r') as f:
         crime_dict = json.load(f)
 

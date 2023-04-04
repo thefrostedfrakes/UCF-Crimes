@@ -9,7 +9,7 @@ import googlemaps
 import staticmaps
 from PIL import Image, ImageDraw, ImageFilter
 
-def generate_image(crime, API_key):
+def generate_image(crime: dict, API_key: str) -> None:
     context = staticmaps.Context()
     context.set_tile_provider(staticmaps.tile_provider_OSM)
 

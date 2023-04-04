@@ -8,6 +8,7 @@ and Maverick Reynolds
 
 import json
 import discord
+from discord.ext import commands
 from datetime import datetime
 from image import generate_image
 from loadcrimes import is_valid_date
@@ -15,7 +16,7 @@ import string_adjustments as stradj
 
 # Opens the json and sends all of the reported crimes from the previous day to the test
 # discord server.
-async def crime_send(client, command_arg, channel_id, GMaps_Key):
+async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GMaps_Key: str) -> None:
     channel = client.get_channel(int(channel_id))
 
     with open('crimes.json', 'r') as f:
@@ -43,7 +44,7 @@ async def crime_send(client, command_arg, channel_id, GMaps_Key):
             return
  
     crimeFlag = False
-    for i, crime in enumerate(crimes["Crimes"]):
+    for crime in crimes["Crimes"]:
         if crime[dict_key] == command_arg:
             crimeFlag = True
             generate_image(crime, GMaps_Key)
@@ -77,7 +78,7 @@ Status: {crime['Disposition'].title()}"""
     if (crimeFlag == False):
             await channel.send("No reported crimes.")
 
-async def list_locations(message):
+async def list_locations(message) -> None:
     with open('locations.json', 'r') as f:
         locations = json.load(f)
 
