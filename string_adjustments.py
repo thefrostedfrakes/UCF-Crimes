@@ -97,7 +97,7 @@ def replace_address(address: str) -> str:
                 is_match = False
                 break
 
-        # If all tokenswithin tolerance, locations is found
+        # If all tokens are within tolerance, locations is found
         if is_match:
             return locs[key]
     
