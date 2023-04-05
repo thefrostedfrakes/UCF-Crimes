@@ -14,7 +14,7 @@ from image import generate_image
 from loadcrimes import is_valid_date
 import string_adjustments as stradj
 
-async def crime_sender(channel, crime: dict, GMaps_Key: str, crimeCount: int) -> int:
+async def crime_sender(channel, key: str, crime: dict, GMaps_Key: str, crimeCount: int) -> int:
     generate_image(crime, GMaps_Key)
 
     # Reformat dates and times
@@ -29,7 +29,7 @@ async def crime_sender(channel, crime: dict, GMaps_Key: str, crimeCount: int) ->
     
     # Compose message
     description = f"""Occurred at {stradj.gen_title(crime['Campus'])}, {crime['Location']}
-Case: {crime['Case #']}
+Case: {key}
 Reported on {report_date_time}
 Between {start_date_time} - {end_date_time}
 Status: {crime['Disposition'].title()}"""
@@ -74,13 +74,13 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
             return
  
     crimeCount = 0
-    for crime in crimes["Crimes"]:
-        if crime[dict_key] == command_arg:
-            crimeCount = await crime_sender(channel, crime, GMaps_Key, crimeCount)
+    for key, val in crimes.items():
+        if val[dict_key] == command_arg:
+            crimeCount = await crime_sender(channel, key, val, GMaps_Key, crimeCount)
 
         try:
-            if datetime.strptime(crime[dict_key], '%m/%d/%y %H:%M').strftime('%m/%d/%y') == command_arg:
-                crimeCount = await crime_sender(channel, crime, GMaps_Key, crimeCount)
+            if datetime.strptime(val[dict_key], '%m/%d/%y %H:%M').strftime('%m/%d/%y') == command_arg:
+                crimeCount = await crime_sender(channel, key, val, GMaps_Key, crimeCount)
 
         except ValueError: pass
     

@@ -108,12 +108,12 @@ def parser(crime_list: list) -> list:
 
 # Converts crimes list to a dictionary, then dumps to a json file.
 def load_to_json(crime_list: list, command_str: str) -> None:
-    keys = ["Disposition", "Case #", "Report Date/Time",
+    keys = ["Disposition", "Report Date/Time",
             "Crime", "Start Date/Time", "Location", 
             "End Date/Time", "Campus"]
     
     if command_str == '-loadcrimes':
-        crimes_dict = {"Crimes":[]}
+        crimes_dict = {}
 
     elif command_str == '-addcrimes':
         with open('crimes.json', 'r') as f:
@@ -121,14 +121,13 @@ def load_to_json(crime_list: list, command_str: str) -> None:
     
     for crime in crime_list:
         if len(crime) == 8:
-            crime_dict = {}
-            for i, key in enumerate(keys):
-                crime_dict[key] = crime[i]
-
-            if command_str == '-loadcrimes':
-                crimes_dict["Crimes"].append(crime_dict)
-            elif command_str == '-addcrimes' and crime_dict not in crimes_dict["Crimes"]:
-                crimes_dict["Crimes"].append(crime_dict)
+            if crime[1] not in crimes_dict:
+                crimes_dict[crime[1]] = {}
+            i = 0
+            for key in keys:
+                crimes_dict[crime[1]][key] = crime[i]
+                if i == 0: i = 2
+                else: i += 1
 
     with open('crimes.json', 'w') as f:
         json.dump(crimes_dict, f, indent=4)
