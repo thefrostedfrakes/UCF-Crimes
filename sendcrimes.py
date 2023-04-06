@@ -64,7 +64,7 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
     else:
         locFlag = False
         for key, val in locations.items():
-            if val == command_arg == command_arg or key.lower().title() == command_arg or key == command_arg:
+            if val == command_arg or key.lower().title() == command_arg or key == command_arg:
                 dict_key = "Location"
                 command_arg = key
                 locFlag = True
