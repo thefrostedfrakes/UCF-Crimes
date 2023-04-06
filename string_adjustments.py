@@ -15,24 +15,24 @@ TYPO_TOLERANCE = 1
 
 # Sometimes spacing isn't quite correct, or words spelled differently
 def case_title_format(case_title: str) -> str:
-    case_title = case_title.replace('PETIT', 'PETTY')
-    case_title = re.sub(' ?, ?', ', ', case_title) # Ensure commas have spaces following
-    case_title = re.sub('  ', ' ', case_title) # Remove double spaces
+    case_title = case_title.replace('PETIT', 'PETTY')   # Change spelling
+    case_title = re.sub(' ?, ?', ', ', case_title)      # Ensure commas have spaces following
+    case_title = re.sub('  ', ' ', case_title)          # Remove double spaces
     return case_title
 
 
 # Because emojis are fun
 # Reads from emojis.json (supports regex!)
-def attach_emojis(case_title: str) -> str:
+def attach_emojis(formatted_case_title: str) -> str:
     with open('emojis.json', 'r', encoding="utf-8") as f:
         emojis: dict = json.load(f)
 
     emoji_suffix = ''
     for emoji_txt in emojis.keys():
-        if re.search(emoji_txt, case_title.lower()):
+        if re.search(emoji_txt, formatted_case_title.lower()):
             emoji_suffix += f' {emojis[emoji_txt]}' # Must use += and not .join() to preserve unicode
 
-    return case_title + emoji_suffix
+    return formatted_case_title + emoji_suffix
 
 
 # Returns title function applied to string with exceptions found in title_exceptions.json
@@ -73,8 +73,8 @@ def expand_address(address: str) -> str:
 # Takes address and compares it to the locations.json file
 # Robust against varying word positions and typo errors
 # Returns gen_title() of address if no match is found
-def replace_address(address: str) -> str:
-    txt_tokens = address.split()
+def replace_address(expanded_addr: str) -> str:
+    txt_tokens = expanded_addr.split()
 
     with open('locations.json') as f:
         locs: dict[str] = json.load(f)
@@ -102,6 +102,6 @@ def replace_address(address: str) -> str:
             return locs[key]
     
     # Otherwise return original
-    return gen_title(address)
+    return gen_title(expanded_addr)
 
 
