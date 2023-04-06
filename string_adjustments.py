@@ -74,7 +74,7 @@ def expand_address(address: str) -> str:
 # Robust against varying word positions and typo errors
 # Returns gen_title() of address if no match is found
 def replace_address(address: str) -> str:
-    txt_tokens = expand_address(address).split()
+    txt_tokens = address.split()
 
     with open('locations.json') as f:
         locs: dict[str] = json.load(f)

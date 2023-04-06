@@ -14,7 +14,7 @@ from image import generate_image
 from loadcrimes import is_valid_date
 import string_adjustments as stradj
 
-async def crime_sender(channel, key: str, crime: dict, GMaps_Key: str, crimeCount: int) -> int:
+async def crime_sender(channel, key: str, crime: dict, location_name: str, GMaps_Key: str, crimeCount: int) -> int:
     generate_image(crime, GMaps_Key)
 
     # Reformat dates and times
@@ -28,7 +28,7 @@ async def crime_sender(channel, key: str, crime: dict, GMaps_Key: str, crimeCoun
     case_title = stradj.attach_emojis(case_title)
     
     # Compose message
-    description = f"""Occurred at {stradj.gen_title(crime['Campus'])}, {crime['Location']}
+    description = f"""Occurred at {stradj.gen_title(crime['Campus'])}, {location_name}
 Case: {key}
 Reported on {report_date_time}
 Between {start_date_time} - {end_date_time}
@@ -48,6 +48,7 @@ Status: {crime['Disposition'].title()}"""
 # discord server.
 async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GMaps_Key: str) -> None:
     channel = client.get_channel(int(channel_id))
+    location_name = ""
 
     with open('crimes.json', 'r') as f:
         crimes = json.load(f)
@@ -64,9 +65,9 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
     else:
         locFlag = False
         for key, val in locations.items():
-            if val == command_arg or key.lower().title() == command_arg or key == command_arg:
+            if val == command_arg or stradj.replace_address(key) == command_arg or key.lower().title() == command_arg or key == command_arg:
                 dict_key = "Location"
-                command_arg = val
+                command_arg = key
                 locFlag = True
 
         if not locFlag:
@@ -75,12 +76,14 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
  
     crimeCount = 0
     for key, val in crimes.items():
+        location_name = stradj.replace_address(val["Location"])
+
         if val[dict_key] == command_arg:
-            crimeCount = await crime_sender(channel, key, val, GMaps_Key, crimeCount)
+            crimeCount = await crime_sender(channel, key, val, location_name, GMaps_Key, crimeCount)
 
         try:
             if datetime.strptime(val[dict_key], '%m/%d/%y %H:%M').strftime('%m/%d/%y') == command_arg:
-                crimeCount = await crime_sender(channel, key, val, GMaps_Key, crimeCount)
+                crimeCount = await crime_sender(channel, key, val, location_name, GMaps_Key, crimeCount)
 
         except ValueError: pass
     
