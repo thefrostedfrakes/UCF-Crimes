@@ -48,7 +48,6 @@ Status: {crime['Disposition'].title()}"""
 # discord server.
 async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GMaps_Key: str) -> None:
     channel = client.get_channel(int(channel_id))
-    location_name = ""
 
     with open('crimes.json', 'r') as f:
         crimes = json.load(f)
@@ -76,7 +75,7 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
  
     crimeCount = 0
     for key, val in crimes.items():
-        if val[dict_key] == command_arg:
+        if val[dict_key] == command_arg or command_arg in val[dict_key]:
             crimeCount = await crime_sender(channel, key, val, GMaps_Key, crimeCount)
 
         try:
