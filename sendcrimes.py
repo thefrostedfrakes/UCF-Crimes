@@ -74,13 +74,13 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
             return
  
     crimeCount = 0
-    for key, val in crimes.items():
-        if val[dict_key] == command_arg or command_arg in val[dict_key]:
-            crimeCount = await crime_sender(channel, key, val, GMaps_Key, crimeCount)
+    for key, crime in crimes.items():
+        if command_arg in crime[dict_key]:
+            crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount)
 
         try:
-            if datetime.strptime(val[dict_key], '%m/%d/%y %H:%M').strftime('%m/%d/%y') == command_arg:
-                crimeCount = await crime_sender(channel, key, val, GMaps_Key, crimeCount)
+            if datetime.strptime(crime[dict_key], '%m/%d/%y %H:%M').strftime('%m/%d/%y') == command_arg:
+                crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount)
 
         except ValueError: pass
     
