@@ -62,27 +62,26 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
         await channel.send("Reported Crimes for %s" % (date_str))
 
     else:
-        locFlag = False
+        address_list = []
         for key, val in locations.items():
             if val == command_arg or key.lower().title() == command_arg or key == command_arg:
                 dict_key = "Location"
-                command_arg = key
-                locFlag = True
+                address_list.append(key)
 
-        if not locFlag:
+        if len(address_list) == 0:
             await channel.send("Please specify a date, location, etc.")
             return
  
     crimeCount = 0
     for key, crime in crimes.items():
-        if command_arg in crime[dict_key]:
-            crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount)
+        if dict_key == "Location":
+            for address in address_list:
+                if address in crime[dict_key]:
+                    crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount)
 
-        try:
+        elif dict_key == "Report Date/Time":
             if datetime.strptime(crime[dict_key], '%m/%d/%y %H:%M').strftime('%m/%d/%y') == command_arg:
                 crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount)
-
-        except ValueError: pass
     
     if (crimeCount == 0):
         await channel.send("No reported crimes.")
