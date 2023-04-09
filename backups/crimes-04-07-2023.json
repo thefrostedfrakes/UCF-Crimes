@@ -90,7 +90,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-0509": {
-        "Disposition": "INACTIVE",
+        "Disposition": "OPEN",
         "Report Date/Time": "02/14/23 09:14",
         "Crime": "EXTORTION",
         "Start Date/Time": "02/14/23 08:00",
@@ -506,7 +506,7 @@
     "2023-0779": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "03/05/23 10:18",
-        "Crime": "TRAFFIC ARREST, VIOLATION OF PROBATION,",
+        "Crime": "TRAFFIC ARREST, VIOLATION OF PROBATION, DRUG LAW VIOLATION",
         "Start Date/Time": "03/05/23 10:05",
         "Location": "4250 WEST PLAZA DR",
         "End Date/Time": "03/05/2023 10:05",
@@ -693,7 +693,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-0890": {
-        "Disposition": "CLOSED",
+        "Disposition": "OPEN",
         "Report Date/Time": "03/20/23 11:00",
         "Crime": "CRIMINAL MISCHIEF",
         "Start Date/Time": "03/20/23 07:50",
@@ -810,7 +810,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-0945": {
-        "Disposition": "UNFOUNDED",
+        "Disposition": "OPEN",
         "Report Date/Time": "03/25/23 14:57",
         "Crime": "PETIT THEFT",
         "Start Date/Time": "03/25/23 12:00",
@@ -936,7 +936,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-1008": {
-        "Disposition": "CLOSED",
+        "Disposition": "OPEN",
         "Report Date/Time": "04/01/23 06:42",
         "Crime": "BURGLARY; PETIT THEFT",
         "Start Date/Time": "03/30/23 17:00",
@@ -1035,7 +1035,7 @@
         "Campus": "UNSPECIFIED CAMPUS"
     },
     "2023-1061": {
-        "Disposition": "CLOSED",
+        "Disposition": "OPEN",
         "Report Date/Time": "04/04/23 16:47",
         "Crime": "PETIT THEFT OF $100 OR MORE",
         "Start Date/Time": "04/03/23 18:30",
@@ -1087,32 +1087,5 @@
         "Location": "12275 KNIGHTS KROSSING CIR",
         "End Date/Time": "04/03/2023 16:48",
         "Campus": "MAIN CAMPUS"
-    },
-    "2023-2201": {
-        "Disposition": "CLOSED",
-        "Report Date/Time": "04/07/23 23:48",
-        "Crime": "POSSESSION OF CANNABIS > 20 GRAMS",
-        "Start Date/Time": "04/07/23 22:52",
-        "Location": "PARRAMORE AVE",
-        "End Date/Time": "04/07/2023 22:52",
-        "Campus": "UCF DOWNTOWN"
-    },
-    "2023-1103": {
-        "Disposition": "EXC CLR - ADULT",
-        "Report Date/Time": "04/08/23 16:31",
-        "Crime": "PETIT THEFT,CRIMINAL MISCHIEF (<=$200)",
-        "Start Date/Time": "04/07/23 15:00",
-        "Location": "12202 KNIGHTS KROSSING CIR",
-        "End Date/Time": "04/08/2023 15:50",
-        "Campus": "MAIN CAMPUS"
-    },
-    "2023-1106": {
-        "Disposition": "CLOSED",
-        "Report Date/Time": "04/08/23 23:11",
-        "Crime": "POSSESSION OF CANNABIS < 20 GRAMS,POSSESSION OF DRUG PARAPHERNALIA",
-        "Start Date/Time": "04/08/23 23:11",
-        "Location": "398 AMELIA ST WEST",
-        "End Date/Time": "04/08/2023 23:11",
-        "Campus": "UCF DOWNTOWN"
     }
 }
