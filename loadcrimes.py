@@ -63,6 +63,14 @@ def tokenizer(page) -> list:
 # Parses each crime element by grouping unjoined tokens together that correspond to the same
 # dictionary key.
 def parser(crime_list: list) -> list:
+    ADDRESS_INDEX = 7 
+    REP_DATE_INDEX = 2
+    REP_TIME_INDEX = 3
+    START_DATE_INDEX = 5
+    START_TIME_INDEX = 6
+    END_DATE_INDEX = 8
+    END_TIME_INDEX = 9
+
     crime_list_len = len(crime_list)
 
     for i in range(crime_list_len):
@@ -95,14 +103,14 @@ def parser(crime_list: list) -> list:
 
         if len(crime_list[i]) == 11:
             # Replace address before pushing
-            crime_list[i][7] = stradj.expand_address(crime_list[i][7])
+            crime_list[i][ADDRESS_INDEX] = stradj.expand_address(crime_list[i][ADDRESS_INDEX])
 
-            crime_list[i][2] += " " + crime_list[i][3]
-            crime_list[i][5] += " " + crime_list[i][6]
-            crime_list[i][8] += " " + crime_list[i][9]
-            del crime_list[i][3]
-            del crime_list[i][5]
-            del crime_list[i][7]
+            crime_list[i][REP_DATE_INDEX] += " " + crime_list[i][REP_TIME_INDEX]
+            crime_list[i][START_DATE_INDEX] += " " + crime_list[i][START_TIME_INDEX]
+            crime_list[i][END_DATE_INDEX] += " " + crime_list[i][END_TIME_INDEX]
+            del crime_list[i][REP_TIME_INDEX]
+            del crime_list[i][START_TIME_INDEX - 1]
+            del crime_list[i][END_TIME_INDEX - 2]
 
     return crime_list
 
