@@ -55,6 +55,7 @@ async def generate_heatmap(message, command_arg: str, API_key: str) -> None:
 
     gmaps_key = googlemaps.Client(key=API_key)
     m = folium.Map(location=coords, zoom_start=15)
+    heat_map_data = []
 
     for key, crime in crimes.items():
         address = f'{crime["Location"].replace("/", "")} Orlando FL, US.'
@@ -63,8 +64,9 @@ async def generate_heatmap(message, command_arg: str, API_key: str) -> None:
         lat = g[0]["geometry"]["location"]["lat"]
         long = g[0]["geometry"]["location"]["lng"]
 
-        HeatMap([[lat, long, 0.3]]).add_to(m)
+        heat_map_data.append([lat, long, 0.3])
 
+    HeatMap(heat_map_data).add_to(m)
     img_data = m._to_png(5)
     img = Image.open(io.BytesIO(img_data))
     img.crop()
