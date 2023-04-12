@@ -1,13 +1,18 @@
 '''
 
 UCF Crimes: image.py
-Written by Jack Sweeney
+Written by Jack Sweeney, Ethan Frakes
 
 '''
 
 import googlemaps
 import staticmaps
 from PIL import Image, ImageDraw, ImageFilter
+import json
+import folium
+from folium.plugins import HeatMap
+import io
+import discord
 
 def generate_image(crime: dict, API_key: str) -> None:
     context = staticmaps.Context()
@@ -36,3 +41,33 @@ def generate_image(crime: dict, API_key: str) -> None:
     draw.line((700, 700, 700, 1080), fill=(0, 0, 0), width=10)
     draw.line((696, 700, 1080, 700), fill=(0, 0, 0), width=10)
     im1.save('caseout.png', quality=100)
+
+async def generate_heatmap(message, command_arg: str, API_key: str) -> None:
+    with open('crimes.json', 'r') as f:
+        crimes = json.load(f)
+    
+    if command_arg.title().startswith('Downtown'):
+        coords = [28.55, -81.39]
+    elif command_arg.title().startswith('Rosen'):
+        coords = [28.43, -81.44]
+    else:
+        coords = [28.60, -81.20]
+
+    gmaps_key = googlemaps.Client(key=API_key)
+    m = folium.Map(location=coords, zoom_start=15)
+
+    for key, crime in crimes.items():
+        address = f'{crime["Location"].replace("/", "")} Orlando FL, US.'
+        
+        g = gmaps_key.geocode(address)
+        lat = g[0]["geometry"]["location"]["lat"]
+        long = g[0]["geometry"]["location"]["lng"]
+
+        HeatMap([[lat, long, 0.3]]).add_to(m)
+
+    img_data = m._to_png(5)
+    img = Image.open(io.BytesIO(img_data))
+    img.crop()
+    img.save('heatmap.png')
+
+    await message.channel.send(file=discord.File("./heatmap.png"))

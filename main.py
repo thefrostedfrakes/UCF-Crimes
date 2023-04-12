@@ -14,7 +14,7 @@ import json
 from configparser import ConfigParser
 from loadcrimes import crime_load, backup_crimes
 from sendcrimes import crime_send, list_locations
-from heatmap import send_heatmap
+from image import generate_heatmap
 
 intents = discord.Intents.all()
 client = commands.Bot(intents=intents, command_prefix = '-')
@@ -66,6 +66,7 @@ async def on_message(message):
         await list_locations(message)
 
     elif message.content.startswith('-heatmap'):
-        await send_heatmap(message, main_config.get("DISCORD", "GMAPS_API_KEY"))
+        str = message.content[9:]
+        await generate_heatmap(message, str, main_config.get("DISCORD", "GMAPS_API_KEY"))
 
 client.run(main_config.get("DISCORD", "TOKEN"))
