@@ -5,3 +5,5 @@ caseout.png
 casez.png
 test_cases.json
 /__pycache__
+geckodriver.log
+heatmap.png

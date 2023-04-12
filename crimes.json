@@ -253,11 +253,11 @@
     },
     "2023-0640": {
         "Disposition": "ARREST - ADULT",
-        "Report Date/Time": "04/05/23 17:45",
-        "Crime": "FLORIDA COMMUNICATIONS FRAUD ACT,FLORIDA COMMUNICATIONS FRAUD ACT,FLORIDA COMMUNICATIONS FRAUD ACT,FLORIDA COMMUNICATIONS FRAUD ACT",
-        "Start Date/Time": "02/22/23 15:32",
-        "Location": "12601 AQUARIUS AGORA DR",
-        "End Date/Time": "02/22/2023 16:03",
+        "Report Date/Time": "02/23/23 15:29",
+        "Crime": "FRAUD",
+        "Start Date/Time": "07/23/22 06:00",
+        "Location": "12715 PEGASUS DR",
+        "End Date/Time": "02/02/2023 06:00",
         "Campus": "MAIN CAMPUS"
     },
     "2023-0653": {
@@ -506,7 +506,7 @@
     "2023-0779": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "03/05/23 10:18",
-        "Crime": "TRAFFIC ARREST, VIOLATION OF PROBATION,",
+        "Crime": "TRAFFIC ARREST, VIOLATION OF PROBATION, DRUG LAW VIOLATION",
         "Start Date/Time": "03/05/23 10:05",
         "Location": "4250 WEST PLAZA DR",
         "End Date/Time": "03/05/2023 10:05",
@@ -902,7 +902,7 @@
     "2023-0994": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "03/30/23 18:00",
-        "Crime": "STALKING",
+        "Crime": "STALKING;DATING VIOLENCE",
         "Start Date/Time": "10/19/22 12:00",
         "Location": "12701 SCHOLARSHIP DR",
         "End Date/Time": "03/29/2023 23:00",
@@ -1001,7 +1001,7 @@
     "2023-1038": {
         "Disposition": "OPEN",
         "Report Date/Time": "04/03/23 16:24",
-        "Crime": "BURGLARY OF CONVEYANCE,PETIT THEFT OF $100 OR MORE",
+        "Crime": "PETIT THEFT; VEHICLE BURGLARY",
         "Start Date/Time": "03/31/23 12:30",
         "Location": "12638 GEMINI BLVD NORTH",
         "End Date/Time": "04/01/2023 13:00",
@@ -1037,7 +1037,7 @@
     "2023-1061": {
         "Disposition": "CLOSED",
         "Report Date/Time": "04/04/23 16:47",
-        "Crime": "PETIT THEFT OF $100 OR MORE",
+        "Crime": "PETIT THEFT",
         "Start Date/Time": "04/03/23 18:30",
         "Location": "12600 GEMINI BLVD NORTH",
         "End Date/Time": "04/04/2023 08:50",
@@ -1114,5 +1114,59 @@
         "Location": "398 AMELIA ST WEST",
         "End Date/Time": "04/08/2023 23:11",
         "Campus": "UCF DOWNTOWN"
+    },
+    "2023-1111": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/09/23 20:17",
+        "Crime": "STALKING",
+        "Start Date/Time": "04/09/23 17:30",
+        "Location": "11714 COLLEGE PARK TRAIL",
+        "End Date/Time": "04/09/2023 18:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1018": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/01/23 23:29",
+        "Crime": "PETIT THEFT",
+        "Start Date/Time": "04/01/23 22:05",
+        "Location": "4799 HYDRA LN",
+        "End Date/Time": "04/01/2023 23:13",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1102": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/07/23 23:48",
+        "Crime": "POSSESSION OF CANNABIS > 20 GRAMS",
+        "Start Date/Time": "04/07/23 22:52",
+        "Location": "PARRAMORE AVE",
+        "End Date/Time": "04/07/2023 22:52",
+        "Campus": "UCF DOWNTOWN"
+    },
+    "2023-1112": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/09/23 02:12",
+        "Crime": "TRESPASS ON PROPERTY AFTER WARNING",
+        "Start Date/Time": "04/09/23 23:05",
+        "Location": "4000 CENTRAL FLORIDA BLVD",
+        "End Date/Time": "04/10/2023 02:13",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1125": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/11/23 12:36",
+        "Crime": "PETIT THEFT",
+        "Start Date/Time": "04/10/23 20:15",
+        "Location": "2635 COLLEGE KNIGHT CT",
+        "End Date/Time": "04/10/2023 21:05",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1130": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/11/23 16:11",
+        "Crime": "BATTERY",
+        "Start Date/Time": "11/19/23 18:00",
+        "Location": "4032 LIBRA DR",
+        "End Date/Time": "11/19/2023 23:59",
+        "Campus": "MAIN CAMPUS"
     }
 }
