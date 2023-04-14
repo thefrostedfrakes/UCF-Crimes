@@ -1019,11 +1019,11 @@
     "2023-1052": {
         "Disposition": "OPEN",
         "Report Date/Time": "04/04/23 11:36",
-        "Crime": "MTV THEFT; PETIT THEFT;VEHICLE BURGLARY",
+        "Crime": "BURGLARY OF CONVEYANCE,GRAND THEFT 3RD DEGREE-MOTOR VEHICLE,PETIT THEFT",
         "Start Date/Time": "04/03/23 21:30",
         "Location": "4304 GREEK PARK DR",
         "End Date/Time": "04/04/2023 10:10",
-        "Campus": "FLORIDA SOLAR ENERGY CENTER"
+        "Campus": "MAIN CAMPUS"
     },
     "2023-1055": {
         "Disposition": "OPEN",
@@ -1145,7 +1145,7 @@
     "2023-1112": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "04/09/23 02:12",
-        "Crime": "TRESPASS ON PROPERTY AFTER WARNING,POSSESSION OF CANNABIS < 20 GRAMS",
+        "Crime": "TRESPASS ON PROPERTY AFTER",
         "Start Date/Time": "04/09/23 23:05",
         "Location": "12795 AQUARIUS AGORA DR",
         "End Date/Time": "04/10/2023 02:13",
@@ -1181,7 +1181,7 @@
     "2023-1134": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "04/12/23 03:25",
-        "Crime": "DUI",
+        "Crime": "DUI - DRIVING WHILE UNDER THE INFLUENCE",
         "Start Date/Time": "04/12/23 03:25",
         "Location": "UNIVERSITY BLVD",
         "End Date/Time": "04/12/2023 03:25",
@@ -1204,14 +1204,5 @@
         "Location": "PARRAMORE AVE",
         "End Date/Time": "04/12/2023 23:13",
         "Campus": "UCF DOWNTOWN"
-    },
-    "2023-1149": {
-        "Disposition": "ARREST - ADULT",
-        "Report Date/Time": "04/13/23 13:00",
-        "Crime": "NO MOTOR VEHICLE REGISTRATION,ATTACH TAG/LIC PLATE TO UNASSIGNED VEHICLE",
-        "Start Date/Time": "04/13/23 08:51",
-        "Location": "GEMINI BLVD & ALAFAYA TRAIL",
-        "End Date/Time": "04/13/2023 08:51",
-        "Campus": "MAIN CAMPUS"
     }
 }
