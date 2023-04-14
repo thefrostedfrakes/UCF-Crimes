@@ -61,11 +61,11 @@ async def generate_heatmap(message, command_arg: str, API_key: str) -> None:
         if "4000 CENTRAL FLORIDA BLVD" not in crime["Location"]:
             address = f'{crime["Location"].replace("/", "")} Orlando FL, US.'
         
-        g = gmaps_key.geocode(address)
-        lat = g[0]["geometry"]["location"]["lat"]
-        long = g[0]["geometry"]["location"]["lng"]
+            g = gmaps_key.geocode(address)
+            lat = g[0]["geometry"]["location"]["lat"]
+            long = g[0]["geometry"]["location"]["lng"]
 
-        heat_map_data.append([lat, long, 0.3])
+            heat_map_data.append([lat, long, 0.3])
 
     HeatMap(heat_map_data).add_to(m)
     img_data = m._to_png(5)
