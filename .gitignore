@@ -3,6 +3,7 @@ AllDailyCrimeLog.pdf
 case.png
 caseout.png
 casez.png
+openai_key.py
 test_cases.json
 /__pycache__
 geckodriver.log

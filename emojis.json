@@ -1,6 +1,6 @@
 {
     "02|NOS": "🚗🧪💨",
-    "auto|vehicle|conveyance": "🚗",
+    "auto|vehicle|conveyance|motor": "🚗",
     "cannabis": "🌿🚬",
     "dl |lic": "🆔🚫",
     "drug": "💊",
@@ -11,6 +11,7 @@
     "fraud": "💸",
     "grand": "💎",
     "grocery cart": "🛒",
+    "ident": "🆔",
     "imprisonment": "⛓️",
     "liquor": "🥃",
     "mischief": "😈",

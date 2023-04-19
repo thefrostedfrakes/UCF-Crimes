@@ -13,8 +13,11 @@ from datetime import datetime
 from image import generate_image
 from loadcrimes import is_valid_date
 import string_adjustments as stradj
+import gpt_expand
 
 async def crime_sender(channel, key: str, crime: dict, GMaps_Key: str, crimeCount: int) -> int:
+    USE_GPT = False # Need key as well
+
     generate_image(crime, GMaps_Key)
 
     # Reformat dates and times
@@ -24,7 +27,10 @@ async def crime_sender(channel, key: str, crime: dict, GMaps_Key: str, crimeCoun
 
     # Format title
     case_title = stradj.case_title_format(crime["Crime"])
-    # Attach emojis for front end display
+    # Use language model after formatting if enabled
+    if USE_GPT:
+        case_title = gpt_expand.gpt_title_expand(case_title, provide_examples=True)
+    # Append emojis to title
     case_title = stradj.attach_emojis(case_title)
     
     # Compose message
