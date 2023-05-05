@@ -1,0 +1,13 @@
+[
+    {
+        "raw": "FRAUD-ILLEG USE CREDIT CARDS-TO OBTAIN GOODS 300 DOLS OR MORE",
+        "expanded": "FRAUDULENT AND ILLEGAL USE OF CREDIT CARDS TO OBTAIN GOODS VALUED AT $300 OR MORE",
+        "verified_example": true
+    },
+    {
+        "raw": "FRAUD. USE OF PERSONAL IDENT. INFORMATION",
+        "expanded": "FRAUDULENT USE OF PERSONAL IDENTIFICATION INFORMATION",
+        "verified_example": true
+
+    }
+]
