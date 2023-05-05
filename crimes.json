@@ -531,7 +531,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-0796": {
-        "Disposition": "OPEN",
+        "Disposition": "INACTIVE",
         "Report Date/Time": "03/06/23 20:02",
         "Crime": "GRAND THEFT, CRIMINAL MISCHIEF",
         "Start Date/Time": "02/19/23 00:00",
@@ -684,7 +684,7 @@
         "Campus": "UCF DOWNTOWN"
     },
     "2023-0887": {
-        "Disposition": "OPEN",
+        "Disposition": "INACTIVE",
         "Report Date/Time": "03/19/23 22:53",
         "Crime": "MOTOR VEHICLE THEFT, BURGLARY TO AUTO, PETIT THEFT",
         "Start Date/Time": "03/18/23 21:00",
@@ -702,7 +702,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-0900": {
-        "Disposition": "OPEN",
+        "Disposition": "INACTIVE",
         "Report Date/Time": "03/20/23 16:24",
         "Crime": "PETIT THEFT",
         "Start Date/Time": "03/15/23 08:00",
@@ -729,9 +729,9 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-0907": {
-        "Disposition": "OPEN",
+        "Disposition": "CLOSED",
         "Report Date/Time": "03/21/23 17:05",
-        "Crime": "PETIT THEFT OF $100 OR MORE",
+        "Crime": "PETIT THEFT (ELECTRIC SCOOTER)",
         "Start Date/Time": "03/20/23 12:00",
         "Location": "4120 PYXIS LN",
         "End Date/Time": "03/21/2023 14:50",
@@ -747,7 +747,7 @@
         "Campus": "UCF DOWNTOWN"
     },
     "2023-0915": {
-        "Disposition": "OPEN",
+        "Disposition": "CLOSED",
         "Report Date/Time": "03/22/23 14:52",
         "Crime": "PETIT THEFT (ELECTRIC SCOOTER)",
         "Start Date/Time": "03/21/23 23:00",
@@ -837,7 +837,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-0963": {
-        "Disposition": "OPEN",
+        "Disposition": "INACTIVE",
         "Report Date/Time": "03/28/23 01:32",
         "Crime": "BURGLARY TO AUTO, PETIT THEFT",
         "Start Date/Time": "03/27/23 18:45",
@@ -846,7 +846,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-0977": {
-        "Disposition": "OPEN",
+        "Disposition": "CLOSED",
         "Report Date/Time": "03/29/23 10:27",
         "Crime": "INDECENT EXPOSURE",
         "Start Date/Time": "03/29/23 05:00",
@@ -855,7 +855,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-0984": {
-        "Disposition": "OPEN",
+        "Disposition": "INACTIVE",
         "Report Date/Time": "03/29/23 23:03",
         "Crime": "CRIMINAL MISCHIEF",
         "Start Date/Time": "03/28/23 21:00",
@@ -909,9 +909,9 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-0999": {
-        "Disposition": "OPEN",
+        "Disposition": "EXC CLR - ADULT",
         "Report Date/Time": "03/31/23 05:02",
-        "Crime": "BURGLARY OF CONVEYANCE,CRIMINAL MISCHIEF (<=$200)",
+        "Crime": "BURGLARY TO AUTO, CRIMINAL MISCHIEF",
         "Start Date/Time": "03/30/23 18:00",
         "Location": "12491 UNIVERSITY BLVD",
         "End Date/Time": "03/31/2023 04:30",
@@ -947,7 +947,7 @@
     "2023-1021": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "04/02/23 17:35",
-        "Crime": "RESISTING OFFICER WITHOUT VIOLENCE,TRESPASS ON PROPERTY AFTER WARNING",
+        "Crime": "TRESPASSING ARREST, RESISITING OFFICER W/O VIOLENCE",
         "Start Date/Time": "04/02/23 04:12",
         "Location": "12795 AQUARIUS AGORA DR",
         "End Date/Time": "04/02/2023 04:12",
@@ -981,7 +981,7 @@
         "Campus": "UCF DOWNTOWN"
     },
     "2023-1036": {
-        "Disposition": "OPEN",
+        "Disposition": "INACTIVE",
         "Report Date/Time": "04/03/23 13:58",
         "Crime": "CRIMINAL MISCHIEF",
         "Start Date/Time": "03/29/23 12:00",
@@ -999,7 +999,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-1038": {
-        "Disposition": "OPEN",
+        "Disposition": "INACTIVE",
         "Report Date/Time": "04/03/23 16:24",
         "Crime": "PETIT THEFT; BURGLARY TO AUTO",
         "Start Date/Time": "03/31/23 12:30",
@@ -1008,7 +1008,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-1042": {
-        "Disposition": "OPEN",
+        "Disposition": "INACTIVE",
         "Report Date/Time": "04/03/23 16:36",
         "Crime": "PETIT THEFT",
         "Start Date/Time": "03/31/23 20:00",
@@ -1019,7 +1019,7 @@
     "2023-1052": {
         "Disposition": "OPEN",
         "Report Date/Time": "04/04/23 11:36",
-        "Crime": "MTV THEFT; PETIT THEFT;VEHICLE BURGLARY",
+        "Crime": "MTV THEFT; PETIT THEFT; BURGLARY TO AUTO",
         "Start Date/Time": "04/03/23 21:30",
         "Location": "4304 GREEK PARK DR",
         "End Date/Time": "04/04/2023 10:10",
@@ -1053,7 +1053,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-1067": {
-        "Disposition": "OPEN",
+        "Disposition": "INACTIVE",
         "Report Date/Time": "04/05/23 15:10",
         "Crime": "PETIT THEFT",
         "Start Date/Time": "03/23/23 12:00",
@@ -1064,7 +1064,7 @@
     "2023-1065": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "04/05/23 15:29",
-        "Crime": "DRIV WHILE LIC SUSPEND REVOCATION EQUIV STATUS",
+        "Crime": "TRAFFIC ARREST",
         "Start Date/Time": "04/05/23 08:28",
         "Location": "GEMINI & SCORPIUS",
         "End Date/Time": "04/05/2023 09:23",
@@ -1100,7 +1100,7 @@
     "2023-1103": {
         "Disposition": "CLOSED",
         "Report Date/Time": "04/08/23 16:31",
-        "Crime": "PETIT THEFT,CRIMINAL MISCHIEF (<=$200)",
+        "Crime": "PETIT THEFT",
         "Start Date/Time": "04/07/23 15:00",
         "Location": "12202 KNIGHTS KROSSING CIR",
         "End Date/Time": "04/08/2023 15:50",
@@ -1125,7 +1125,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-1018": {
-        "Disposition": "OPEN",
+        "Disposition": "CLOSED",
         "Report Date/Time": "04/01/23 23:29",
         "Crime": "PETIT THEFT",
         "Start Date/Time": "04/01/23 22:05",
@@ -1145,7 +1145,7 @@
     "2023-1112": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "04/09/23 02:12",
-        "Crime": "TRESPASS ON PROPERTY AFTER WARNING,POSSESSION OF CANNABIS < 20 GRAMS",
+        "Crime": "TRESPASSING ARREST, DRUG LAW VIOLATION",
         "Start Date/Time": "04/09/23 23:05",
         "Location": "12795 AQUARIUS AGORA DR",
         "End Date/Time": "04/10/2023 02:13",
@@ -1163,10 +1163,10 @@
     "2023-1130": {
         "Disposition": "OPEN",
         "Report Date/Time": "04/11/23 16:11",
-        "Crime": "BATTERY",
-        "Start Date/Time": "11/19/23 18:00",
+        "Crime": "BATTERY (FONDLING)",
+        "Start Date/Time": "11/19/22 18:00",
         "Location": "4032 LIBRA DR",
-        "End Date/Time": "11/19/2023 23:59",
+        "End Date/Time": "11/19/2022 23:59",
         "Campus": "MAIN CAMPUS"
     },
     "2023-1044": {
@@ -1190,7 +1190,7 @@
     "2023-1139": {
         "Disposition": "OPEN",
         "Report Date/Time": "04/12/23 15:55",
-        "Crime": "FRAUD. USE OF PERSONAL IDENT. INFORMATION",
+        "Crime": "FRAUD",
         "Start Date/Time": "04/11/23 13:00",
         "Location": "12124 KNIGHTS KROSSING CIR",
         "End Date/Time": "04/11/2023 13:30",
@@ -1199,7 +1199,7 @@
     "2023-1141": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "04/12/23 23:13",
-        "Crime": "DWLSR REVOCATION EQUIV STATUS 3RD SUB VIOL",
+        "Crime": "TRAFFIC ARREST",
         "Start Date/Time": "04/12/23 23:13",
         "Location": "PARRAMORE AVE",
         "End Date/Time": "04/12/2023 23:13",
@@ -1208,10 +1208,424 @@
     "2023-1149": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "04/13/23 13:00",
-        "Crime": "NO MOTOR VEHICLE REGISTRATION,ATTACH TAG/LIC PLATE TO UNASSIGNED VEHICLE",
+        "Crime": "TRAFFIC ARREST",
         "Start Date/Time": "04/13/23 08:51",
         "Location": "GEMINI BLVD & ALAFAYA TRAIL",
         "End Date/Time": "04/13/2023 08:51",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1160": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/13/23 23:04",
+        "Crime": "PETIT THEFT",
+        "Start Date/Time": "04/13/23 23:04",
+        "Location": "609 LIVINGSTON ST WEST",
+        "End Date/Time": "04/14/2023 00:04",
+        "Campus": "UCF DOWNTOWN"
+    },
+    "2023-1161": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/13/23 23:56",
+        "Crime": "ROBBERY (SUDDEN SNATCHING)",
+        "Start Date/Time": "04/13/23 23:04",
+        "Location": "609 LIVINGSTON ST WEST",
+        "End Date/Time": "04/14/2023 00:04",
+        "Campus": "UCF DOWNTOWN"
+    },
+    "2023-1169": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/14/23 16:27",
+        "Crime": "PETIT THEFT",
+        "Start Date/Time": "04/11/23 14:00",
+        "Location": "12215 KING'S KNIGHT WAY",
+        "End Date/Time": "04/14/2023 06:30",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1098": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/07/23 15:20",
+        "Crime": "FRAUD",
+        "Start Date/Time": "04/03/23 12:00",
+        "Location": "2661 COLLEGE KNIGHT CT NORTH",
+        "End Date/Time": "04/07/2023 14:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-CSA65": {
+        "Disposition": "REPORT",
+        "Report Date/Time": "04/14/23 00:00",
+        "Crime": "SEXUAL BATTERY",
+        "Start Date/Time": "04/13/23 18:00",
+        "Location": "NON CAMPUS LOCATION",
+        "End Date/Time": "04/09/2023 22:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1167": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/14/23 14:35",
+        "Crime": "BURGLARY UNOCCUPIED STRUCTURE/CONVEYANCE",
+        "Start Date/Time": "04/14/23 00:00",
+        "Location": "11702 COLLEGE PARK TRAIL",
+        "End Date/Time": "04/14/2923 14:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1171": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/15/23 01:59",
+        "Crime": "STALKING",
+        "Start Date/Time": "04/14/23 18:56",
+        "Location": "601 LIVINGSTON ST WEST",
+        "End Date/Time": "04/14/2023 21:26",
+        "Campus": "UCF DOWNTOWN"
+    },
+    "2023-1176": {
+        "Disposition": "UNFOUNDED",
+        "Report Date/Time": "04/15/23 10:59",
+        "Crime": "GRAND THEFT",
+        "Start Date/Time": "04/13/23 19:16",
+        "Location": "12805F PEGASUS DR",
+        "End Date/Time": "04/15/2023 10:45",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1185": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/16/23 18:17",
+        "Crime": "PETIT THEFT",
+        "Start Date/Time": "04/05/23 17:30",
+        "Location": "12440 GOLDEN KNIGHT CIR",
+        "End Date/Time": "04/16/2023 02:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1190": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/17/23 06:17",
+        "Crime": "DUI",
+        "Start Date/Time": "04/17/23 04:56",
+        "Location": "PARAMORE AVE NORTH",
+        "End Date/Time": "04/17/2023 11:42",
+        "Campus": "UCF DOWNTOWN"
+    },
+    "2023-1191": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/17/23 15:37",
+        "Crime": "FRAUD (OFF CAMPUS)",
+        "Start Date/Time": "04/14/23 17:50",
+        "Location": "2418 COLONIAL DR EAST",
+        "End Date/Time": "04/14/2023 17:50",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1203": {
+        "Disposition": "EXC CLR - ADULT",
+        "Report Date/Time": "04/18/23 14:23",
+        "Crime": "BATTERY",
+        "Start Date/Time": "04/18/23 12:30",
+        "Location": "12898 GEMINI BLVD NORTH",
+        "End Date/Time": "04/18/2023 12:48",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1214": {
+        "Disposition": "INACTIVE",
+        "Report Date/Time": "04/19/23 12:51",
+        "Crime": "CRIMINAL MISCHIEF",
+        "Start Date/Time": "04/12/23 11:00",
+        "Location": "4277 GEMINI BLVD WEST",
+        "End Date/Time": "04/19/2023 08:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1222": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/20/23 05:19",
+        "Crime": "CASH/DEPOSIT/WORTHLESS ITEM W/INT. DEFRAUD,GRAND THEFT 3RD DEGREE >$10,000 (SCHEME),UTTERING A FORGED CHECK",
+        "Start Date/Time": "04/20/23 04:53",
+        "Location": "12638 GEMENI BLVD NORTH",
+        "End Date/Time": "04/20/2023 05:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1221": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/20/23 20:17",
+        "Crime": "WARRANT ARREST (OCSO)",
+        "Start Date/Time": "04/20/23 02:04",
+        "Location": "323 PARRAMORE AVE NORTH",
+        "End Date/Time": "04/20/2023 04:52",
+        "Campus": "UCF DOWNTOWN"
+    },
+    "2023-CSA54": {
+        "Disposition": "REPORT",
+        "Report Date/Time": "03/30/23 00:00",
+        "Crime": "STALKING",
+        "Start Date/Time": "01/01/23 00:00",
+        "Location": "4000 CENTRAL FLORIDA BLVD",
+        "End Date/Time": "03/30/2023 00:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-CSA55": {
+        "Disposition": "REPORT",
+        "Report Date/Time": "03/31/23 00:00",
+        "Crime": "STALKING",
+        "Start Date/Time": "03/23/23 22:00",
+        "Location": "12440 GOLDEN NIGHT CIR",
+        "End Date/Time": "03/23/2023 22:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1118": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/10/23 17:21",
+        "Crime": "DRUG LAW REFERRAL",
+        "Start Date/Time": "04/10/23 13:04",
+        "Location": "LIBRA DRIVE",
+        "End Date/Time": "04/10/2023 13:37",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1218": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/20/23 00:39",
+        "Crime": "POSSESSION OF DRUG PARAPHERNALIA",
+        "Start Date/Time": "04/19/23 23:29",
+        "Location": "4465 KNIGHTS VICTORY WAY",
+        "End Date/Time": "04/20/2023 00:01",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1238": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/21/23 23:50",
+        "Crime": "DRUG ARREST",
+        "Start Date/Time": "04/21/23 23:02",
+        "Location": "4277 GEMINI BLVD WEST",
+        "End Date/Time": "04/22/2023 23:50",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1239": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/22/23 10:39",
+        "Crime": "TRAFFIC ARREST, DRUG VIOLATION",
+        "Start Date/Time": "04/22/23 08:08",
+        "Location": "4274 PLAZA DR WEST",
+        "End Date/Time": "04/22/2023 08:08",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1241": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/22/23 17:00",
+        "Crime": "BATTERY",
+        "Start Date/Time": "04/22/23 15:30",
+        "Location": "12777 NORTH GEMINI BLVD NORTH",
+        "End Date/Time": "04/22/2023 15:31",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1246": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/23/23 04:33",
+        "Crime": "GRAND THEFT 3RD DEGREE- MOTOR VEHICLE",
+        "Start Date/Time": "04/23/23 01:28",
+        "Location": "12544 GEMINI BLVD NORTH",
+        "End Date/Time": "04/23/2023 02:14",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1247": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/23/23 15:29",
+        "Crime": "THEFT GRAND, POSS OF BURGLARY TOOLS, CRIMINAL MISCHIEF",
+        "Start Date/Time": "04/23/23 15:19",
+        "Location": "4498 ALAFAYA TRAIL NORTH",
+        "End Date/Time": "04/23/2023 15:19",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1250": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/23/23 22:40",
+        "Crime": "EXTORTION",
+        "Start Date/Time": "04/23/23 16:12",
+        "Location": "3740 LIBRA DR",
+        "End Date/Time": "04/23/2023 17:30",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1251": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/24/23 02:02",
+        "Crime": "GRAND THEFT 3RD DEGREE- MOTOR VEHICLE",
+        "Start Date/Time": "04/23/23 23:23",
+        "Location": "12601 AQUARIUS AGORA DR",
+        "End Date/Time": "04/24/2023 04:56",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1252": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/24/23 04:53",
+        "Crime": "LOITERING OR PROWLING",
+        "Start Date/Time": "04/24/23 01:45",
+        "Location": "12800 GEMINI BLVD",
+        "End Date/Time": "04/24/2023 05:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1255": {
+        "Disposition": "EXC CLR - ADULT",
+        "Report Date/Time": "04/24/23 14:13",
+        "Crime": "CRIMINAL MISCHIEF",
+        "Start Date/Time": "04/23/23 22:30",
+        "Location": "4282 WEST PLAZA DR",
+        "End Date/Time": "04/24/2023 07:45",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1240": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/24/23 17:55",
+        "Crime": "GRAND THEFT 3RD DEGREE (>$5,000,<$10,000),BURGLAR Y OF STRUCTURE",
+        "Start Date/Time": "04/22/23 09:38",
+        "Location": "528 LIVINGSTON ST WEST",
+        "End Date/Time": "04/22/2023 09:41",
+        "Campus": "UCF DOWNTOWN"
+    },
+    "2023-1259": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/25/23 05:50",
+        "Crime": "DUI - DRIVING WHILE UNDER THE INFLUENCE",
+        "Start Date/Time": "04/25/23 01:50",
+        "Location": "ALAFAYA TRL & CENTRAL FLORIDA BLVD BLVD",
+        "End Date/Time": "04/25/2023 05:50",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1261": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/25/23 11:27",
+        "Crime": "GRAND THEFT 3RD DEGREE- MOTOR VEHICLE,LEA VING SCENE OF ACC./UNATT. VEH. OR PROP.",
+        "Start Date/Time": "04/23/23 22:40",
+        "Location": "4123 PICTOR LN",
+        "End Date/Time": "04/25/2023 09:14",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1248": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/25/23 17:50",
+        "Crime": "LEWD OR LASCIVIOUS BATTERY",
+        "Start Date/Time": "04/23/23 13:46",
+        "Location": "323 PARRAMORE AVE NORTH",
+        "End Date/Time": "04/23/2023 13:46",
+        "Campus": "UCF DOWNTOWN"
+    },
+    "2023-1175": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/25/23 23:43",
+        "Crime": "RESISTING OFFICER WITHOUT VIOLENCE",
+        "Start Date/Time": "04/15/23 02:00",
+        "Location": "B8 LOT",
+        "End Date/Time": "04/15/2023 02:15",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1265": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/26/23 03:14",
+        "Crime": "DRUG LAW REFERRAL",
+        "Start Date/Time": "04/26/23 02:20",
+        "Location": "ALAFAYA TRAIL & STRATEGY BLVD",
+        "End Date/Time": "04/26/2023 02:44",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1278": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/26/23 14:57",
+        "Crime": "BATTERY (DATING VIOLENCE)",
+        "Start Date/Time": "04/26/23 14:17",
+        "Location": "4336 SCORPIUS ST",
+        "End Date/Time": "04/26/2023 14:17",
+        "Campus": "UNSPECIFIED CAMPUS"
+    },
+    "2023-1279": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/26/23 16:50",
+        "Crime": "BURGLARY TO STRUCTURE",
+        "Start Date/Time": "02/01/23 12:00",
+        "Location": "528 LIVINGSTON ST WEST",
+        "End Date/Time": "04/26/2023 14:21",
+        "Campus": "UCF DOWNTOWN"
+    },
+    "2023-1291": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/28/23 11:10",
+        "Crime": "POSSESSION OF DRUG PARAPHERNALIA",
+        "Start Date/Time": "04/28/23 10:05",
+        "Location": "12550 GEMINI BLVD NORTH",
+        "End Date/Time": "04/28/2023 10:05",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1287": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "04/28/23 11:42",
+        "Crime": "LEA VE SCENE OF A CRASH W/PROPERTY DAMAGE",
+        "Start Date/Time": "04/21/23 12:55",
+        "Location": "12638 GEMINI BLVD NORTH",
+        "End Date/Time": "04/21/2023 12:55",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1299": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/29/23 02:11",
+        "Crime": "POSSESSION OF CANNABIS &gt; 20 GRAMS,POSSESSION OF DRUG PARAPHERNALIA",
+        "Start Date/Time": "04/29/23 12:06",
+        "Location": "ALAFAYA TRL & WALDEN WOODS DR",
+        "End Date/Time": "04/29/2023 01:07",
+        "Campus": "UNSPECIFIED CAMPUS"
+    },
+    "2023-1300": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/29/23 03:35",
+        "Crime": "POSSESSION OF CANNABIS &lt; 20 GRAMS",
+        "Start Date/Time": "04/29/23 02:39",
+        "Location": "GEMINI BLVD & AQUARIUS AGORA DR",
+        "End Date/Time": "04/29/2023 02:51",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1308": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/29/23 23:12",
+        "Crime": "POSSESSION OF CANNABIS &lt; 20 GRAMS,POSSESSION OF DRUG PARAPHERNALIA",
+        "Start Date/Time": "04/29/23 10:42",
+        "Location": "PARKING LOT B7",
+        "End Date/Time": "04/29/2023 11:08",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1309": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "04/30/23 02:18",
+        "Crime": "POSSESSION OF CANNABIS &lt; 20 GRAMS,POSSESSION OF DRUG PARAPHERNALIA",
+        "Start Date/Time": "04/30/23 01:07",
+        "Location": "ALAFAYA TRL & UNIVERSITY BLVD",
+        "End Date/Time": "04/30/2023 01:26",
+        "Campus": "UNSPECIFIED CAMPUS"
+    },
+    "2023-1305": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "04/30/23 08:03",
+        "Crime": "EXTORTION",
+        "Start Date/Time": "04/21/23 12:00",
+        "Location": "3732 LIBRA DR",
+        "End Date/Time": "04/29/2023 15:44",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1332": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "05/02/23 17:24",
+        "Crime": "BURGLARY OF STRUCTURE,CRIMINAL MISCHIEF (>$200, <$1000)",
+        "Start Date/Time": "04/26/23 17:00",
+        "Location": "12601 AQUARIUS AGORA DR",
+        "End Date/Time": "04/27/2023 07:00",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1335": {
+        "Disposition": "ARREST - ADULT",
+        "Report Date/Time": "05/02/23 23:10",
+        "Crime": "DRIVE WITH SUSPENDED REVOKED LICENSE",
+        "Start Date/Time": "05/02/23 22:55",
+        "Location": "GEMINI BLVD & NORTH ORION BLVD",
+        "End Date/Time": "05/02/2023 23:10",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1340": {
+        "Disposition": "CLOSED",
+        "Report Date/Time": "05/03/23 17:03",
+        "Crime": "STALKING",
+        "Start Date/Time": "04/25/23 09:46",
+        "Location": "12715 PEGASUS DR",
+        "End Date/Time": "05/03/2023 16:45",
         "Campus": "MAIN CAMPUS"
     }
 }

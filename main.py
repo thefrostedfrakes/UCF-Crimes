@@ -15,6 +15,7 @@ from configparser import ConfigParser
 from loadcrimes import crime_load, backup_crimes
 from sendcrimes import crime_send, list_locations
 from image import generate_heatmap
+from orlando import send_orlando_active
 
 intents = discord.Intents.all()
 client = commands.Bot(intents=intents, command_prefix = '-')
@@ -68,5 +69,8 @@ async def on_message(message):
     elif message.content.startswith('-heatmap'):
         str = message.content[9:]
         await generate_heatmap(message, str, main_config.get("DISCORD", "GMAPS_API_KEY"))
+
+    elif message.content.startswith('-orlando'):
+        await send_orlando_active(client, main_config.get("DISCORD", "CRIME_CHANNEL_ID"), main_config.get("DISCORD", "GMAPS_API_KEY"))
 
 client.run(main_config.get("DISCORD", "TOKEN"))

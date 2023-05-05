@@ -7,3 +7,6 @@ test_cases.json
 /__pycache__
 geckodriver.log
 heatmap.png
+/backups
+orlando_heatmap.png
+orlando.json

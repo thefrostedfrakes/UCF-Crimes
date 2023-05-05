@@ -43,6 +43,8 @@ def generate_image(crime: dict, API_key: str) -> None:
     im1.save('caseout.png', quality=100)
 
 async def generate_heatmap(message, command_arg: str, API_key: str) -> None:
+    await message.channel.send("Generating Heatmap... This May Take a Moment...")
+    
     with open('crimes.json', 'r') as f:
         crimes = json.load(f)
     
