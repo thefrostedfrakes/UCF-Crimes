@@ -11,7 +11,8 @@ from datetime import datetime
 import string_adjustments as stradj
 import gpt_expand
 
-USE_GPT = False
+USE_GPT = True
+NUM_TO_TEST = 5
 
 
 with open('crimes.json', 'r') as f:
@@ -20,7 +21,7 @@ with open('crimes.json', 'r') as f:
 test_list = crimes.items()
 if USE_GPT:
     # Only do a few since it takes some time (and $)
-    test_list = list(crimes.items())[-3:]
+    test_list = list(crimes.items())[-NUM_TO_TEST:]
 
 for key, crime in test_list:
     # Reformat dates and times

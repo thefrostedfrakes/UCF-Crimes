@@ -15,16 +15,19 @@ import json
 # Prompt engineering for the model
 # It seems to work pretty well even without the examples so that will be an option for us
 def generate_prompt(title: str, provide_examples=True):
-    with open('gpt_expansions.json') as f:
-        previous_responses = json.load(f)
+    with open('gpt_expansions.json', 'r') as f:
+        prev_examples = json.load(f)
 
     # Start with instruction
-    prompt = 'Here is some text from a case notification system that has some abbreviations. Can you expand the text and include prepositions while still keeping it uppercase?'
+    prompt = "Here is some text from a case notification system that has some abbreviations. Can you expand the text while still keeping it uppercase? If it is just one word, you can keep it that word. And don't worry too much about prepositions such as 'of' and 'as', but do include them when necessary. You will have to be clever; there may be spelling errors and other abnormalities in the text."
     prompt += '\n\n'
 
     # List previous_examples
     if provide_examples:
-        for resp in previous_responses:
+        prompt += 'Here are some examples to help you out. If the text provided matches an example, feel free to use the provided solution.'
+        prompt += '\n\n'
+
+        for resp in prev_examples:
             if resp['verified_example']:
                 prompt += f"Example: {resp['raw']}\nAnswer: {resp['expanded']}\n\n"
     
@@ -48,8 +51,20 @@ def gpt_title_expand(formatted_title, provide_examples=True):
 
     # Build the prompt using verified examples and the title
     prompt = generate_prompt(formatted_title, provide_examples=provide_examples)
-
     messages=[{'role': 'user', 'content': prompt}]
     response = openai.ChatCompletion.create(model=model, messages=messages)
+    answer = response['choices'][0]['message']['content'].strip('.')    # Remove period if generated
 
-    return response['choices'][0]['message']['content'].strip('.') # Remove period if generated
+    # Append to the json and dump to the file
+    with open('gpt_expansions.json', 'r') as f:
+        responses_list = json.load(f)
+
+    responses_list.append({
+        "raw": formatted_title,
+        "expanded": answer,
+        "verified_example": False
+    })
+    with open('gpt_expansions.json', 'w') as f:
+        json.dump(responses_list, f, indent=4)
+
+    return answer
