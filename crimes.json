@@ -1334,7 +1334,7 @@
     "2023-1222": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "04/20/23 05:19",
-        "Crime": "CASH/DEPOSIT/WORTHLESS ITEM W/INT. DEFRAUD,GRAND THEFT 3RD DEGREE >$10,000 (SCHEME),UTTERING A FORGED CHECK",
+        "Crime": "WARRANT ARREST",
         "Start Date/Time": "04/20/23 04:53",
         "Location": "12638 GEMENI BLVD NORTH",
         "End Date/Time": "04/20/2023 05:00",
@@ -1404,7 +1404,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-1241": {
-        "Disposition": "CLOSED",
+        "Disposition": "EXC CLR - ADULT",
         "Report Date/Time": "04/22/23 17:00",
         "Crime": "BATTERY",
         "Start Date/Time": "04/22/23 15:30",
@@ -1467,7 +1467,7 @@
         "Campus": "MAIN CAMPUS"
     },
     "2023-1240": {
-        "Disposition": "OPEN",
+        "Disposition": "ARREST - ADULT",
         "Report Date/Time": "04/24/23 17:55",
         "Crime": "GRAND THEFT 3RD DEGREE (>$5,000,<$10,000),BURGLAR Y OF STRUCTURE",
         "Start Date/Time": "04/22/23 09:38",
@@ -1496,7 +1496,7 @@
     "2023-1248": {
         "Disposition": "OPEN",
         "Report Date/Time": "04/25/23 17:50",
-        "Crime": "LEWD OR LASCIVIOUS BATTERY",
+        "Crime": "LEWD & LASCIVIOUS BATTERY",
         "Start Date/Time": "04/23/23 13:46",
         "Location": "323 PARRAMORE AVE NORTH",
         "End Date/Time": "04/23/2023 13:46",
@@ -1523,11 +1523,11 @@
     "2023-1278": {
         "Disposition": "ARREST - ADULT",
         "Report Date/Time": "04/26/23 14:57",
-        "Crime": "BATTERY (DATING VIOLENCE)",
+        "Crime": "BATTERY;DV",
         "Start Date/Time": "04/26/23 14:17",
         "Location": "4336 SCORPIUS ST",
         "End Date/Time": "04/26/2023 14:17",
-        "Campus": "UNSPECIFIED CAMPUS"
+        "Campus": "MAIN CAMPUS"
     },
     "2023-1279": {
         "Disposition": "OPEN",
@@ -1541,7 +1541,7 @@
     "2023-1291": {
         "Disposition": "CLOSED",
         "Report Date/Time": "04/28/23 11:10",
-        "Crime": "POSSESSION OF DRUG PARAPHERNALIA",
+        "Crime": "DRUG VIOLATION",
         "Start Date/Time": "04/28/23 10:05",
         "Location": "12550 GEMINI BLVD NORTH",
         "End Date/Time": "04/28/2023 10:05",
@@ -1559,16 +1559,16 @@
     "2023-1299": {
         "Disposition": "CLOSED",
         "Report Date/Time": "04/29/23 02:11",
-        "Crime": "POSSESSION OF CANNABIS &gt; 20 GRAMS,POSSESSION OF DRUG PARAPHERNALIA",
+        "Crime": "DRUG VIOLATION",
         "Start Date/Time": "04/29/23 12:06",
         "Location": "ALAFAYA TRL & WALDEN WOODS DR",
         "End Date/Time": "04/29/2023 01:07",
-        "Campus": "UNSPECIFIED CAMPUS"
+        "Campus": "MAIN CAMPUS"
     },
     "2023-1300": {
         "Disposition": "CLOSED",
         "Report Date/Time": "04/29/23 03:35",
-        "Crime": "POSSESSION OF CANNABIS &lt; 20 GRAMS",
+        "Crime": "DRUG VIOLATION",
         "Start Date/Time": "04/29/23 02:39",
         "Location": "GEMINI BLVD & AQUARIUS AGORA DR",
         "End Date/Time": "04/29/2023 02:51",
@@ -1577,7 +1577,7 @@
     "2023-1308": {
         "Disposition": "CLOSED",
         "Report Date/Time": "04/29/23 23:12",
-        "Crime": "POSSESSION OF CANNABIS &lt; 20 GRAMS,POSSESSION OF DRUG PARAPHERNALIA",
+        "Crime": "DRUG VIOLATION",
         "Start Date/Time": "04/29/23 10:42",
         "Location": "PARKING LOT B7",
         "End Date/Time": "04/29/2023 11:08",
@@ -1586,11 +1586,11 @@
     "2023-1309": {
         "Disposition": "CLOSED",
         "Report Date/Time": "04/30/23 02:18",
-        "Crime": "POSSESSION OF CANNABIS &lt; 20 GRAMS,POSSESSION OF DRUG PARAPHERNALIA",
+        "Crime": "DRUG VIOLATION",
         "Start Date/Time": "04/30/23 01:07",
         "Location": "ALAFAYA TRL & UNIVERSITY BLVD",
         "End Date/Time": "04/30/2023 01:26",
-        "Campus": "UNSPECIFIED CAMPUS"
+        "Campus": "MAIN CAMPUS"
     },
     "2023-1305": {
         "Disposition": "OPEN",
@@ -1627,5 +1627,23 @@
         "Location": "12715 PEGASUS DR",
         "End Date/Time": "05/03/2023 16:45",
         "Campus": "MAIN CAMPUS"
+    },
+    "2023-1360": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "05/07/23 09:43",
+        "Crime": "HIT AND RUN-ACC UNATTENDED VEH OR PROP WO LEA VING ID",
+        "Start Date/Time": "05/07/23 00:00",
+        "Location": "NORTH ORION & HOME RUN CT",
+        "End Date/Time": "05/07/2023 07:22",
+        "Campus": "MAIN CAMPUS"
+    },
+    "2023-1361": {
+        "Disposition": "OPEN",
+        "Report Date/Time": "05/07/23 22:43",
+        "Crime": "ASSAULT,PETIT THEFT",
+        "Start Date/Time": "05/07/23 14:57",
+        "Location": "514 LIVINGSTON ST WEST",
+        "End Date/Time": "05/07/2023 15:05",
+        "Campus": "UCF DOWNTOWN"
     }
 }

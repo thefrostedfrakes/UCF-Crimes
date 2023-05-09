@@ -7,10 +7,12 @@ Maverick Reynolds
 UCF Crimes
 '''
 
-from openai_key import API_KEY
+from configparser import ConfigParser
 import openai
 import json
 
+main_config = ConfigParser()
+main_config.read('config.ini')
 
 # Prompt engineering for the model
 # It seems to work pretty well even without the examples so that will be an option for us
@@ -43,6 +45,7 @@ def generate_prompt(title: str, provide_examples=True):
 
 # Use model to expand the titles of cases
 def gpt_title_expand(formatted_title, provide_examples=True):
+    API_KEY = main_config.get("DISCORD", "OPENAI_KEY")
     openai.api_key=API_KEY
     model='gpt-3.5-turbo' # Because this is way cheaper!
 
