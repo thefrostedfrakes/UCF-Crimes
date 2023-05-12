@@ -15,8 +15,8 @@ from loadcrimes import is_valid_date
 import string_adjustments as stradj
 import gpt_expand
 
-async def crime_sender(channel, key: str, crime: dict, GMaps_Key: str, crimeCount: int) -> int:
-    USE_GPT = False # Need key as well
+async def crime_sender(channel, key: str, crime: dict, GMaps_Key: str, crimeCount: int, locations: dict) -> int:
+    USE_GPT = True # Need key as well
 
     generate_image(crime, GMaps_Key)
 
@@ -32,9 +32,11 @@ async def crime_sender(channel, key: str, crime: dict, GMaps_Key: str, crimeCoun
         case_title = gpt_expand.gpt_title_expand(case_title, provide_examples=True)
     # Append emojis to title
     case_title = stradj.attach_emojis(case_title)
+
+    location = locations[crime["Location"]] if crime["Location"] in locations.keys() else crime["Location"]
     
     # Compose message
-    description = f"""Occurred at {stradj.gen_title(crime['Campus'])}, {stradj.replace_address(crime["Location"])}
+    description = f"""Occurred at {stradj.gen_title(crime['Campus'])}, {stradj.gen_title(location)}
 Case: {key}
 Reported on {report_date_time}
 Between {start_date_time} - {end_date_time}
@@ -83,11 +85,11 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
         if dict_key == "Location":
             for address in address_list:
                 if address in crime[dict_key]:
-                    crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount)
+                    crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount, locations)
 
         elif dict_key == "Report Date/Time":
             if datetime.strptime(crime[dict_key], '%m/%d/%y %H:%M').strftime('%m/%d/%y') == command_arg:
-                crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount)
+                crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount, locations)
     
     if (crimeCount == 0):
         await channel.send("No reported crimes.")

@@ -103,7 +103,7 @@ def parser(crime_list: list) -> list:
 
         if len(crime_list[i]) == 11:
             # Replace address before pushing
-            crime_list[i][ADDRESS_INDEX] = stradj.expand_address(crime_list[i][ADDRESS_INDEX])
+            crime_list[i][ADDRESS_INDEX] = stradj.replace_address(crime_list[i][ADDRESS_INDEX])
 
             crime_list[i][REP_DATE_INDEX] += " " + crime_list[i][REP_TIME_INDEX]
             crime_list[i][START_DATE_INDEX] += " " + crime_list[i][START_TIME_INDEX]

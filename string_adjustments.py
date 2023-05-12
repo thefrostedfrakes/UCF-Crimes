@@ -73,7 +73,8 @@ def expand_address(address: str) -> str:
 # Takes address and compares it to the locations.json file
 # Robust against varying word positions and typo errors
 # Returns gen_title() of address if no match is found
-def replace_address(expanded_addr: str) -> str:
+def replace_address(addr: str) -> str:
+    expanded_addr = expand_address(addr)
     txt_tokens = expanded_addr.split()
 
     with open('locations.json') as f:
@@ -99,9 +100,9 @@ def replace_address(expanded_addr: str) -> str:
 
         # If all tokens are within tolerance, locations is found
         if is_match:
-            return locs[key]
+            return key
     
     # Otherwise return original
-    return gen_title(expanded_addr)
+    return expanded_addr
 
 
