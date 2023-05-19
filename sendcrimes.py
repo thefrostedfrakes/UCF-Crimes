@@ -27,16 +27,18 @@ async def crime_sender(channel, key: str, crime: dict, GMaps_Key: str, crimeCoun
 
     # Format title
     case_title = stradj.case_title_format(crime["Crime"])
-    # Use language model after formatting if enabled
+    # Get emojis
+    case_emojis = stradj.get_emojis(case_title)
+    # Use language model AFTER formatting if enabled and AFTER emojis are retrieved
     if USE_GPT:
         case_title = gpt_expand.gpt_title_expand(case_title, provide_examples=True)
     # Append emojis to title
-    case_title = stradj.attach_emojis(case_title)
+    case_title += case_emojis
 
-    location = locations[crime["Location"]] if crime["Location"] in locations.keys() else crime["Location"]
+    location = crime["Location"] # replace_address already called in loadcrimes.py
     
     # Compose message
-    description = f"""Occurred at {stradj.gen_title(crime['Campus'])}, {stradj.gen_title(location)}
+    description = f"""Occurred at {stradj.gen_title(crime['Campus'])}, {location}
 Case: {key}
 Reported on {report_date_time}
 Between {start_date_time} - {end_date_time}

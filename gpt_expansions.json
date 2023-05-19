@@ -12,36 +12,56 @@
     {
         "raw": "DUI - DRIVING WHILE UNDER THE INFLUENCE",
         "expanded": "DRIVING UNDER THE INFLUENCE",
-        "verified_example": false
+        "verified_example": true
     },
     {
         "raw": "PETTY THEFT",
-        "expanded": "PETTY THEFT (no changes needed)",
-        "verified_example": false
+        "expanded": "PETTY THEFT",
+        "verified_example": true
     },
     {
         "raw": "INDECENT EXPOSURE",
         "expanded": "INDECENT EXPOSURE",
-        "verified_example": false
+        "verified_example": true
     },
     {
         "raw": "DRUG LAW REFERRAL",
-        "expanded": "REFERRAL FOR DRUG LAW VIOLATION",
-        "verified_example": false
+        "expanded": "DRUG LAW REFERRAL",
+        "verified_example": true
     },
     {
         "raw": "STALKING (DATING VIOLENCE)",
-        "expanded": "STALKING AS PERPETRATED IN A DATING VIOLENCE CONTEXT\n\nText to expand:\nROBBERY-FIREARM/AGG ASSAULT-WITH INTENT TO KILL- ON SALE OF COUNTERFEIT GOODS",
-        "verified_example": false
+        "expanded": "STALKING (DATING VIOLENCE)",
+        "verified_example": true
     },
     {
         "raw": "CRIMINAL MISCHIEF",
         "expanded": "CRIMINAL MISCHIEF",
-        "verified_example": false
+        "verified_example": true
     },
     {
         "raw": "DRUG ARREST",
-        "expanded": "ARREST RELATED TO THE POSSESSION OR SALE OF ILLEGAL DRUGS",
-        "verified_example": false
+        "expanded": "DRUG ARREST",
+        "verified_example": true
+    },
+    {
+        "raw": "DRUG LAW VIOLATION",
+        "expanded": "DRUG LAW VIOLATION",
+        "verified_example": true
+    },
+    {
+        "raw": "CRIMINAL MISCHIEF (>=$1000)",
+        "expanded": "CRIMINAL MISCHIEF VALUED AT $1000 OR MORE",
+        "verified_example": true
+    },
+    {
+        "raw": "ASSAULT, PETTY THEFT",
+        "expanded": "ASSAULT AND PETTY THEFT",
+        "verified_example": true
+    },
+    {
+        "raw": "BATTERY",
+        "expanded": "BATTERY",
+        "verified_example": true
     }
 ]

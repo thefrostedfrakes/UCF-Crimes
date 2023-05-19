@@ -23,7 +23,7 @@ def case_title_format(case_title: str) -> str:
 
 # Because emojis are fun
 # Reads from emojis.json (supports regex!)
-def attach_emojis(formatted_case_title: str) -> str:
+def get_emojis(formatted_case_title: str) -> str:
     with open('emojis.json', 'r', encoding="utf-8") as f:
         emojis: dict = json.load(f)
 
@@ -32,7 +32,7 @@ def attach_emojis(formatted_case_title: str) -> str:
         if re.search(emoji_txt, formatted_case_title.lower()):
             emoji_suffix += f' {emojis[emoji_txt]}' # Must use += and not .join() to preserve unicode
 
-    return formatted_case_title + emoji_suffix
+    return emoji_suffix
 
 
 # Returns title function applied to string with exceptions found in title_exceptions.json
@@ -52,6 +52,7 @@ def gen_title(str_upper: str) -> str:
 
 
 # Takes raw address and primes it for comparison
+# DO NOT USE, THIS IS A HELPER FUNCTION FOR REPLACE_ADDRESS()
 def expand_address(address: str) -> str:
     address = ' ' + address + ' '
     address = re.sub('\.', '', address)   # Remove periods
@@ -72,7 +73,7 @@ def expand_address(address: str) -> str:
 
 # Takes address and compares it to the locations.json file
 # Robust against varying word positions and typo errors
-# Returns gen_title() of address if no match is found
+# Returns gen_title() on the string if not found
 def replace_address(addr: str) -> str:
     expanded_addr = expand_address(addr)
     txt_tokens = expanded_addr.split()
@@ -86,7 +87,7 @@ def replace_address(addr: str) -> str:
         is_match = True
 
         # If numerical start, make sure it matches exactly
-        if re.match('\d+', txt_tokens[0]) and re.match('\d+', key_tokens[0]) and txt_tokens[0] != key_tokens[0]:
+        if re.match('\d', txt_tokens[0]) and re.match('\d', key_tokens[0]) and txt_tokens[0] != key_tokens[0]:
             is_match = False
             continue
 
@@ -100,9 +101,9 @@ def replace_address(addr: str) -> str:
 
         # If all tokens are within tolerance, locations is found
         if is_match:
-            return key
+            return locs[key]
     
-    # Otherwise return original
-    return expanded_addr
+    # Otherwise return titled version of expanded address
+    return gen_title(expanded_addr)
 
 
