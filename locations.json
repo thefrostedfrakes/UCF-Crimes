@@ -8,7 +8,7 @@
     "12898 NORTH GEMINI BLVD": "Garage D",
     "4220 MENSA LN": "Garage E",
     "4282 WEST PLAZA DR": "Garage G",
-    "12638 GEMINI BLVD NORTH": "Garage H",
+    "12638 GEMINI BLVD": "Garage H",
     "4277 GEMINI BLVD WEST": "Garage I",
     "3820 LIBRA DR": "Libra Garage",
     
@@ -26,20 +26,25 @@
     "4032 LIBRA DR": "Libra Orange Hall",
     "12612 GEMINI BLVD NORTH": "Lake Claire Building 55",
     "12600 GEMINI BLVD NORTH": "Lake Claire Building 57",
+    "12544 GEMINI BLVD NORTH": "Lake Claire Building 70",
     "4274 PLAZA DR WEST": "Tower 1",
     "4290 WEST PLAZA DR": "Tower 2",
     "4167 MENSA LN": "Tower 3",
+    "4291 MENSA LN": "Tower 4",
     
     "4144 GREEK PARK DR": "Chi Omega",
+    "4304 GREEK PARK DR": "Pi Beta Phi",
     
     "12777 GEMINI BLVD": "Addition Arena",
+    "12701 SCHOLARSHIP DR": "Barbara Ying Center",
     "4123 PICTOR LN": "UCF Alumni Center",
     "4233 PLAZA DR EAST": "Burger U.",
     "4336 SCORPIUS ST": "College of Business Administration",
     "4090 LIBRA DR": "CAPS Building",
-    "12601 AQUARIUS AGORA DR": "Classroom Building 1",
+    "12601 AQUARIUS AGORA DR": "Classroom Building I",
     "4250 WEST PLAZA DR": "Domino's Pizza at Knights Plaza",
     "12585 GEMINI BLVD SOUTH": "Duke Energy Welcome Center",
+    "12805 PEGASUS DR": "College of Health Sciences",
     "12701 PEGASUS DR": "John C. Hitt Library",
     "12795 AQUARIUS AGORA DR": "John T. Washington Center Breezeway",
     "12550 GEMINI BLVD NORTH": "Lake Claire Pavillion",
@@ -48,6 +53,7 @@
     "MEMORY MALL": "Memory Mall",
     "4365 ANDROMEDA LOOP NORTH": "Millican Hall",
     "PYXIS LN": "near Apollo Community",
+    "GEMINI BLVD EAST": "near UCF Arboretum",
     "12715 PEGASUS": "Student Union",
     "12704 PEGASUS": "Tech Commons",
     "4356 SCORPIUS ST": "UCF Global",
@@ -73,12 +79,12 @@
     "NORTH GOLDENROD RD": "Cranes Landing",
     "3600 KHAYYAM AVE": "Phi Delta Theta",
     
-    "400 AMELIA ST WEST": "UCF Amelia I Parking Garage",
+    "AMELIA ST WEST": "Amelia Parking Garage",
     "514 LIVINGSTON ST": "Dr. Philips Academic Commons",
     "528 LIVINGSTON ST": "Dr. Philips Academic Commons",
     "9907 UNIVERSAL BLVD": "Rosen College Apartments",
     "480 TERRY AVE NORTH": "The Julian",
     "401 LIVINGSTON ST WEST": "Bob Carr Theater",
     "601 LIVINGSTON ST": "UnionWest Student Living",
-    "323 PARRAMORE": "Parramore Parking Garage"
+    "PARRAMORE": "Parramore Parking Garage"
 }

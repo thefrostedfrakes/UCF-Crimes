@@ -12,5 +12,5 @@ The UCF Crimes Discord has ability to query over dates and locations. More optio
 
 ## Connect
 
-- IG: @ucfcrimes
+- IG: [@ucfcrimes](https://www.instagram.com/ucfcrimes)
 - Discord: [UCF Crimes](https://discord.gg/NEEbsbu8Np)
