@@ -9,6 +9,7 @@ UCF Crimes
 import re
 import editdistance
 import json
+from selenium_scrape import selenium_scrape
 
 TYPO_TOLERANCE = 1
 
@@ -73,11 +74,13 @@ def expand_address(address: str) -> str:
 
 # Takes address and compares it to the locations.json file
 # Robust against varying word positions and typo errors
-# Returns gen_title() on the string if not found
-def replace_address(addr: str) -> str:
+# If selenium scraping is enabled, will use that as a backup
+# Returns gen_title() on the string if nothing is found as a last resort
+def replace_address(addr: str, try_selenium=False) -> str:
     expanded_addr = expand_address(addr)
     txt_tokens = expanded_addr.split()
 
+    # Start by looking through the address
     with open('locations.json') as f:
         locs: dict[str] = json.load(f)
 
@@ -103,6 +106,11 @@ def replace_address(addr: str) -> str:
         if is_match:
             return locs[key]
     
+    # Try Selenium if enabled
+    if try_selenium:
+        if (selenium_result := selenium_scrape(expanded_addr)):
+            return selenium_result
+
     # Otherwise return titled version of expanded address
     return gen_title(expanded_addr)
 
