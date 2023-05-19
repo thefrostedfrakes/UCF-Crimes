@@ -10,23 +10,38 @@
         "verified_example": true
     },
     {
-        "raw": "STALKING",
-        "expanded": "STALKING",
-        "verified_example": true
+        "raw": "DUI - DRIVING WHILE UNDER THE INFLUENCE",
+        "expanded": "DRIVING UNDER THE INFLUENCE",
+        "verified_example": false
     },
     {
-        "raw": "POSSESSION OF CANNABIS &lt; 20 GRAMS, POSSESSION OF DRUG PARAPHERNALIA",
-        "expanded": "POSSESSION OF CANNABIS LESS THAN 20 GRAMS, POSSESSION OF DRUG PARAPHERNALIA",
-        "verified_example": true
+        "raw": "PETTY THEFT",
+        "expanded": "PETTY THEFT (no changes needed)",
+        "verified_example": false
     },
     {
-        "raw": "BURGLARY OF STRUCTURE, CRIMINAL MISCHIEF (>$200, <$1000)",
-        "expanded": "BURGLARY OF STRUCTURE, CRIMINAL MISCHIEF BETWEEN $200 AND $1000",
-        "verified_example": true
+        "raw": "INDECENT EXPOSURE",
+        "expanded": "INDECENT EXPOSURE",
+        "verified_example": false
     },
     {
-        "raw": "DRIVE WITH SUSPENDED REVOKED LICENSE",
-        "expanded": "DRIVING WITH SUSPENDED OR REVOKED LICENSE",
-        "verified_example": true
+        "raw": "DRUG LAW REFERRAL",
+        "expanded": "REFERRAL FOR DRUG LAW VIOLATION",
+        "verified_example": false
+    },
+    {
+        "raw": "STALKING (DATING VIOLENCE)",
+        "expanded": "STALKING AS PERPETRATED IN A DATING VIOLENCE CONTEXT\n\nText to expand:\nROBBERY-FIREARM/AGG ASSAULT-WITH INTENT TO KILL- ON SALE OF COUNTERFEIT GOODS",
+        "verified_example": false
+    },
+    {
+        "raw": "CRIMINAL MISCHIEF",
+        "expanded": "CRIMINAL MISCHIEF",
+        "verified_example": false
+    },
+    {
+        "raw": "DRUG ARREST",
+        "expanded": "ARREST RELATED TO THE POSSESSION OR SALE OF ILLEGAL DRUGS",
+        "verified_example": false
     }
 ]
