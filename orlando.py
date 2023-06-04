@@ -31,8 +31,19 @@ def load_orlando_active() -> None:
     for call in active_dict["CALLS"]["CALL"]:
         print(call)
 
+    try:
+        with open('orlando.json', 'r') as f:
+            crimes_dict = json.load(f)
+            
+        for crime in active_dict["CALLS"]["CALL"]:
+            if crime not in crimes_dict["CALLS"]["CALL"]:
+                crimes_dict["CALLS"]["CALL"].insert(0, crime)
+
+    except FileNotFoundError:
+        crimes_dict = active_dict
+
     with open('orlando.json', 'w') as f:
-        json.dump(active_dict, f, indent=4)
+        json.dump(crimes_dict, f, indent=4)
     
 # Send contents of JSON and heatmap to UCF Crimes Discord bot channel.
 async def send_orlando_active(client, channel_id: str, API_key: str) -> None:

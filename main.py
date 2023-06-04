@@ -15,7 +15,7 @@ from configparser import ConfigParser
 from loadcrimes import crime_load, backup_crimes
 from sendcrimes import crime_send, list_locations
 from image import generate_heatmap
-from orlando import send_orlando_active
+from orlando import load_orlando_active, send_orlando_active
 
 intents = discord.Intents.all()
 client = commands.Bot(intents=intents, command_prefix = '-')
@@ -28,8 +28,13 @@ main_config.read('config.ini')
 async def on_ready():
     print("CrimeBot is online!")
     await client.wait_until_ready()
+    orlando_counter = 0
 
     while not client.is_closed():
+        if orlando_counter >= 600:
+            load_orlando_active()
+            orlando_counter = 0
+
         t = time.localtime()
         current_time = time.strftime("%H:%M:%S", t)
 
@@ -43,6 +48,8 @@ async def on_ready():
 
         if current_time == "00:06:00":
             backup_crimes()
+
+        orlando_counter += 1
 
         await asyncio.sleep(1)
 
