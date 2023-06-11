@@ -28,9 +28,6 @@ def load_orlando_active() -> None:
 
     active_dict = xmltodict.parse(str(soup))
 
-    for call in active_dict["CALLS"]["CALL"]:
-        print(call)
-
     try:
         with open('orlando.json', 'r') as f:
             crimes_dict = json.load(f)
@@ -44,6 +41,8 @@ def load_orlando_active() -> None:
 
     with open('orlando.json', 'w') as f:
         json.dump(crimes_dict, f, indent=4)
+
+    print("orlando.json refreshed.")
     
 # Send contents of JSON and heatmap to UCF Crimes Discord bot channel.
 async def send_orlando_active(client, channel_id: str, API_key: str) -> None:
@@ -91,3 +90,12 @@ LOCATION: {call['LOCATION']} - {call['DISTRICT']} District""", inline=False)
     img.save('orlando_heatmap.png')
 
     await channel.send(file=discord.File("./orlando_heatmap.png"))
+
+def check_orlando_size() -> None:
+    with open('orlando.json', 'r') as f:
+        crime_dict = json.load(f)
+
+    print("Current number of entries in orlando.json:", len(crime_dict["CALLS"]["CALL"]))
+
+if __name__ == '__main__':
+    check_orlando_size()
