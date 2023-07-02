@@ -74,23 +74,25 @@ def parser(crime_list: list) -> list:
     crime_list_len = len(crime_list)
 
     for i in range(crime_list_len):
-        for j, elem in enumerate(crime_list[i]):
-            if elem == "ARREST":
-                crime_list[i][j] += " " + crime_list[i][j+1] + " " + crime_list[i][j+2]
-                crime_list[i].remove(crime_list[i][j+1])
-                crime_list[i].remove(crime_list[i][j+1])
-            
-            elif elem == "EXC":
-                crime_list[i][j] += " " + crime_list[i][j+1] + " " + crime_list[i][j+2] + " " + crime_list[i][j+3]
-                crime_list[i].remove(crime_list[i][j+1])
-                crime_list[i].remove(crime_list[i][j+1])
-                crime_list[i].remove(crime_list[i][j+1])
-
-            elif is_valid_time_label(crime_list[i][j]):
-                j += 1
-                while j + 1 < len(crime_list[i]) and not is_valid_date(crime_list[i][j+1]) and not is_valid_time_label(crime_list[i][j+1]):
-                    crime_list[i][j] += " " + crime_list[i][j+1]
+        try:
+            for j, elem in enumerate(crime_list[i]):
+                if elem == "ARREST":
+                    crime_list[i][j] += " " + crime_list[i][j+1] + " " + crime_list[i][j+2]
                     crime_list[i].remove(crime_list[i][j+1])
+                    crime_list[i].remove(crime_list[i][j+1])
+                
+                elif elem == "EXC":
+                    crime_list[i][j] += " " + crime_list[i][j+1] + " " + crime_list[i][j+2] + " " + crime_list[i][j+3]
+                    crime_list[i].remove(crime_list[i][j+1])
+                    crime_list[i].remove(crime_list[i][j+1])
+                    crime_list[i].remove(crime_list[i][j+1])
+
+                elif is_valid_time_label(crime_list[i][j]):
+                    j += 1
+                    while j + 1 < len(crime_list[i]) and not is_valid_date(crime_list[i][j+1]) and not is_valid_time_label(crime_list[i][j+1]):
+                        crime_list[i][j] += " " + crime_list[i][j+1]
+                        crime_list[i].remove(crime_list[i][j+1])
+        except IndexError: continue
 
         try:
             if is_valid_date(crime_list[i][4][-8:]):
