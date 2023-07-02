@@ -38,15 +38,15 @@ async def on_ready():
         t = time.localtime()
         current_time = time.strftime("%H:%M:%S", t)
 
-        if current_time == "00:04:30":
+        if current_time == "00:05:00":
             crime_load('-addcrimes')
 
-        if current_time == "00:05:00":
+        if current_time == "00:30:00":
             today = date.today()
             yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
             await crime_send(client, yesterday, main_config.get("DISCORD", "CRIME_CHANNEL_ID"), main_config.get("DISCORD", "GMAPS_API_KEY"))
 
-        if current_time == "00:06:00":
+        if current_time == "01:00:00":
             backup_crimes()
 
         orlando_counter += 1
