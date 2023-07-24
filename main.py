@@ -13,7 +13,7 @@ import asyncio
 import json
 from configparser import ConfigParser
 from loadcrimes import crime_load, backup_crimes
-from sendcrimes import crime_send, list_locations, help_menu
+from sendcrimes import crime_send, list_locations, list_crimes, help_menu
 from image import generate_heatmap
 from orlando import load_orlando_active, send_orlando_active
 
@@ -68,7 +68,10 @@ async def on_message(message):
 
     elif message.content.startswith('-crimes'):
         str = message.content[8:]
-        await crime_send(client, str, main_config.get("DISCORD", "CRIME_CHANNEL_ID"), main_config.get("DISCORD", "GMAPS_API_KEY"))
+        if str == "":
+            await list_crimes(message)
+        else:
+            await crime_send(client, str, main_config.get("DISCORD", "CRIME_CHANNEL_ID"), main_config.get("DISCORD", "GMAPS_API_KEY"))
 
     elif message.content.startswith('-backup'):
         backup_crimes()

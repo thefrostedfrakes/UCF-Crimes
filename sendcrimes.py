@@ -124,6 +124,32 @@ async def list_locations(message) -> None:
 
     await message.channel.send(embed=embed)
 
+async def list_crimes(message):
+    with open('crimes.json', 'r') as f:
+        crimes = json.load(f)
+
+    crime_list = {}
+    for key, crime in crimes.items():
+        if crime["Crime"] not in crime_list.keys():
+            crime_list[crime["Crime"]] = 1
+        else:
+            crime_list[crime["Crime"]] += 1
+        
+    fieldCount = 0
+    page = 1
+    embed = discord.Embed(title="All Crime Names in Database (Page " + str(page) + "):", color=discord.Color.blue())
+    for key, value in crime_list.items():
+        fieldCount += 1
+        if (fieldCount > 25):
+            page += 1
+            await message.channel.send(embed=embed)
+            embed = discord.Embed(title="All Crime Names in Database (Page " + str(page) + "):", color=discord.Color.blue())
+            fieldCount = 0
+            
+        embed.add_field(name=key, value=f"Number of crimes in database: {value}", inline=False)
+
+    await message.channel.send(embed=embed)
+
 async def help_menu(message):
     embed = discord.Embed(
         title = "UCF CRIMES HELP MENU",
