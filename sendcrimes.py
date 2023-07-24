@@ -71,9 +71,8 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
 
         except ValueError:
             date_str = datetime.strptime(command_arg, "%m/%d/%Y").strftime("%A, %B %d, %Y")
-            
         dict_key = "Report Date/Time"
-        # command_arg = datetime.strptime(command_arg, "%m/%d/%y").strftime("%m/%d/%y")
+        command_arg = datetime.strptime(command_arg, "%m/%d/%y").strftime("%m/%d/%y")
         await channel.send("Reported Crimes for %s" % (date_str))
 
     else:
@@ -84,18 +83,21 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
                 address_list.append(key)
 
         if len(address_list) == 0:
-            await channel.send("Please specify a date, location, etc.")
-            return
+            dict_key = "Crime"
  
     crimeCount = 0
     for key, crime in crimes.items():
         if dict_key == "Location":
             for address in address_list:
-                if address in crime[dict_key]:
+                if address in crime.get(dict_key):
                     crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount, locations)
 
         elif dict_key == "Report Date/Time":
-            if datetime.strptime(crime[dict_key], '%m/%d/%y %H:%M').strftime('%m/%d/%y') == command_arg:
+            if datetime.strptime(crime.get(dict_key), '%m/%d/%y %H:%M').strftime('%m/%d/%y') == command_arg:
+                crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount, locations)
+
+        elif dict_key == "Crime":
+            if crime.get(dict_key).lower() == command_arg.lower():
                 crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount, locations)
     
     if (crimeCount == 0):
