@@ -12,7 +12,7 @@ from datetime import date, timedelta
 import asyncio
 import json
 from configparser import ConfigParser
-from loadcrimes import crime_load, backup_crimes
+from loadcrimes import crime_load, backup_crimes, load_crime_and_status_lists
 from sendcrimes import crime_send, list_locations, list_crimes, help_menu
 from image import generate_heatmap
 from orlando import load_orlando_active, send_orlando_active
@@ -49,6 +49,9 @@ async def on_ready():
         if current_time == "01:00:00":
             backup_crimes()
 
+        if current_time == "01:05:00":
+            load_crime_and_status_lists()
+
         orlando_counter += 1
 
         await asyncio.sleep(1)
@@ -75,6 +78,12 @@ async def on_message(message):
 
     elif message.content.startswith('-backup'):
         backup_crimes()
+
+    elif message.content.startswith('-crime-status-list'):
+        if not message.author.guild_permissions.administrator:
+            await message.reply('Sorry, you do not have permission to use this command!')
+            return
+        load_crime_and_status_lists()
 
     elif message.content.startswith('-locations'):
         await list_locations(message)

@@ -105,7 +105,7 @@ def parser(crime_list: list) -> list:
 
         if len(crime_list[i]) == 11:
             # Replace address before pushing
-            crime_list[i][ADDRESS_INDEX] = stradj.replace_address(crime_list[i][ADDRESS_INDEX], try_selenium=False)
+            crime_list[i][ADDRESS_INDEX] = stradj.replace_address(crime_list[i][ADDRESS_INDEX], try_selenium=True)
 
             crime_list[i][REP_DATE_INDEX] += " " + crime_list[i][REP_TIME_INDEX]
             crime_list[i][START_DATE_INDEX] += " " + crime_list[i][START_TIME_INDEX]
@@ -180,3 +180,28 @@ def backup_crimes() -> None:
     
     with open(('./backups/' + backup_json_name), 'w') as f:
         json.dump(crime_dict, f, indent=4)
+
+# Load list of crimes by crime type and status
+def load_crime_and_status_lists():
+    with open('crimes.json', 'r') as f:
+        crimes = json.load(f)
+
+    crime_list = {}
+    status_list = {}
+    for key, crime in crimes.items():
+        if crime["Crime"] not in crime_list.keys():
+            crime_list[crime["Crime"]] = 1
+        else:
+            crime_list[crime["Crime"]] += 1
+
+        if crime["Disposition"] not in status_list.keys():
+            status_list[crime["Disposition"]] = 1
+        else:
+            status_list[crime["Disposition"]] += 1
+
+    with open('crime_list.json', 'w') as f:
+        json.dump(crime_list, f, indent=4)
+
+    with open('status_list.json', 'w') as f:
+        json.dump(status_list, f, indent=4)
+ 

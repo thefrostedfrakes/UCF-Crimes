@@ -16,7 +16,7 @@ import string_adjustments as stradj
 import gpt_expand
 
 async def crime_sender(channel, key: str, crime: dict, GMaps_Key: str, crimeCount: int, locations: dict) -> int:
-    USE_GPT = True # Need key as well
+    USE_GPT = False # Need key as well
 
     generate_image(crime, GMaps_Key)
 
@@ -65,6 +65,12 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
     with open('locations.json', 'r') as f:
         locations = json.load(f)
 
+    with open('crime_list.json', 'r') as f:
+        crime_list = json.load(f)
+
+    with open('status_list.json', 'r') as f:
+        status_list = json.load(f)
+
     if is_valid_date(command_arg):
         try:
             date_str = datetime.strptime(command_arg, "%m/%d/%y").strftime("%A, %B %d, %Y")
@@ -75,6 +81,12 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
         command_arg = datetime.strptime(command_arg, "%m/%d/%y").strftime("%m/%d/%y")
         await channel.send("Reported Crimes for %s" % (date_str))
 
+    elif crime_list.get(command_arg.upper()) is not None:
+        dict_key = "Crime"
+
+    elif status_list.get(command_arg.upper()) is not None:
+        dict_key = "Disposition"
+
     else:
         address_list = []
         for key, val in locations.items():
@@ -84,7 +96,8 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
                 address_list.append(key)
 
         if len(address_list) == 0:
-            dict_key = "Crime"
+            await channel.send("Please search for a crime by type, valid date, or valid location.")
+            return
  
     crimeCount = 0
     for key, crime in crimes.items():
@@ -97,10 +110,10 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
             if datetime.strptime(crime.get(dict_key), '%m/%d/%y %H:%M').strftime('%m/%d/%y') == command_arg:
                 crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount, locations)
 
-        elif dict_key == "Crime":
+        elif dict_key == "Crime" or dict_key == "Disposition":
             if crime.get(dict_key).lower() == command_arg.lower():
                 crimeCount = await crime_sender(channel, key, crime, GMaps_Key, crimeCount, locations)
-    
+
     if (crimeCount == 0):
         await channel.send("No reported crimes.")
     else:
@@ -126,15 +139,8 @@ async def list_locations(message) -> None:
     await message.channel.send(embed=embed)
 
 async def list_crimes(message):
-    with open('crimes.json', 'r') as f:
-        crimes = json.load(f)
-
-    crime_list = {}
-    for key, crime in crimes.items():
-        if crime["Crime"] not in crime_list.keys():
-            crime_list[crime["Crime"]] = 1
-        else:
-            crime_list[crime["Crime"]] += 1
+    with open('crime_list.json', 'r') as f:
+        crime_list = json.load(f)
         
     fieldCount = 0
     page = 1
