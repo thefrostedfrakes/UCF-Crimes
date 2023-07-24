@@ -13,7 +13,7 @@ import asyncio
 import json
 from configparser import ConfigParser
 from loadcrimes import crime_load, backup_crimes
-from sendcrimes import crime_send, list_locations
+from sendcrimes import crime_send, list_locations, help_menu
 from image import generate_heatmap
 from orlando import load_orlando_active, send_orlando_active
 
@@ -57,7 +57,10 @@ async def on_ready():
 async def on_message(message):
     print('User %s just sent this message in %s: %s' % (message.author, message.channel.name, message.content))
 
-    if message.content.startswith('-loadcrimes') or message.content.startswith('-addcrimes'):
+    if message.content.startswith('-help'):
+        await help_menu(message)
+
+    elif message.content.startswith('-loadcrimes') or message.content.startswith('-addcrimes'):
         if not message.author.guild_permissions.administrator:
             await message.reply('Sorry, you do not have permission to use this command!')
             return

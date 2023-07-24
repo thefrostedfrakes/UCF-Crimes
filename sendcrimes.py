@@ -123,3 +123,17 @@ async def list_locations(message) -> None:
         embed.add_field(name=val, value=key, inline=False)
 
     await message.channel.send(embed=embed)
+
+async def help_menu(message):
+    embed = discord.Embed(
+        title = "UCF CRIMES HELP MENU",
+        description = "Available commands:\n\n"
+            + "-crimes (date, location, crime)\n"
+            + "Provides user with all found crimes from their query command\n"
+            + "Example: '-crimes 7/22/23' or '-crimes Garage A'\n\n"
+            + "-locations\n"
+            + "Gives a list of all available locations in the database\n",
+        color = discord.Color.red()
+    )
+
+    message_embed = await message.channel.send(embed=embed)
