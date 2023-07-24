@@ -78,8 +78,9 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
     else:
         address_list = []
         for key, val in locations.items():
-            if val == command_arg or key.lower().title() == command_arg or key == command_arg:
+            if val.lower() == command_arg.lower() or key.lower() == command_arg.lower():
                 dict_key = "Location"
+                address_list.append(val)
                 address_list.append(key)
 
         if len(address_list) == 0:
