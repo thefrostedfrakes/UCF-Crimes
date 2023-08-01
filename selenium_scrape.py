@@ -7,13 +7,14 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from bs4 import BeautifulSoup
 
-CHROME_DRIVER_PATH = 'C:/Users/<XXXX>/documents/chromedriver_win32/chromedriver.exe'
+CHROME_WINDOWS_PATH = 'C:/Users/<XXXX>/documents/chromedriver_win32/chromedriver.exe'
+CHROME_LINUX_PATH = '/home/<XXXX>/.cache/selenium/chromedriver/linux64/114.0.5735.90/chromedriver'
 
 # Uses Selenium to get the top result in 'Most Popular Places at this Location' subsection
 # Takes a while tho
 # Enter the path to your chromedriver.exe file in the service variable
 # HELPER FUNCTION FOR REPLACE_ADDRESS()
-def selenium_scrape(expanded_address: str):
+def selenium_scrape(expanded_address: str, windows: bool = False):
     TARGET_CLASS = 'fpqsoc'
 
     # prepare a google search url for a request
@@ -22,8 +23,8 @@ def selenium_scrape(expanded_address: str):
     # Set up Selenium webdriver
     options = Options()
     options.add_argument('--headless')
-    service = Service(CHROME_DRIVER_PATH)
-    driver = webdriver.Chrome(service=service, options=options)
+    service = Service(CHROME_WINDOWS_PATH if windows else CHROME_LINUX_PATH)        
+    driver = webdriver.Chrome(options=options, service=service)
 
     # Get the page and wait for the js to run
     driver.get(url)

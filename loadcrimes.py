@@ -104,9 +104,6 @@ def parser(crime_list: list) -> list:
             crime_list[i].append("UNSPECIFIED CAMPUS")
 
         if len(crime_list[i]) == 11:
-            # Replace address before pushing
-            crime_list[i][ADDRESS_INDEX] = stradj.replace_address(crime_list[i][ADDRESS_INDEX], try_selenium=True)
-
             crime_list[i][REP_DATE_INDEX] += " " + crime_list[i][REP_TIME_INDEX]
             crime_list[i][START_DATE_INDEX] += " " + crime_list[i][START_TIME_INDEX]
             crime_list[i][END_DATE_INDEX] += " " + crime_list[i][END_TIME_INDEX]
@@ -133,9 +130,18 @@ def load_to_json(crime_list: list, command_str: str) -> None:
         if len(crime) == 8:
             if crime[1] not in crimes_dict:
                 crimes_dict[crime[1]] = {}
+                needs_addr_replace = True
+            else:
+                needs_addr_replace = False
+
             i = 0
             for key in keys:
-                crimes_dict[crime[1]][key] = crime[i]
+                # Replace address before pushing
+                if key == "Location" and needs_addr_replace:
+                    crimes_dict[crime[1]][key] = stradj.replace_address(crime[i], try_selenium=True)
+                elif key != "Location":
+                    crimes_dict[crime[1]][key] = crime[i]
+                    
                 if i == 0: i = 2
                 else: i += 1
 
