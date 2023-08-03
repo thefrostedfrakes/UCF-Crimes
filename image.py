@@ -19,7 +19,10 @@ def generate_image(crime: dict, API_key: str) -> None:
     context.set_tile_provider(staticmaps.tile_provider_OSM)
 
     gmaps_key = googlemaps.Client(key=API_key)
-    g = gmaps_key.geocode(f'{crime["Location"].replace("/", "")} Orlando FL, US.')
+    if crime["Address"] is not None:
+        g = gmaps_key.geocode(f'{crime["Address"].replace("/", "")} Orlando FL, US.')
+    else:
+        g = gmaps_key.geocode('Orlando FL, US.')
     lat = g[0]["geometry"]["location"]["lat"]
     long = g[0]["geometry"]["location"]["lng"]
     loc = staticmaps.create_latlng(lat, long)

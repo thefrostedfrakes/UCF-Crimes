@@ -63,7 +63,6 @@ def tokenizer(page) -> list:
 # Parses each crime element by grouping unjoined tokens together that correspond to the same
 # dictionary key.
 def parser(crime_list: list) -> list:
-    ADDRESS_INDEX = 7 
     REP_DATE_INDEX = 2
     REP_TIME_INDEX = 3
     START_DATE_INDEX = 5
@@ -117,7 +116,7 @@ def parser(crime_list: list) -> list:
 def load_to_json(crime_list: list, command_str: str) -> None:
     keys = ["Disposition", "Report Date/Time",
             "Crime", "Start Date/Time", "Location", 
-            "End Date/Time", "Campus"]
+            "End Date/Time", "Campus", "Address"]
     
     if command_str == '-loadcrimes':
         crimes_dict = {}
@@ -139,6 +138,10 @@ def load_to_json(crime_list: list, command_str: str) -> None:
                 # Replace address before pushing
                 if key == "Location" and needs_addr_replace:
                     crimes_dict[crime[1]][key] = stradj.replace_address(crime[i], try_selenium=True)
+
+                elif key == "Address":
+                    crimes_dict[crime[1]][key] = crime[5]
+                
                 elif key != "Location":
                     crimes_dict[crime[1]][key] = crime[i]
                     
