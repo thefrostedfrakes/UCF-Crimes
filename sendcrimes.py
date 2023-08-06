@@ -74,11 +74,14 @@ async def crime_send(client: commands.Bot, command_arg: str, channel_id: str, GM
     if is_valid_date(command_arg):
         try:
             date_str = datetime.strptime(command_arg, "%m/%d/%y").strftime("%A, %B %d, %Y")
+            command_arg = datetime.strptime(command_arg, "%m/%d/%y").strftime("%m/%d/%y")
 
         except ValueError:
             date_str = datetime.strptime(command_arg, "%m/%d/%Y").strftime("%A, %B %d, %Y")
+            command_arg = datetime.strptime(command_arg, "%m/%d/%Y").strftime("%m/%d/%y")
+
         dict_key = "Report Date/Time"
-        command_arg = datetime.strptime(command_arg, "%m/%d/%y").strftime("%m/%d/%y")
+        
         await channel.send("Reported Crimes for %s" % (date_str))
 
     elif crime_list.get(command_arg.upper()) is not None:
