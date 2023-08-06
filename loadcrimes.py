@@ -140,7 +140,7 @@ def load_to_json(crime_list: list, command_str: str) -> None:
                     crimes_dict[crime[1]][key] = stradj.replace_address(crime[i], try_selenium=True)
 
                 elif key == "Address":
-                    crimes_dict[crime[1]][key] = crime[5]
+                    crimes_dict[crime[1]][key] = stradj.replace_address(crime[5], location_name=False)
                 
                 elif key != "Location":
                     crimes_dict[crime[1]][key] = crime[i]

@@ -76,7 +76,7 @@ def expand_address(address: str) -> str:
 # Robust against varying word positions and typo errors
 # If selenium scraping is enabled, will use that as a backup
 # Returns gen_title() on the string if nothing is found as a last resort
-def replace_address(addr: str, try_selenium=False) -> str:
+def replace_address(addr: str, location_name=True, try_selenium=False) -> str:
     expanded_addr = expand_address(addr)
     txt_tokens = expanded_addr.split()
 
@@ -103,8 +103,11 @@ def replace_address(addr: str, try_selenium=False) -> str:
                 break
 
         # If all tokens are within tolerance, locations is found
-        if is_match:
+        if is_match and location_name:
             return locs[key]
+
+        elif is_match and not location_name:
+            return key
     
     # Try Selenium if enabled
     if try_selenium:
