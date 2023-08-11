@@ -19,7 +19,7 @@ def generate_image(crime: dict, API_key: str) -> None:
     context.set_tile_provider(staticmaps.tile_provider_OSM)
 
     gmaps_key = googlemaps.Client(key=API_key)
-    if crime["Address"] is not None:
+    if crime.get("Address") is not None:
         g = gmaps_key.geocode(f'{crime["Address"].replace("/", "")} Orlando FL, US.')
     else:
         g = gmaps_key.geocode('Orlando FL, US.')
@@ -45,18 +45,21 @@ def generate_image(crime: dict, API_key: str) -> None:
     draw.line((696, 700, 1080, 700), fill=(0, 0, 0), width=10)
     im1.save('caseout.png', quality=100)
 
-async def generate_heatmap(message, command_arg: str, API_key: str) -> None:
-    await message.channel.send("Generating Heatmap... This May Take a Moment...")
+async def generate_heatmap(interaction: discord.Interaction, command_arg: str, API_key: str) -> None:
+    await interaction.response.defer()
+    await interaction.followup.send("Generating Heatmap... This May Take a Moment...")
     
     with open('crimes.json', 'r') as f:
         crimes = json.load(f)
     
-    if command_arg.title().startswith('Downtown'):
+    if command_arg.title().startswith('Main'):
+        coords = [28.60, -81.20]
+    elif command_arg.title().startswith('Downtown'):
         coords = [28.55, -81.39]
     elif command_arg.title().startswith('Rosen'):
         coords = [28.43, -81.44]
     else:
-        coords = [28.60, -81.20]
+        return await interaction.followup.edit("Please choose from one of these campuses: Main, Downtown, or Rosen.")
 
     gmaps_key = googlemaps.Client(key=API_key)
     m = folium.Map(location=coords, zoom_start=15)
@@ -78,4 +81,4 @@ async def generate_heatmap(message, command_arg: str, API_key: str) -> None:
     img.crop()
     img.save('heatmap.png')
 
-    await message.channel.send(file=discord.File("./heatmap.png"))
+    await interaction.followup.send(file=discord.File("./heatmap.png"))
