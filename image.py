@@ -5,27 +5,22 @@ Written by Jack Sweeney, Ethan Frakes
 
 '''
 
-import googlemaps
 import staticmaps
-from PIL import Image, ImageDraw, ImageFilter
-import json
+from PIL import Image, ImageDraw
+import pandas as pd
 import folium
 from folium.plugins import HeatMap
 import io
 import discord
+import math
 
-def generate_image(crime: dict, API_key: str) -> None:
+def generate_image(crime: pd.Series) -> None:
     context = staticmaps.Context()
     context.set_tile_provider(staticmaps.tile_provider_OSM)
 
-    gmaps_key = googlemaps.Client(key=API_key)
-    if crime.get("Address") is not None:
-        g = gmaps_key.geocode(f'{crime["Address"].replace("/", "")} Orlando FL, US.')
-    else:
-        g = gmaps_key.geocode('Orlando FL, US.')
-    lat = g[0]["geometry"]["location"]["lat"]
-    long = g[0]["geometry"]["location"]["lng"]
-    loc = staticmaps.create_latlng(lat, long)
+    lat = crime["lat"]
+    lng = crime["lng"]
+    loc = staticmaps.create_latlng(lat, lng)
     context.add_object(staticmaps.Marker(loc, color=staticmaps.RED, size=12))
 
     # render anti-aliased png (this only works if pycairo is installed)
@@ -45,12 +40,11 @@ def generate_image(crime: dict, API_key: str) -> None:
     draw.line((696, 700, 1080, 700), fill=(0, 0, 0), width=10)
     im1.save('caseout.png', quality=100)
 
-async def generate_heatmap(interaction: discord.Interaction, command_arg: str, API_key: str) -> None:
+async def generate_heatmap(interaction: discord.Interaction, command_arg: str) -> None:
     await interaction.response.defer()
     await interaction.followup.send("Generating Heatmap... This May Take a Moment...")
     
-    with open('crimes.json', 'r') as f:
-        crimes = json.load(f)
+    crimes = pd.read_csv('crimes.csv')
     
     if command_arg.title().startswith('Main'):
         coords = [28.60, -81.20]
@@ -61,19 +55,16 @@ async def generate_heatmap(interaction: discord.Interaction, command_arg: str, A
     else:
         return await interaction.followup.edit("Please choose from one of these campuses: Main, Downtown, or Rosen.")
 
-    gmaps_key = googlemaps.Client(key=API_key)
     m = folium.Map(location=coords, zoom_start=15)
     heat_map_data = []
 
-    for key, crime in crimes.items():
-        if "4000 CENTRAL FLORIDA BLVD" not in crime["Location"]:
-            address = f'{crime["Location"].replace("/", "")} Orlando FL, US.'
-        
-            g = gmaps_key.geocode(address)
-            lat = g[0]["geometry"]["location"]["lat"]
-            long = g[0]["geometry"]["location"]["lng"]
+    for row, crime in crimes.iterrows():
+        if "4000 CENTRAL FLORIDA BLVD" not in crime["place"]:
+            if not math.isnan(crime["lat"]) and not math.isnan(crime["lng"]):
+                lat = float(crime["lat"])
+                lng = float(crime["lng"])
 
-            heat_map_data.append([lat, long, 0.3])
+                heat_map_data.append([lat, lng, 0.3])
 
     HeatMap(heat_map_data).add_to(m)
     img_data = m._to_png(5)

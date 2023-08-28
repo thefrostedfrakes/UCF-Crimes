@@ -40,20 +40,20 @@ async def on_ready():
     orlando_counter = 0
 
     while not client.is_closed():
-        if orlando_counter >= 600:
-            load_orlando_active()
-            orlando_counter = 0
+        # if orlando_counter >= 600:
+        #     load_orlando_active()
+        #     orlando_counter = 0
 
         t = time.localtime()
         current_time = time.strftime("%H:%M:%S", t)
 
         if current_time == "00:05:00":
-            crime_load('-addcrimes')
+            crime_load('-addcrimes', main_config.get("DISCORD", "GMAPS_API_KEY"))
 
         if current_time == "00:30:00":
             today = date.today()
             yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
-            await crime_send(None, client, yesterday, bot_channel_id, main_config.get("DISCORD", "GMAPS_API_KEY"))
+            await crime_send(None, client, yesterday, bot_channel_id)
 
         if current_time == "01:00:00":
             backup_crimes()
@@ -61,7 +61,7 @@ async def on_ready():
         if current_time == "01:05:00":
             load_crime_and_status_lists()
 
-        orlando_counter += 1
+        # orlando_counter += 1
 
         await asyncio.sleep(1)
 
@@ -74,7 +74,7 @@ async def crimes(interaction: discord.Interaction, parameter: str):
     if parameter == "all":
         await list_crimes(interaction, client, bot_channel_id)
     else:
-        await crime_send(interaction, client, parameter, bot_channel_id, main_config.get("DISCORD", "GMAPS_API_KEY"))
+        await crime_send(interaction, client, parameter, bot_channel_id)
 
 @client.tree.command(name='locations', description="List all available locations in the database.")
 async def locations(interaction: discord.Interaction):
@@ -82,7 +82,7 @@ async def locations(interaction: discord.Interaction):
 
 @client.tree.command(name='heatmap', description="View a heatmap of all reported crimes at the main campus, downtown campus, or Rosen.")
 async def heatmap(interaction: discord.Interaction, campus: str):
-    await generate_heatmap(interaction, campus, main_config.get("DISCORD", "GMAPS_API_KEY"))
+    await generate_heatmap(interaction, campus)
 
 @client.event
 async def on_message(message):
@@ -95,7 +95,7 @@ async def on_message(message):
         if not message.author.guild_permissions.administrator:
             await message.reply('Sorry, you do not have permission to use this command!')
             return
-        crime_load(message.content)
+        crime_load(message.content, main_config.get("DISCORD", "GMAPS_API_KEY"))
 
     elif message.content.startswith('-backup'):
         backup_crimes()

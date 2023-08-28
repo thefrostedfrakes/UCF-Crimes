@@ -6,10 +6,14 @@ Written by Ethan Frakes
 '''
 
 from PyPDF2 import PdfReader
+from PyPDF2._page import PageObject
+import pandas as pd
 import requests
 from datetime import datetime, date
 import json
-import string_adjustments as stradj
+from address_to_place import address_to_place
+from get_lat_lng import get_lat_lng_from_address
+from datetime import datetime
 
 # Returns if date string token passed is valid.
 def is_valid_date(date_string: str) -> bool:
@@ -33,7 +37,7 @@ def is_valid_time_label(time_str: str) -> bool:
 
 # Tokenizes each crime into separate elements of a 2D string array, where each 1st dimension
 # element is each crime and each 2nd dimension element is each space/newline delimited string.
-def tokenizer(page) -> list:
+def tokenizer(page: PageObject) -> list:
 
     # Text extracted from page and split between spaces and newlines.
     crime_list = []
@@ -112,48 +116,58 @@ def parser(crime_list: list) -> list:
 
     return crime_list
 
-# Converts crimes list to a dictionary, then dumps to a json file.
-def load_to_json(crime_list: list, command_str: str) -> None:
-    keys = ["Disposition", "Report Date/Time",
-            "Crime", "Start Date/Time", "Location", 
-            "End Date/Time", "Campus", "Address"]
+# Converts crimes list to a Pandas DataFrame, then saves to a csv file.
+def load_to_csv(crime_list: list, command_str: str, GMaps_API_KEY: str) -> None:
+    # Columns dict to save key names and list indices.
+    columns = {"disposition": 0, "case_id": 1, "report_dt": 2, 
+            "title": 3, "start_dt": 4, "address": 5, 
+            "end_dt": 6, "campus": 7}
     
+    # If loadcrimes, new df is generated. If addcrimes, previous df from csv is loaded.
     if command_str == '-loadcrimes':
-        crimes_dict = {}
+        crimes_df = pd.DataFrame(columns=columns.keys())
 
     elif command_str == '-addcrimes':
-        with open('crimes.json', 'r') as f:
-            crimes_dict = json.load(f)
-    
+        crimes_df = pd.read_csv('crimes.csv', index_col=0)
+
     for crime in crime_list:
         if len(crime) == 8:
-            if crime[1] not in crimes_dict:
-                crimes_dict[crime[1]] = {}
-                needs_addr_replace = True
+            # If crime is not already in df (indicated by case ID), address_to_place() is called to
+            # generate place name from address. If the crime's already present, old place name is used;
+            # no need to regenerate it.
+            # Latitude and longitude generated from address. Dates and times reformatted to database format.
+            if crime[columns["case_id"]] not in crimes_df["case_id"].values:
+                place = address_to_place(crime[columns["address"]], try_selenium=True)
+                lat, lng = get_lat_lng_from_address(crime[columns["address"]], GMaps_API_KEY)
             else:
-                needs_addr_replace = False
+                place = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]], "place"].values[0]
+                lat = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]], "lat"].values[0]
+                lng = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]], "lng"].values[0]
 
-            i = 0
-            for key in keys:
-                # Replace address before pushing
-                if key == "Location" and needs_addr_replace:
-                    crimes_dict[crime[1]][key] = stradj.replace_address(crime[i], try_selenium=True)
+            report_dt = datetime.strptime(crime[columns["report_dt"]], "%m/%d/%y %H:%M").strftime("%Y-%m-%dT%H:%M:%SZ")
+            start_dt = datetime.strptime(crime[columns["start_dt"]], "%m/%d/%y %H:%M").strftime("%Y-%m-%dT%H:%M:%SZ")
+            end_dt = datetime.strptime(crime[columns["end_dt"]], "%m/%d/%Y %H:%M").strftime("%Y-%m-%dT%H:%M:%SZ")
 
-                elif key == "Address":
-                    crimes_dict[crime[1]][key] = stradj.replace_address(crime[5], location_name=False)
-                
-                elif key != "Location":
-                    crimes_dict[crime[1]][key] = crime[i]
-                    
-                if i == 0: i = 2
-                else: i += 1
+            # Index is at bottom of df if crime is new; index of crime is used if it's already present 
+            # to update it.
+            if crime[1] not in crimes_df["case_id"].values:
+                index = len(crimes_df) + 1
+            else:
+                index = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]]].index
 
-    with open('crimes.json', 'w') as f:
-        json.dump(crimes_dict, f, indent=4)
+            # Crime list is added to df in proper order.
+            crimes_df.loc[index] = [crime[columns["case_id"]], crime[columns["disposition"]],
+                                                 crime[columns["title"]], crime[columns["campus"]],
+                                                 crime[columns["address"]], place, lat, lng,
+                                                 report_dt, start_dt, end_dt]
+
+    # df written to csv file.
+    crimes_df.to_csv('crimes.csv')
+    print("Crime CSV updated.")
 
 # Requests the url of the daily crime log, opens the file, calls PdfReader to read the pdf's
-# contents, calls the tokenizer and parser, then adds the parsed list to a json.
-def crime_load(command_str: str) -> None:
+# contents, calls the tokenizer and parser, then adds the parsed list to a csv.
+def crime_load(command_str: str, GMaps_API_KEY: str) -> None:
     pdf_filename = 'AllDailyCrimeLog.pdf'
     crime_url = 'https://police.ucf.edu/sites/default/files/logs/ALL%20DAILY%20crime%20log.pdf'
 
@@ -176,37 +190,33 @@ def crime_load(command_str: str) -> None:
         if len(crime) == 8: print("CORRECT FORMAT")
         print(crime, '\n')
 
-    # load_to_json called to convert the list of crimes to a dictionary, then to a json file.
-    load_to_json(crimes_list, command_str)
+    load_to_csv(crimes_list, command_str, GMaps_API_KEY)
 
-# Simple function to copy current crimes.json file to backups folder with added date.
+# Simple function to copy current crimes.csv file to backups folder with added date.
 def backup_crimes() -> None:
-    with open('crimes.json', 'r') as f:
-        crime_dict = json.load(f)
+    crimes_df = pd.read_csv('crimes.csv', index_col=0)
 
     today = date.today().strftime("%m-%d-%Y")
-    backup_json_name = "crimes-" + today + ".json"
+    backup_csv_name = f"crimes-{today}.csv"
     
-    with open(('./backups/' + backup_json_name), 'w') as f:
-        json.dump(crime_dict, f, indent=4)
+    crimes_df.to_csv(f"./backups/{backup_csv_name}")
 
 # Load list of crimes by crime type and status
-def load_crime_and_status_lists():
-    with open('crimes.json', 'r') as f:
-        crimes = json.load(f)
+def load_crime_and_status_lists() -> None:
+    crimes_df = pd.read_csv('crimes.csv', index_col=0)
 
     crime_list = {}
     status_list = {}
-    for key, crime in crimes.items():
-        if crime["Crime"] not in crime_list.keys():
-            crime_list[crime["Crime"]] = 1
+    for index, crime in crimes_df.iterrows():
+        if crime["title"] not in crime_list.keys():
+            crime_list[crime["title"]] = 1
         else:
-            crime_list[crime["Crime"]] += 1
+            crime_list[crime["title"]] += 1
 
-        if crime["Disposition"] not in status_list.keys():
-            status_list[crime["Disposition"]] = 1
+        if crime["disposition"] not in status_list.keys():
+            status_list[crime["disposition"]] = 1
         else:
-            status_list[crime["Disposition"]] += 1
+            status_list[crime["disposition"]] += 1
 
     with open('crime_list.json', 'w') as f:
         json.dump(crime_list, f, indent=4)
