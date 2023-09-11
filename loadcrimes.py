@@ -137,8 +137,8 @@ def load_to_csv(crime_list: list, command_str: str, GMaps_API_KEY: str) -> None:
             # no need to regenerate it.
             # Latitude and longitude generated from address. Dates and times reformatted to database format.
             if crime[columns["case_id"]] not in crimes_df["case_id"].values:
-                place = address_to_place(crime[columns["address"]], try_selenium=True)
                 lat, lng = get_lat_lng_from_address(crime[columns["address"]], GMaps_API_KEY)
+                place = address_to_place(crime[columns["address"]], lat, lng, GMaps_API_KEY)
             else:
                 place = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]], "place"].values[0]
                 lat = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]], "lat"].values[0]
@@ -150,16 +150,24 @@ def load_to_csv(crime_list: list, command_str: str, GMaps_API_KEY: str) -> None:
 
             # Index is at bottom of df if crime is new; index of crime is used if it's already present 
             # to update it.
-            if crime[1] not in crimes_df["case_id"].values:
-                index = len(crimes_df) + 1
-            else:
-                index = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]]].index
+            index = len(crimes_df) + 1 if crime[columns["case_id"]] not in crimes_df["case_id"].values else crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]]].index.values[0]
 
+            crime_data = {
+                "case_id": crime[columns["case_id"]],
+                "disposition": crime[columns["disposition"]],
+                "title": crime[columns["title"]],
+                "campus": crime[columns["campus"]],
+                "address": crime[columns["address"]],
+                "place": place,
+                "lat": lat,
+                "lng": lng,
+                "report_dt": report_dt,
+                "start_dt": start_dt,
+                "end_dt": end_dt
+            }
+            
             # Crime list is added to df in proper order.
-            crimes_df.loc[index] = [crime[columns["case_id"]], crime[columns["disposition"]],
-                                                 crime[columns["title"]], crime[columns["campus"]],
-                                                 crime[columns["address"]], place, lat, lng,
-                                                 report_dt, start_dt, end_dt]
+            crimes_df.loc[index] = crime_data
 
     # df written to csv file.
     crimes_df.to_csv('crimes.csv')

@@ -14,8 +14,17 @@ from configparser import ConfigParser
 from loadcrimes import crime_load, backup_crimes, load_crime_and_status_lists
 from sendcrimes import crime_send, list_locations, list_crimes
 from image import generate_heatmap
+from get_place_name import change_all_addresses
 from orlando import load_orlando_active, send_orlando_active
+import os, platform
+import shutil
 
+if platform.system() == "Linux":
+    if os.path.exists("/tmp/crime_discord"):
+        shutil.rmtree("/tmp/crime_discord")
+    os.makedirs("/tmp/crime_discord")
+    os.makedirs("/tmp/crime_discord/chrome")
+    
 intents = discord.Intents.all()
 client = commands.Bot(intents=intents, command_prefix = '!')
 client.remove_command('help')
@@ -85,7 +94,7 @@ async def heatmap(interaction: discord.Interaction, campus: str):
     await generate_heatmap(interaction, campus)
 
 @client.event
-async def on_message(message):
+async def on_message(message: discord.Message):
     try:
         print(f"User {message.author} just sent this message in {message.channel.name}: {message.content}")
     except AttributeError as e:
@@ -105,6 +114,12 @@ async def on_message(message):
             await message.reply('Sorry, you do not have permission to use this command!')
             return
         load_crime_and_status_lists()
+
+    elif message.content.startswith('-change_all_places'):
+        if not message.author.guild_permissions.administrator:
+            await message.reply('Sorry, you do not have permission to use this command!')
+            return
+        change_all_addresses(main_config.get("DISCORD", "GMAPS_API_KEY"))
 
     # elif message.content.startswith('-orlando'):
     #     await send_orlando_active(client, main_config.get("DISCORD", "CRIME_CHANNEL_ID"), main_config.get("DISCORD", "GMAPS_API_KEY"))

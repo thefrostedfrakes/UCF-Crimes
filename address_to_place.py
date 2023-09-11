@@ -10,10 +10,15 @@ import re
 import editdistance
 import json
 from selenium_scrape import selenium_scrape
+from get_place_name import get_place_name
 from titlize import titlize
 
 
-def address_to_place(address: str, typo_tolerance=1, try_selenium=True) -> str | None:
+def address_to_place(address: str, 
+                     lat: float, lng: float, 
+                     GMAPS_API_KEY: str, 
+                     typo_tolerance=1, 
+                     try_selenium=False) -> str | None:
     '''
     Takes address and compares it to the locations.json file
     Robust against varying word positions and typo errors
@@ -71,6 +76,9 @@ def address_to_place(address: str, typo_tolerance=1, try_selenium=True) -> str |
     if try_selenium:
         if (selenium_result := selenium_scrape(address)):
             return selenium_result
+        
+    elif (place_name := get_place_name(lat, lng, GMAPS_API_KEY)):
+            print(place_name)
+            return f"near {place_name}"
     
     return titlize(address)
-

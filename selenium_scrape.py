@@ -35,9 +35,9 @@ def selenium_scrape(expanded_address: str):
 
     # Set up Selenium webdriver
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.headless = True
-    #if platform.system() == "Linux":
-     #   chrome_options.add_argument('crash-dumps-dir=/tmp/crime_social/chrome')
+    chrome_options.add_argument("--headless=new")
+    if platform.system() == "Linux":
+       chrome_options.add_argument('crash-dumps-dir=/tmp/crime_discord/chrome')
     if platform.system() == "Linux" and os.geteuid()==0:
         chrome_options.add_argument('--no-sandbox')
     #Set User Agent so Google doesn't know we are scraping/automating.
