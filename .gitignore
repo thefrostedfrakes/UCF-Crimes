@@ -12,3 +12,9 @@ heatmap.png
 /logs
 orlando_heatmap.png
 orlando.json
+crimes.json
+crimes.csv
+convert_json.py
+locations_test.py
+print_cases_test.py
+text_clip.py
