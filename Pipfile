@@ -10,8 +10,20 @@ install = "*"
 py-staticmaps = {extras = ["cairo"], version = "*"}
 requests = "*"
 pillow = "*"
+selenium = "*"
+editdistance = "*"
+beautifulsoup4 = "*"
+googlemaps = "*"
+folium = "*"
+openai = "*"
+xmltodict = "*"
+xml-python = "*"
+openai-clip = "*"
+torch = "*"
+torchvision = "*"
+pandas = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.9"
+python_version = "3.11"

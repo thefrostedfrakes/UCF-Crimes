@@ -63,5 +63,200 @@
         "raw": "BATTERY",
         "expanded": "BATTERY",
         "verified_example": true
+    },
+    {
+        "raw": "POSSESSION OF COUNTERFEIT DRIVERS LICENSE",
+        "expanded": "POSSESSION OF COUNTERFEIT DRIVER'S LICENSE",
+        "verified_example": false
+    },
+    {
+        "raw": "EXTORTION",
+        "expanded": "EXTORTION",
+        "verified_example": false
+    },
+    {
+        "raw": "CRIMINAL MISCHIEF (>$200, <$1000)",
+        "expanded": "CRIMINAL MISCHIEF VALUED AT MORE THAN $200 BUT LESS THAN $1000",
+        "verified_example": false
+    },
+    {
+        "raw": "FALSE ALARM OF FIRE",
+        "expanded": "FALSE ALARM OF FIRE",
+        "verified_example": false
+    },
+    {
+        "raw": "POSSESSION OF CANNABIS < 20 GRAMS, POSSESSION OF DRUG PARAPHERNALIA",
+        "expanded": "POSSESSION OF CANNABIS LESS THAN 20 GRAMS, POSSESSION OF DRUG PARAPHERNALIA",
+        "verified_example": false
+    },
+    {
+        "raw": "FRAUDULENT USE OF CREDIT CARDS (>=$100)",
+        "expanded": "FRAUDULENT USE OF CREDIT CARDS VALUED AT $100 OR MORE",
+        "verified_example": false
+    },
+    {
+        "raw": "SEXUAL BATTERY UNLAWFULLY",
+        "expanded": "SEXUAL BATTERY UNLAWFULLY",
+        "verified_example": false
+    },
+    {
+        "raw": "ATTEMPTED SEXUAL BATTERY",
+        "expanded": "ATTEMPTED SEXUAL BATTERY",
+        "verified_example": false
+    },
+    {
+        "raw": "SEXUAL BATTERY ON PERSON >=18 BY PERS >=18",
+        "expanded": "SEXUAL BATTERY ON A PERSON AGED 18 OR OLDER BY A PERSON AGED 18 OR OLDER",
+        "verified_example": false
+    },
+    {
+        "raw": "HARASSING COMMUNICATION- REPEATED PHONE CALLS",
+        "expanded": "HARASSING COMMUNICATION - REPEATED PHONE CALLS",
+        "verified_example": false
+    },
+    {
+        "raw": "CRIMINAL USE OF PERSONAL IDENTIFICATION INFORMATIO, STALKING, FL ORIDA COMMUNICATIONS FRAUD ACT",
+        "expanded": "CRIMINAL USE OF PERSONAL IDENTIFICATION INFORMATION, STALKING, FLORIDA COMMUNICATIONS FRAUD ACT",
+        "verified_example": false
+    },
+    {
+        "raw": "TRESPASS ON PROPERTY AFTER WARNING",
+        "expanded": "TRESPASS ON PROPERTY AFTER WARNING",
+        "verified_example": false
+    },
+    {
+        "raw": "CARRYING A CONCEALED FIREARM",
+        "expanded": "CARRYING A CONCEALED FIREARM",
+        "verified_example": false
+    },
+    {
+        "raw": "POSSESSION OF CANNABIS < 20 GRAMS, POSSESSION OF TETRAHYDROCANNABINOL S, POSSESSION OF DRUG PARAPHERNALIA",
+        "expanded": "POSSESSION OF CANNABIS LESS THAN 20 GRAMS, POSSESSION OF TETRAHYDROCANNABINOL S, POSSESSION OF DRUG PARAPHERNALIA",
+        "verified_example": false
+    },
+    {
+        "raw": "GRAND THEFT 3RD DEGREE (>750, <$5000)",
+        "expanded": "GRAND THEFT 3RD DEGREE VALUED AT MORE THAN $750 AND LESS THAN $5000",
+        "verified_example": false
+    },
+    {
+        "raw": "WARRANT ARREST (OUT OF COUNTY)",
+        "expanded": "WARRANT ARREST (OUT OF COUNTY)",
+        "verified_example": false
+    },
+    {
+        "raw": "WARRANT ARREST (OCSO)",
+        "expanded": "WARRANT ARREST (ORANGE COUNTY SHERIFF'S OFFICE)",
+        "verified_example": false
+    },
+    {
+        "raw": "DRUG VIOLATION",
+        "expanded": "DRUG VIOLATION",
+        "verified_example": false
+    },
+    {
+        "raw": "POSSESSION COUNTERFEIT DL",
+        "expanded": "POSSESSION OF A COUNTERFEIT DRIVER'S LICENSE",
+        "verified_example": false
+    },
+    {
+        "raw": "GRAND THEFT, POSS OF BURGLAY TOOLS, CRIMINAL MISCHIEF, RESISITING LEO W/O VIOLENCE",
+        "expanded": "GRAND THEFT, POSSESSION OF BURGLARY TOOLS, CRIMINAL MISCHIEF, RESISTING LAW ENFORCEMENT OFFICER WITHOUT VIOLENCE",
+        "verified_example": false
+    },
+    {
+        "raw": "SEXUAL BATTERY",
+        "expanded": "SEXUAL BATTERY",
+        "verified_example": false
+    },
+    {
+        "raw": "GRAND THEFT (MOTOR VEHICLE THEFT), CRIMINAL MISCHIEF",
+        "expanded": "GRAND THEFT (MOTOR VEHICLE THEFT) AND CRIMINAL MISCHIEF",
+        "verified_example": false
+    },
+    {
+        "raw": "FLEEING ELUDING POLICE, RECKLESS DRIVING",
+        "expanded": "FLEEING AND ELUDING POLICE, RECKLESS DRIVING",
+        "verified_example": false
+    },
+    {
+        "raw": "BATTERY (DATING VIOLENCE), FALSE IMPRISONMENT, GT",
+        "expanded": "BATTERY (DATING VIOLENCE), FALSE IMPRISONMENT, GRAND THEFT",
+        "verified_example": false
+    },
+    {
+        "raw": "STALKING",
+        "expanded": "STALKING",
+        "verified_example": false
+    },
+    {
+        "raw": "FRAUD",
+        "expanded": "FRAUD",
+        "verified_example": false
+    },
+    {
+        "raw": ".02/NOS",
+        "expanded": "02/NOS",
+        "verified_example": false
+    },
+    {
+        "raw": "POSSESSION OF CANNABIS > 20 GRAMS",
+        "expanded": "POSSESSION OF CANNABIS GREATER THAN 20 GRAMS",
+        "verified_example": false
+    },
+    {
+        "raw": "POSSESSION OF DRUG PARAPHERNALIA",
+        "expanded": "POSSESSION OF DRUG PARAPHERNALIA",
+        "verified_example": false
+    },
+    {
+        "raw": "DUI",
+        "expanded": "DRIVING UNDER THE INFLUENCE",
+        "verified_example": false
+    },
+    {
+        "raw": "BURGLARY TO AUTO, CRIMINAL MISCHIEF",
+        "expanded": "BURGLARY TO AUTOMOBILE AND CRIMINAL MISCHIEF",
+        "verified_example": false
+    },
+    {
+        "raw": "GRAND THEFT",
+        "expanded": "GRAND THEFT",
+        "verified_example": false
+    },
+    {
+        "raw": "BURGLARY TO AUTO, PETTY THEFT",
+        "expanded": "BURGLARY TO AUTO AND PETTY THEFT",
+        "verified_example": false
+    },
+    {
+        "raw": "BURGLARY; PETTY THEFT",
+        "expanded": "BURGLARY AND PETTY THEFT",
+        "verified_example": false
+    },
+    {
+        "raw": "FALSE IMPRISONMENT (DATING VIOLENCE), BATTERY",
+        "expanded": "FALSE IMPRISONMENT (DATING VIOLENCE) AND BATTERY",
+        "verified_example": false
+    },
+    {
+        "raw": "SEXUAL BATTERY UNLAWFULLY COMMIT, FALSE IMPRISONMENT (DATING VIOLENCE)",
+        "expanded": "SEXUAL BATTERY UNLAWFULLY COMMITTED AND FALSE IMPRISONMENT (DATING VIOLENCE)",
+        "verified_example": false
+    },
+    {
+        "raw": "STALKING (OFF CAMPUS)",
+        "expanded": "STALKING (OFF CAMPUS)",
+        "verified_example": false
+    },
+    {
+        "raw": "CRUELTY TO ANIMALS",
+        "expanded": "CRUELTY TO ANIMALS",
+        "verified_example": false
+    },
+    {
+        "raw": "THEFT GRAND",
+        "expanded": "GRAND THEFT",
+        "verified_example": false
     }
 ]
