@@ -14,6 +14,7 @@ import json
 from address_to_place import address_to_place
 from get_lat_lng import get_lat_lng_from_address
 from datetime import datetime
+from configparser import ConfigParser
 
 # Returns if date string token passed is valid.
 def is_valid_date(date_string: str) -> bool:
@@ -208,6 +209,7 @@ def backup_crimes() -> None:
     backup_csv_name = f"crimes-{today}.csv"
     
     crimes_df.to_csv(f"./backups/{backup_csv_name}")
+    print("Crime CSV backed up.")
 
 # Load list of crimes by crime type and status
 def load_crime_and_status_lists() -> None:
@@ -231,4 +233,17 @@ def load_crime_and_status_lists() -> None:
 
     with open('status_list.json', 'w') as f:
         json.dump(status_list, f, indent=4)
+
+    print("Crime and status lists loaded.")
  
+if __name__ == "__main__":
+    command_str = '-addcrimes'
+
+    config = ConfigParser()
+    config.read('config.ini')
+
+    GMAPS_API_KEY = config.get('DISCORD', 'GMAPS_API_KEY')
+
+    crime_load(command_str, GMAPS_API_KEY)
+    backup_crimes()
+    load_crime_and_status_lists()

@@ -9,5 +9,6 @@ test_cases.json
 geckodriver.log
 heatmap.png
 /backups
+/logs
 orlando_heatmap.png
 orlando.json
