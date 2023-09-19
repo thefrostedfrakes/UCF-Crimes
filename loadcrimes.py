@@ -9,6 +9,7 @@ from PyPDF2 import PdfReader
 from PyPDF2._page import PageObject
 import pandas as pd
 import requests
+import re
 from datetime import datetime, date
 import json
 from address_to_place import address_to_place
@@ -36,6 +37,16 @@ def is_valid_time_label(time_str: str) -> bool:
     except ValueError:
         return False
 
+# Checks if input string is or is not a case id.
+# Used in tokenizer to make sure that delimiter is indeed the disposition and not word in crime title.
+def is_valid_case_id(case_id_str: str) -> bool:
+    id_patterns = [r'^\d{4}-\d{4}$', r'^\d{4}-[A-Za-z]{3}\d{2}$']
+    for pattern in id_patterns:
+        if re.match(pattern, case_id_str):
+            return True
+        
+    return False
+
 # Tokenizes each crime into separate elements of a 2D string array, where each 1st dimension
 # element is each crime and each 2nd dimension element is each space/newline delimited string.
 def tokenizer(page: PageObject) -> list:
@@ -52,13 +63,18 @@ def tokenizer(page: PageObject) -> list:
     # (end of one crime and beginning of another), buffer list is added to the crime list.
     for elem in range(len(textToken)):
         for delimiter in valid_delimiters:
-            if delimiter == "ARREST" and textToken[elem] == delimiter and textToken[elem+1] == "-":
-                crime_list.append(buffer_list)
-                buffer_list = []
+            if textToken[elem] == delimiter:
+                if delimiter == "ARREST" and textToken[elem+1] == "-":
+                    crime_list.append(buffer_list)
+                    buffer_list = []
+                
+                elif delimiter == "EXC" and textToken[elem+1] == "CLR":
+                    crime_list.append(buffer_list)
+                    buffer_list = []
 
-            elif delimiter != "ARREST" and textToken[elem] == delimiter:
-                crime_list.append(buffer_list)
-                buffer_list = []
+                elif delimiter != "ARREST" and is_valid_case_id(textToken[elem+1]):
+                    crime_list.append(buffer_list)
+                    buffer_list = []
             
         buffer_list.append(textToken[elem])
     
@@ -145,9 +161,14 @@ def load_to_csv(crime_list: list, command_str: str, GMaps_API_KEY: str) -> None:
                 lat = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]], "lat"].values[0]
                 lng = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]], "lng"].values[0]
 
-            report_dt = datetime.strptime(crime[columns["report_dt"]], "%m/%d/%y %H:%M").strftime("%Y-%m-%dT%H:%M:%SZ")
-            start_dt = datetime.strptime(crime[columns["start_dt"]], "%m/%d/%y %H:%M").strftime("%Y-%m-%dT%H:%M:%SZ")
-            end_dt = datetime.strptime(crime[columns["end_dt"]], "%m/%d/%Y %H:%M").strftime("%Y-%m-%dT%H:%M:%SZ")
+            try:
+                report_dt = datetime.strptime(crime[columns["report_dt"]], "%m/%d/%y %H:%M").strftime("%Y-%m-%dT%H:%M:%SZ")
+                start_dt = datetime.strptime(crime[columns["start_dt"]], "%m/%d/%y %H:%M").strftime("%Y-%m-%dT%H:%M:%SZ")
+                end_dt = datetime.strptime(crime[columns["end_dt"]], "%m/%d/%Y %H:%M").strftime("%Y-%m-%dT%H:%M:%SZ")
+
+            except ValueError:
+                print(crime)
+                continue
 
             # Index is at bottom of df if crime is new; index of crime is used if it's already present 
             # to update it.
