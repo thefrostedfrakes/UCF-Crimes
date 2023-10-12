@@ -1,11 +1,11 @@
 {
-    "INACTIVE": 40,
-    "CLOSED": 111,
-    "OPEN": 92,
-    "ARREST - ADULT": 108,
+    "INACTIVE": 46,
+    "CLOSED": 125,
+    "OPEN": 94,
+    "ARREST - ADULT": 129,
     "REPORT": 18,
     "ARREST - JUV": 4,
-    "EXC CLR - ADULT": 16,
-    "UNFOUNDED": 10,
-    "ACTIVE": 1
+    "EXC CLR - ADULT": 19,
+    "UNFOUNDED": 13,
+    "ACTIVE": 2
 }

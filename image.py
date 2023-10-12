@@ -20,6 +20,10 @@ def generate_image(crime: pd.Series) -> None:
 
     lat = crime["lat"]
     lng = crime["lng"]
+
+    if pd.isna(lat) or pd.isna(lng):
+        lat, lng = 28.60, -81.20
+
     loc = staticmaps.create_latlng(lat, lng)
     context.add_object(staticmaps.Marker(loc, color=staticmaps.RED, size=12))
 
