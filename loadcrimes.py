@@ -16,6 +16,20 @@ from address_to_place import address_to_place
 from get_lat_lng import get_lat_lng_from_address
 from datetime import datetime
 from configparser import ConfigParser
+from sqlalchemy import create_engine
+from sqlalchemy.engine.base import Engine
+
+# Connect to the PostgreSQL database
+def setup_db(main_config) -> Engine:
+    host = main_config.get('POSTGRESQL', 'host')
+    database = main_config.get('POSTGRESQL', 'database')
+    user = main_config.get('POSTGRESQL', 'user')
+    password = main_config.get('POSTGRESQL', 'password')
+
+    db_uri = f'postgresql://{user}:{password}@{host}/{database}'
+    engine = create_engine(db_uri)
+
+    return engine
 
 # Returns if date string token passed is valid.
 def is_valid_date(date_string: str) -> bool:
@@ -134,7 +148,7 @@ def parser(crime_list: list) -> list:
     return crime_list
 
 # Converts crimes list to a Pandas DataFrame, then saves to a csv file.
-def load_to_csv(crime_list: list, command_str: str, GMaps_API_KEY: str) -> None:
+def dump_to_sql_csv(crime_list: list, command_str: str, engine: Engine, GMaps_API_KEY: str) -> None:
     # Columns dict to save key names and list indices.
     columns = {"disposition": 0, "case_id": 1, "report_dt": 2, 
             "title": 3, "start_dt": 4, "address": 5, 
@@ -195,9 +209,12 @@ def load_to_csv(crime_list: list, command_str: str, GMaps_API_KEY: str) -> None:
     crimes_df.to_csv('crimes.csv')
     print("Crime CSV updated.")
 
+    crimes_df.to_sql('crimes', engine, if_exists='replace', index=False)
+    print("Crime database updated.")
+
 # Requests the url of the daily crime log, opens the file, calls PdfReader to read the pdf's
 # contents, calls the tokenizer and parser, then adds the parsed list to a csv.
-def crime_load(command_str: str, GMaps_API_KEY: str) -> None:
+def crime_load(command_str: str, engine: Engine, GMaps_API_KEY: str) -> None:
     pdf_filename = 'AllDailyCrimeLog.pdf'
     crime_url = 'https://police.ucf.edu/sites/default/files/logs/ALL%20DAILY%20crime%20log.pdf'
 
@@ -220,7 +237,7 @@ def crime_load(command_str: str, GMaps_API_KEY: str) -> None:
         if len(crime) == 8: print("CORRECT FORMAT")
         print(crime, '\n')
 
-    load_to_csv(crimes_list, command_str, GMaps_API_KEY)
+    dump_to_sql_csv(crimes_list, command_str, engine, GMaps_API_KEY)
 
 # Simple function to copy current crimes.csv file to backups folder with added date.
 def backup_crimes() -> None:
@@ -263,8 +280,10 @@ if __name__ == "__main__":
     config = ConfigParser()
     config.read('config.ini')
 
+    engine = setup_db(config)
+
     GMAPS_API_KEY = config.get('DISCORD', 'GMAPS_API_KEY')
 
-    crime_load(command_str, GMAPS_API_KEY)
+    crime_load(command_str, engine, GMAPS_API_KEY)
     backup_crimes()
     load_crime_and_status_lists()
