@@ -22,6 +22,8 @@ openai-clip = "*"
 torch = "*"
 torchvision = "*"
 pandas = "*"
+psycopg2 = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 

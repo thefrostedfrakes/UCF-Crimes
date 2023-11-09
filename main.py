@@ -11,19 +11,10 @@ import time
 from datetime import date, timedelta
 import asyncio
 from configparser import ConfigParser
-from loadcrimes import crime_load, backup_crimes, load_crime_and_status_lists
+from loadcrimes import crime_load, backup_crimes, load_crime_and_status_lists, setup_db
 from sendcrimes import crime_send, list_locations, list_crimes
 from image import generate_heatmap
 from get_place_name import change_all_addresses
-from orlando import load_orlando_active, send_orlando_active
-import os, platform
-import shutil
-
-if platform.system() == "Linux":
-    if os.path.exists("/tmp/crime_discord"):
-        shutil.rmtree("/tmp/crime_discord")
-    os.makedirs("/tmp/crime_discord")
-    os.makedirs("/tmp/crime_discord/chrome")
     
 intents = discord.Intents.all()
 client = commands.Bot(intents=intents, command_prefix = '!')
@@ -33,6 +24,9 @@ main_config = ConfigParser()
 main_config.read('config.ini')
 
 bot_channel_id = main_config.get("DISCORD", "CRIME_CHANNEL_ID")
+
+engine = setup_db(main_config)
+print("Connected to database")
 
 @client.event
 async def on_ready():
@@ -46,22 +40,14 @@ async def on_ready():
     except Exception as e:
         print(f"Error syncing commands: {e}")
 
-    orlando_counter = 0
-
     while not client.is_closed():
-        # if orlando_counter >= 600:
-        #     load_orlando_active()
-        #     orlando_counter = 0
-
         t = time.localtime()
         current_time = time.strftime("%H:%M:%S", t)
 
         if current_time == "00:30:00":
             today = date.today()
             yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
-            await crime_send(None, client, yesterday, bot_channel_id)
-
-        # orlando_counter += 1
+            await crime_send(None, client, yesterday, bot_channel_id, engine)
 
         await asyncio.sleep(1)
 
@@ -74,7 +60,7 @@ async def crimes(interaction: discord.Interaction, parameter: str):
     if parameter == "all":
         await list_crimes(interaction, client, bot_channel_id)
     else:
-        await crime_send(interaction, client, parameter, bot_channel_id)
+        await crime_send(interaction, client, parameter, bot_channel_id, engine)
 
 @client.tree.command(name='locations', description="List all available locations in the database.")
 async def locations(interaction: discord.Interaction):
@@ -111,8 +97,5 @@ async def on_message(message: discord.Message):
             await message.reply('Sorry, you do not have permission to use this command!')
             return
         change_all_addresses(main_config.get("DISCORD", "GMAPS_API_KEY"))
-
-    # elif message.content.startswith('-orlando'):
-    #     await send_orlando_active(client, main_config.get("DISCORD", "CRIME_CHANNEL_ID"), main_config.get("DISCORD", "GMAPS_API_KEY"))
 
 client.run(main_config.get("DISCORD", "TOKEN"))

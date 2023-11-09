@@ -17,6 +17,8 @@ from loadcrimes import is_valid_date
 from titlize import titlize
 from get_emojis import get_emojis
 import gpt_expand
+from sqlalchemy.engine.base import Engine
+from discord import TextChannel
 
 # Check if the channel is the permitted bot channel. Returns a message to user asking to use channel if false.
 async def is_channel(interaction: discord.Interaction, client: commands.Bot, channel_id: str) -> bool:
@@ -69,20 +71,86 @@ Status: {crime['disposition'].title()}"""
 
     await channel.send(embed=embed, file=discord.File('caseout.png'))
 
+async def crime_send_sql(interaction: Optional[discord.Interaction], 
+                        client: commands.Bot, 
+                        command_arg: str, 
+                        channel: TextChannel, 
+                        engine: Engine,
+                        ) -> None:
+    
+    # Open necessary json files.
+    with open('locations.json', 'r') as f:
+        locations = json.load(f)
+
+    with open('crime_list.json', 'r') as f:
+        crime_list = json.load(f)
+
+    with open('status_list.json', 'r') as f:
+        status_list = json.load(f)
+        
+    command_arg = command_arg.upper()
+    if is_valid_date(command_arg):
+        try:
+            date_str = datetime.strptime(command_arg, "%m/%d/%y").strftime("%A, %B %d, %Y")
+            command_arg = datetime.strptime(command_arg, "%m/%d/%y").strftime("%Y-%m-%d")
+        except ValueError:
+            date_str = datetime.strptime(command_arg, "%m/%d/%Y").strftime("%A, %B %d, %Y")
+            command_arg = datetime.strptime(command_arg, "%m/%d/%Y").strftime("%Y-%m-%d")
+
+        # Respond to interaction if the command was triggered by user. If not, then the command was
+        # executed automatically for daily crime listing.
+        if interaction is not None:
+            await interaction.response.send_message(f"Reported Crimes for {date_str}")
+        else:
+            await channel.send(f"Reported Crimes for {date_str}")
+
+        query_param = "report_dt::date"
+    
+    # If command argument is a crime title or disposition, dataframe key is set to either title or
+    # disposition accordingly.
+    elif crime_list.get(command_arg):
+        query_param = "title"
+        await interaction.response.send_message(f"Reported Crimes for {command_arg.title()}")
+
+    elif status_list.get(command_arg):
+        query_param = "disposition"
+        await interaction.response.send_message(f"Reported Crimes with status {command_arg.title()}")
+
+    elif command_arg.upper() in locations.keys():
+        query_param = "address"
+        await interaction.response.send_message(f"Reported Crimes at {command_arg.title()}")
+
+    elif place_name := next(place for place in locations.values() if place.lower() == command_arg.lower()):
+        query_param = "place"
+        command_arg = place_name
+        await interaction.response.send_message(f"Reported Crimes at {command_arg.title()}")
+
+    else:
+        return await interaction.response.send_message("Please search for a crime by type, valid date, or valid location.",
+                                                           ephemeral=True)
+
+    query = f"SELECT * FROM crimes WHERE {query_param} = '{command_arg}';"
+    query_matches = pd.read_sql_query(query, engine)
+    crimeCount = len(query_matches)
+
+    # For all crimes in matches, crime_sender sends as Discord embed.
+    for index, crime in query_matches.iterrows():
+        await crime_sender(channel, crime)
+
+    # If number of crimes in query dataframe is 0, no reported crimes message is sent.
+    # Number of reported crimes is sent otherwise.
+    if (crimeCount == 0):
+        await channel.send("No reported crimes.")
+    else:
+        await channel.send(f"{crimeCount} reported crimes.")
+
 # Opens crime database and searches for all crimes that match queried date, crime title, disposition,
 # address, or place.
-async def crime_send(interaction: Optional[discord.Interaction], 
-                     client: commands.Bot, 
-                     command_arg: str, 
-                     channel_id: str, 
-                     ) -> None:
-
-    # Check if command was sent to bot channel.
-    if interaction is not None and not await is_channel(interaction, client, channel_id):
-        return
-
-    # Get bot channel from id to send to channel. Sent after interaction response.
-    channel = client.get_channel(int(channel_id))
+async def crime_send_csv(interaction: Optional[discord.Interaction], 
+                        client: commands.Bot, 
+                        command_arg: str, 
+                        channel: TextChannel,
+                        ) -> None:
 
     # Read crimes csv file loaded by crime_load()
     crimes = pd.read_csv('crimes.csv', index_col=0)
@@ -177,6 +245,25 @@ async def crime_send(interaction: Optional[discord.Interaction],
         await channel.send("No reported crimes.")
     else:
         await channel.send(f"{crimeCount} reported crimes.")
+
+async def crime_send(interaction: Optional[discord.Interaction], 
+                    client: commands.Bot, 
+                    command_arg: str, 
+                    channel_id: str, 
+                    engine: Engine | None,
+                    ) -> None:
+    # Check if command was sent to bot channel.
+    if interaction is not None and not await is_channel(interaction, client, channel_id):
+        return
+
+    # Get bot channel from id to send to channel. Sent after interaction response.
+    channel = client.get_channel(int(channel_id))
+
+    if engine:
+        await crime_send_sql(interaction, client, command_arg, channel, engine)
+    else:
+        await crime_send_csv(interaction, client, command_arg, channel)
+    
 
 # Locations json is listed as Discord embed pages.
 async def list_locations(interaction: discord.Interaction, client: commands.Bot, channel_id: str) -> None:
