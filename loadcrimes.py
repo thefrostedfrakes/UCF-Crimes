@@ -212,33 +212,6 @@ def dump_to_sql_csv(crime_list: list, command_str: str, engine: Engine, GMaps_AP
     crimes_df.to_sql('crimes', engine, if_exists='replace', index=False)
     print("Crime database updated.")
 
-# Requests the url of the daily crime log, opens the file, calls PdfReader to read the pdf's
-# contents, calls the tokenizer and parser, then adds the parsed list to a csv.
-def crime_load(command_str: str, engine: Engine, GMaps_API_KEY: str) -> None:
-    pdf_filename = 'AllDailyCrimeLog.pdf'
-    crime_url = 'https://police.ucf.edu/sites/default/files/logs/ALL%20DAILY%20crime%20log.pdf'
-
-    # Requests the url of the crime log from UCF PD's website and writes the pdf to the local
-    # machine as 'AllDailyCrimeLog.pdf'. Then opens a PdfReader instance to read the pdf.
-    rsp = requests.get(crime_url, timeout=30)
-    open(pdf_filename, 'wb').write(rsp.content)
-    reader = PdfReader(pdf_filename)
-
-    # Each page in the pdf is tokenized and parsed.
-    crimes_list = []
-    for i in range(len(reader.pages)):
-        crime_list = tokenizer(reader.pages[i])
-        crime_list = parser(crime_list)
-        for crime in crime_list:
-            crimes_list.append(crime)
-
-    # Just to test each list element to ensure it was properly parsed.
-    for crime in crimes_list:
-        if len(crime) == 8: print("CORRECT FORMAT")
-        print(crime, '\n')
-
-    dump_to_sql_csv(crimes_list, command_str, engine, GMaps_API_KEY)
-
 # Simple function to copy current crimes.csv file to backups folder with added date.
 def backup_crimes() -> None:
     crimes_df = pd.read_csv('crimes.csv', index_col=0)
@@ -273,6 +246,35 @@ def load_crime_and_status_lists() -> None:
         json.dump(status_list, f, indent=4)
 
     print("Crime and status lists loaded.")
+    
+# Requests the url of the daily crime log, opens the file, calls PdfReader to read the pdf's
+# contents, calls the tokenizer and parser, then adds the parsed list to a csv.
+def crime_load(command_str: str, engine: Engine, GMaps_API_KEY: str) -> None:
+    pdf_filename = 'AllDailyCrimeLog.pdf'
+    crime_url = 'https://police.ucf.edu/sites/default/files/logs/ALL%20DAILY%20crime%20log.pdf'
+
+    # Requests the url of the crime log from UCF PD's website and writes the pdf to the local
+    # machine as 'AllDailyCrimeLog.pdf'. Then opens a PdfReader instance to read the pdf.
+    rsp = requests.get(crime_url, timeout=30)
+    open(pdf_filename, 'wb').write(rsp.content)
+    reader = PdfReader(pdf_filename)
+
+    # Each page in the pdf is tokenized and parsed.
+    crimes_list = []
+    for i in range(len(reader.pages)):
+        crime_list = tokenizer(reader.pages[i])
+        crime_list = parser(crime_list)
+        for crime in crime_list:
+            crimes_list.append(crime)
+
+    # Just to test each list element to ensure it was properly parsed.
+    for crime in crimes_list:
+        if len(crime) == 8: print("CORRECT FORMAT")
+        print(crime, '\n')
+
+    dump_to_sql_csv(crimes_list, command_str, engine, GMaps_API_KEY)
+    backup_crimes()
+    load_crime_and_status_lists()
  
 if __name__ == "__main__":
     command_str = '-addcrimes'
@@ -285,5 +287,3 @@ if __name__ == "__main__":
     GMAPS_API_KEY = config.get('DISCORD', 'GMAPS_API_KEY')
 
     crime_load(command_str, engine, GMAPS_API_KEY)
-    backup_crimes()
-    load_crime_and_status_lists()
