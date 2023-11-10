@@ -68,7 +68,7 @@ async def locations(interaction: discord.Interaction):
 
 @client.tree.command(name='heatmap', description="View a heatmap of all reported crimes at the main campus, downtown campus, or Rosen.")
 async def heatmap(interaction: discord.Interaction, campus: str):
-    await generate_heatmap(interaction, campus)
+    await generate_heatmap(interaction, campus, engine)
 
 @client.event
 async def on_message(message: discord.Message):

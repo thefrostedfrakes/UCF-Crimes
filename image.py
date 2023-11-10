@@ -10,6 +10,7 @@ from PIL import Image, ImageDraw
 import pandas as pd
 import folium
 from folium.plugins import HeatMap
+from sqlalchemy.engine.base import Engine
 import io
 import discord
 import math
@@ -44,7 +45,37 @@ def generate_image(crime: pd.Series) -> None:
     draw.line((696, 700, 1080, 700), fill=(0, 0, 0), width=10)
     im1.save('caseout.png', quality=100)
 
-async def generate_heatmap(interaction: discord.Interaction, command_arg: str) -> None:
+async def generate_heatmap(interaction: discord.Interaction, command_arg: str, engine: Engine) -> None:
+    await interaction.response.defer()
+    await interaction.followup.send("Generating Heatmap... This May Take a Moment...")
+
+    query = "SELECT lat, lng from crimes WHERE address != '4000 CENTRAL FLORIDA BLVD' AND lat IS NOT NULL AND lng IS NOT NULL;"
+    crime_coords = pd.read_sql_query(query, engine)
+
+    if command_arg.title().startswith('Main'):
+        coords = [28.60, -81.20]
+    elif command_arg.title().startswith('Downtown'):
+        coords = [28.55, -81.39]
+    elif command_arg.title().startswith('Rosen'):
+        coords = [28.43, -81.44]
+    else:
+        return await interaction.followup.edit("Please choose from one of these campuses: Main, Downtown, or Rosen.")
+
+    m = folium.Map(location=coords, zoom_start=15)
+    heat_map_data = []
+
+    for row, coords in crime_coords.iterrows():
+        heat_map_data.append([float(coords["lat"]), float(coords["lng"]), 0.3])
+
+    HeatMap(heat_map_data).add_to(m)
+    img_data = m._to_png(5)
+    img = Image.open(io.BytesIO(img_data))
+    img.save('heatmap.png')
+
+    await interaction.followup.send(file=discord.File("./heatmap.png"))
+    print("Heatmap sent.")
+
+async def generate_heatmap_csv(interaction: discord.Interaction, command_arg: str) -> None:
     await interaction.response.defer()
     await interaction.followup.send("Generating Heatmap... This May Take a Moment...")
     
@@ -73,7 +104,7 @@ async def generate_heatmap(interaction: discord.Interaction, command_arg: str) -
     HeatMap(heat_map_data).add_to(m)
     img_data = m._to_png(5)
     img = Image.open(io.BytesIO(img_data))
-    img.crop()
     img.save('heatmap.png')
 
     await interaction.followup.send(file=discord.File("./heatmap.png"))
+    

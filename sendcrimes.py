@@ -144,6 +144,8 @@ async def crime_send_sql(interaction: Optional[discord.Interaction],
     else:
         await channel.send(f"{crimeCount} reported crimes.")
 
+    print("Crimes retrieved.")
+
 # Opens crime database and searches for all crimes that match queried date, crime title, disposition,
 # address, or place.
 async def crime_send_csv(interaction: Optional[discord.Interaction], 
