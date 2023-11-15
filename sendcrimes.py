@@ -55,11 +55,11 @@ async def crime_sender(channel: discord.TextChannel, crime: pd.Series) -> None:
     place = crime["place"] # replace_address already called in loadcrimes.py
     
     # Compose message
-    description = f"""Occurred at {titlize(crime['campus'])}, {place}
-Case: {crime["case_id"]}
-Reported on {report_date_time}
-Between {start_date_time} - {end_date_time}
-Status: {crime['disposition'].title()}"""
+    description = f"Occurred at {titlize(crime['campus'])}, {place} \n" \
+                  f"Case: {crime['case_id']} \n" \
+                  f"Reported on {report_date_time} \n" \
+                  f"Between {start_date_time} - {end_date_time} \n" \
+                  f"Status: {crime['disposition'].title()}" 
 
     # Insert case title & description into discord bot channel.
     embed = discord.Embed(
