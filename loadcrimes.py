@@ -16,11 +16,11 @@ from address_to_place import address_to_place
 from get_lat_lng import get_lat_lng_from_address
 from datetime import datetime
 from configparser import ConfigParser
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.engine.base import Engine
 
 # Connect to the PostgreSQL database
-def setup_db(main_config) -> Engine:
+def setup_db(main_config: ConfigParser) -> Engine:
     host = main_config.get('POSTGRESQL', 'host')
     database = main_config.get('POSTGRESQL', 'database')
     user = main_config.get('POSTGRESQL', 'user')
@@ -147,33 +147,21 @@ def parser(crime_list: list) -> list:
 
     return crime_list
 
-# Converts crimes list to a Pandas DataFrame, then saves to a csv file.
-def dump_to_sql_csv(crime_list: list, command_str: str, engine: Engine, GMaps_API_KEY: str) -> None:
+def update_db(crime_list: list, command_str: str, engine: Engine, GMaps_API_KEY: str) -> None:
     # Columns dict to save key names and list indices.
     columns = {"disposition": 0, "case_id": 1, "report_dt": 2, 
-            "title": 3, "start_dt": 4, "address": 5, 
-            "end_dt": 6, "campus": 7}
-    
-    # If loadcrimes, new df is generated. If addcrimes, previous df from csv is loaded.
-    if command_str == '-loadcrimes':
-        crimes_df = pd.DataFrame(columns=columns.keys())
-
-    elif command_str == '-addcrimes':
-        crimes_df = pd.read_csv('crimes.csv', index_col=0)
+                "title": 3, "start_dt": 4, "address": 5, 
+                "end_dt": 6, "campus": 7}
 
     for crime in crime_list:
         if len(crime) == 8:
-            # If crime is not already in df (indicated by case ID), address_to_place() is called to
-            # generate place name from address. If the crime's already present, old place name is used;
-            # no need to regenerate it.
-            # Latitude and longitude generated from address. Dates and times reformatted to database format.
-            if crime[columns["case_id"]] not in crimes_df["case_id"].values:
-                lat, lng = get_lat_lng_from_address(crime[columns["address"]], GMaps_API_KEY)
-                place = address_to_place(crime[columns["address"]], lat, lng, GMaps_API_KEY)
-            else:
-                place = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]], "place"].values[0]
-                lat = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]], "lat"].values[0]
-                lng = crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]], "lng"].values[0]
+            connection = engine.connect()
+            case_id = crime[columns['case_id']]
+            query = f"SELECT * FROM crimes WHERE case_id = '{case_id}'"
+            result = connection.execute(text(query))
+
+            address = crime[columns['address']].replace("'", "''")
+            title = crime[columns['title']].replace("'", "''")
 
             try:
                 report_dt = datetime.strptime(crime[columns["report_dt"]], "%m/%d/%y %H:%M").strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -183,38 +171,34 @@ def dump_to_sql_csv(crime_list: list, command_str: str, engine: Engine, GMaps_AP
             except ValueError:
                 print(crime)
                 continue
-
-            # Index is at bottom of df if crime is new; index of crime is used if it's already present 
-            # to update it.
-            index = len(crimes_df) + 1 if crime[columns["case_id"]] not in crimes_df["case_id"].values else crimes_df.loc[crimes_df["case_id"] == crime[columns["case_id"]]].index.values[0]
-
-            crime_data = {
-                "case_id": crime[columns["case_id"]],
-                "disposition": crime[columns["disposition"]],
-                "title": crime[columns["title"]],
-                "campus": crime[columns["campus"]],
-                "address": crime[columns["address"]],
-                "place": place,
-                "lat": lat,
-                "lng": lng,
-                "report_dt": report_dt,
-                "start_dt": start_dt,
-                "end_dt": end_dt
-            }
             
-            # Crime list is added to df in proper order.
-            crimes_df.loc[index] = crime_data
+            # If crime is not already in database (indicated by case ID), get_lat_lng_from_address() and address_to_place() 
+            # are called to generate lat, lng, and place name from address. If the crime's already present, they are not updated
+            # when the crime is updated instead of inserted.
+            if result.rowcount == 0:
+                lat, lng = get_lat_lng_from_address(crime[columns["address"]], GMaps_API_KEY)
+                place = address_to_place(crime[columns["address"]], lat, lng, GMaps_API_KEY).replace("'", "''")
 
-    # df written to csv file.
-    crimes_df.to_csv('crimes.csv')
-    print("Crime CSV updated.")
+                lat_lng_header = f", lat, lng" if lat and lng else ""
+                lat_lng_insert = f", {lat}, {lng}" if lat and lng else ""
+                query = f"INSERT INTO crimes (case_id, disposition, title, campus, address, place{lat_lng_header}, report_dt, start_dt, end_dt) " \
+                        f"VALUES ('{case_id}', '{crime[columns['disposition']]}', '{title}', '{crime[columns['campus']]}', '{address}', " \
+                        f"'{place}'{lat_lng_insert}, '{report_dt}', '{start_dt}', '{end_dt}')"
+            else:
+                query = f"UPDATE crimes SET report_dt = '{report_dt}', title = '{title}', " \
+                        f"start_dt = '{start_dt}', end_dt = '{end_dt}', address = '{address}', " \
+                        f"disposition = '{crime[columns['disposition']]}', campus = '{crime[columns['campus']]}' WHERE case_id = '{case_id}'"
 
-    crimes_df.to_sql('crimes', engine, if_exists='replace', index=False)
+            connection.execute(text(query))
+            connection.commit()
+            connection.close()
+
     print("Crime database updated.")
 
-# Simple function to copy current crimes.csv file to backups folder with added date.
-def backup_crimes() -> None:
-    crimes_df = pd.read_csv('crimes.csv', index_col=0)
+# Simple function to copy current database to pandas DataFrame, then insert that DataFrame to a
+# backup CSV file.
+def backup_crimes(engine: Engine) -> None:
+    crimes_df = pd.read_sql_table("crimes", engine)
 
     today = date.today().strftime("%m-%d-%Y")
     backup_csv_name = f"crimes-{today}.csv"
@@ -223,8 +207,8 @@ def backup_crimes() -> None:
     print("Crime CSV backed up.")
 
 # Load list of crimes by crime type and status
-def load_crime_and_status_lists() -> None:
-    crimes_df = pd.read_csv('crimes.csv', index_col=0)
+def load_crime_and_status_lists(engine: Engine) -> None:
+    crimes_df = pd.read_sql_table("crimes", engine)
 
     crime_list = {}
     status_list = {}
@@ -246,9 +230,9 @@ def load_crime_and_status_lists() -> None:
         json.dump(status_list, f, indent=4)
 
     print("Crime and status lists loaded.")
-    
+
 # Requests the url of the daily crime log, opens the file, calls PdfReader to read the pdf's
-# contents, calls the tokenizer and parser, then adds the parsed list to a csv.
+# contents, calls the tokenizer and parser, then adds the parsed list to the database.
 def crime_load(command_str: str, engine: Engine, GMaps_API_KEY: str) -> None:
     pdf_filename = 'AllDailyCrimeLog.pdf'
     crime_url = 'https://police.ucf.edu/sites/default/files/logs/ALL%20DAILY%20crime%20log.pdf'
@@ -272,9 +256,9 @@ def crime_load(command_str: str, engine: Engine, GMaps_API_KEY: str) -> None:
         if len(crime) == 8: print("CORRECT FORMAT")
         print(crime, '\n')
 
-    dump_to_sql_csv(crimes_list, command_str, engine, GMaps_API_KEY)
-    backup_crimes()
-    load_crime_and_status_lists()
+    update_db(crimes_list, command_str, engine, GMaps_API_KEY)
+    backup_crimes(engine)
+    load_crime_and_status_lists(engine)
  
 if __name__ == "__main__":
     command_str = '-addcrimes'
