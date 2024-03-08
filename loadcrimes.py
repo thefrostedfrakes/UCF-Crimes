@@ -235,12 +235,16 @@ def load_crime_and_status_lists(engine: Engine) -> None:
 # contents, calls the tokenizer and parser, then adds the parsed list to the database.
 def crime_load(command_str: str, engine: Engine, GMaps_API_KEY: str) -> None:
     pdf_filename = 'AllDailyCrimeLog.pdf'
-    crime_url = 'https://police.ucf.edu/sites/default/files/logs/ALL%20DAILY%20crime%20log.pdf'
+    #crime_url = 'https://police.ucf.edu/sites/default/files/logs/ALL%20DAILY%20crime%20log.pdf'
+    crime_url = 'https://police.ucf.edu/wp-content/uploads/clery/ALL%20DAILY%20crime%20log.pdf'
 
     # Requests the url of the crime log from UCF PD's website and writes the pdf to the local
     # machine as 'AllDailyCrimeLog.pdf'. Then opens a PdfReader instance to read the pdf.
     rsp = requests.get(crime_url, timeout=30)
-    open(pdf_filename, 'wb').write(rsp.content)
+
+    with open(pdf_filename, 'wb') as f:
+        f.write(rsp.content)
+        
     reader = PdfReader(pdf_filename)
 
     # Each page in the pdf is tokenized and parsed.

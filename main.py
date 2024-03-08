@@ -25,9 +25,6 @@ main_config.read('config.ini')
 
 bot_channel_id = main_config.get("DISCORD", "CRIME_CHANNEL_ID")
 
-engine = setup_db(main_config)
-print("Connected to database")
-
 @client.event
 async def on_ready():
     print("CrimeBot is online!")
@@ -47,7 +44,7 @@ async def on_ready():
         if current_time == "00:30:00":
             today = date.today()
             yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
-            await crime_send(None, client, yesterday, bot_channel_id, engine)
+            await crime_send(None, client, yesterday, bot_channel_id, main_config)
 
         await asyncio.sleep(1)
 
@@ -60,7 +57,7 @@ async def crimes(interaction: discord.Interaction, parameter: str):
     if parameter == "all":
         await list_crimes(interaction, client, bot_channel_id)
     else:
-        await crime_send(interaction, client, parameter, bot_channel_id, engine)
+        await crime_send(interaction, client, parameter, bot_channel_id, main_config)
 
 @client.tree.command(name='locations', description="List all available locations in the database.")
 async def locations(interaction: discord.Interaction):
@@ -68,7 +65,7 @@ async def locations(interaction: discord.Interaction):
 
 @client.tree.command(name='heatmap', description="View a heatmap of all reported crimes at the main campus, downtown campus, or Rosen.")
 async def heatmap(interaction: discord.Interaction, campus: str):
-    await generate_heatmap(interaction, campus, engine)
+    await generate_heatmap(interaction, campus, main_config)
 
 @client.event
 async def on_message(message: discord.Message):

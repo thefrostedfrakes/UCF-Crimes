@@ -5,12 +5,13 @@ Written by Jack Sweeney, Ethan Frakes
 
 '''
 
+from loadcrimes import setup_db
 import staticmaps
 from PIL import Image, ImageDraw
 import pandas as pd
 import folium
 from folium.plugins import HeatMap
-from sqlalchemy.engine.base import Engine
+from configparser import ConfigParser
 import io
 import discord
 import math
@@ -45,7 +46,8 @@ def generate_image(crime: pd.Series) -> None:
     draw.line((696, 700, 1080, 700), fill=(0, 0, 0), width=10)
     im1.save('caseout.png', quality=100)
 
-async def generate_heatmap(interaction: discord.Interaction, command_arg: str, engine: Engine) -> None:
+async def generate_heatmap(interaction: discord.Interaction, command_arg: str, main_config: ConfigParser) -> None:
+    engine = setup_db(main_config)
     await interaction.response.defer()
     await interaction.followup.send("Generating Heatmap... This May Take a Moment...")
 
