@@ -1,5 +1,7 @@
 import requests
 import json
+import urllib
+
 def post_fb(page_id, file_path, message, access_token):
     """Posts to Facebook with Image"""
     import os
@@ -44,9 +46,9 @@ def post_to_instagram(ig_user_id, access_token, image_url, caption):
         print('Posted to Instagram', caption, "IG response:", resp.json())
     else:
         print('Could not post to Instagram: ', resp.json())
+        
 def post_to_meta_both(fb_page_id, ig_user_id, file_path, message, access_token):
     """Posts to Facebook and Instagram"""
-    import urllib
     enc_message = urllib.parse.quote(message, safe='')
     post_info = post_fb(fb_page_id, file_path, enc_message, access_token)
     fb_image_link = get_fb_post_image_link(post_info['id'], access_token)
