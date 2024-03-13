@@ -7,6 +7,7 @@ from image import generate_image
 from get_emojis import get_emojis
 from loadcrimes import setup_db
 import pandas as pd
+from xed import XED
 
 def notify_crime(crime, main_config):
     # Reformat dates and times
@@ -34,13 +35,24 @@ def notify_crime(crime, main_config):
     # Create the image
     generate_image(crime)
     # Post to socials
-    photo = open('caseout.png', "rb")
+    photo_name = "caseout.png"
     if main_config.getboolean("META", "ENABLE"):
-        post_to_meta_both(main_config.get("META", "FB_PAGE_ID"), main_config.get("META", "IG_USER_ID"), 'caseout.png', message, main_config.get("META", "ACCESS_TOKEN"))
+        post_to_meta_both(main_config.get("META", "FB_PAGE_ID"), 
+                          main_config.get("META", "IG_USER_ID"), photo_name, 
+                          message, main_config.get("META", "ACCESS_TOKEN"))
+        
     if main_config.getboolean("TELEGRAM", "ENABLE"):
+        photo = open(photo_name, "rb")
         sendTeleg(message, main_config, photo)
-    return None
 
+    if main_config.getboolean("TWITTER", "ENABLE"):
+        x_client = XED(main_config.get("TWITTER", "CONSUMER_KEY"), 
+                       main_config.get("TWITTER", "CONSUMER_SECRET"), 
+                       main_config.get("TWITTER", "ACCESS_TOKEN"), 
+                       main_config.get("TWITTER", "ACCESS_TOKEN_SECRET"))
+        x_client.post(message=message, media_list=[(photo_name, f"Map image over {crime['place']}")])
+
+    return None
 
 if __name__ == "__main__":
     # Read the config

@@ -25,6 +25,7 @@ pandas = "*"
 psycopg2 = "*"
 sqlalchemy = "*"
 python-telegram-bot = "*"
+tweepy = "*"
 
 [dev-packages]
 
