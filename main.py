@@ -56,13 +56,6 @@ async def ping(interaction: discord.Interaction):
 async def help(interaction: discord.Interaction):
     await bot_help(interaction)
 
-@client.tree.command(name='servers', description="List all servers")
-async def servers(interaction: discord.Interaction):
-    guild_str = ""
-    for guild in client.guilds:
-        guild_str += f"{guild.name}\n"
-    await interaction.response.send_message(guild_str)
-
 @client.tree.command(name='crimes', description="Search for all available crimes in the database. Search by date, location, or status.")
 async def crimes(interaction: discord.Interaction, parameter: str):
     if parameter == "all":
@@ -77,6 +70,14 @@ async def locations(interaction: discord.Interaction):
 @client.tree.command(name='heatmap', description="View a heatmap of all reported crimes at the main campus, downtown campus, or Rosen.")
 async def heatmap(interaction: discord.Interaction, campus: str):
     await generate_heatmap(interaction, campus, main_config)
+
+@client.tree.command(name='servers', description="List all servers")
+@commands.has_permissions(administrator=True)
+async def servers(interaction: discord.Interaction):
+    guild_str = ""
+    for guild in client.guilds:
+        guild_str += f"{guild.name}\n"
+    await interaction.response.send_message(guild_str)
 
 @client.event
 async def on_message(message: discord.Message):
