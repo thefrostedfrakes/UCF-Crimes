@@ -11,10 +11,10 @@ import time
 from datetime import date, timedelta
 import asyncio
 from configparser import ConfigParser
-from loadcrimes import crime_load, backup_crimes, load_crime_and_status_lists, setup_db
+from loadcrimes import crime_load, backup_crimes, load_crime_and_status_lists
 from sendcrimes import crime_send, list_locations, list_crimes
 from image import generate_heatmap
-from get_place_name import change_all_addresses
+from utils import bot_help, change_all_addresses
     
 intents = discord.Intents.all()
 client = commands.Bot(intents=intents, command_prefix = '!')
@@ -41,7 +41,7 @@ async def on_ready():
         t = time.localtime()
         current_time = time.strftime("%H:%M:%S", t)
 
-        if current_time == "00:30:00":
+        if current_time == "00:15:00":
             today = date.today()
             yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
             await crime_send(None, client, yesterday, bot_channel_id, main_config)
@@ -51,6 +51,17 @@ async def on_ready():
 @client.tree.command(name='ping', description="Ping the bot! (Just to test)")
 async def ping(interaction: discord.Interaction):
     await interaction.response.send_message(f"{interaction.user.mention} pong!", ephemeral=True)
+
+@client.tree.command(name='help', description="View all bot commands and their functionality.")
+async def help(interaction: discord.Interaction):
+    await bot_help(interaction)
+
+@client.tree.command(name='servers', description="List all servers")
+async def servers(interaction: discord.Interaction):
+    guild_str = ""
+    for guild in client.guilds:
+        guild_str += f"{guild.name}\n"
+    await interaction.response.send_message(guild_str)
 
 @client.tree.command(name='crimes', description="Search for all available crimes in the database. Search by date, location, or status.")
 async def crimes(interaction: discord.Interaction, parameter: str):
@@ -74,13 +85,16 @@ async def on_message(message: discord.Message):
     except AttributeError as e:
         print(f"Error displaying message sent by {message.author}: {e}")
 
-    if message.content.startswith('-loadcrimes') or message.content.startswith('-addcrimes'):
+    # if message.content.startswith('-loadcrimes') or message.content.startswith('-addcrimes'):
+    #     if not message.author.guild_permissions.administrator:
+    #         await message.reply('Sorry, you do not have permission to use this command!')
+    #         return
+    #     crime_load(message.content, main_config.get("DISCORD", "GMAPS_API_KEY"))
+
+    if message.content.startswith('-backup'):
         if not message.author.guild_permissions.administrator:
             await message.reply('Sorry, you do not have permission to use this command!')
             return
-        crime_load(message.content, main_config.get("DISCORD", "GMAPS_API_KEY"))
-
-    elif message.content.startswith('-backup'):
         backup_crimes()
 
     elif message.content.startswith('-crime-status-list'):

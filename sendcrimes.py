@@ -6,6 +6,7 @@ and Maverick Reynolds
 
 '''
 
+import utils
 import json
 import pandas as pd
 from typing import Optional
@@ -13,10 +14,6 @@ import discord
 from discord.ext import commands
 from datetime import datetime
 from image import generate_image
-from loadcrimes import is_valid_date
-from titlize import titlize
-from get_emojis import get_emojis
-from loadcrimes import setup_db
 from sqlalchemy.engine.base import Engine
 from discord import TextChannel
 from configparser import ConfigParser
@@ -44,7 +41,7 @@ async def crime_sender(channel: discord.TextChannel, crime: pd.Series) -> None:
     # Format title
     case_title = crime["title"]
     # Get emojis
-    case_emojis = get_emojis(case_title)
+    case_emojis = utils.get_emojis(case_title)
     # Use language model AFTER formatting if enabled and AFTER emojis are retrieved
     # Append emojis to title
     case_title += case_emojis
@@ -52,7 +49,7 @@ async def crime_sender(channel: discord.TextChannel, crime: pd.Series) -> None:
     place = crime["place"] # replace_address already called in loadcrimes.py
     
     # Compose message
-    description = f"Occurred at {titlize(crime['campus'])}, {place} \n" \
+    description = f"Occurred at {utils.titlize(crime['campus'])}, {place} \n" \
                   f"Case: {crime['case_id']} \n" \
                   f"Reported on {report_date_time} \n" \
                   f"Between {start_date_time} - {end_date_time} \n" \
@@ -86,7 +83,7 @@ async def crime_send_sql(interaction: Optional[discord.Interaction],
         status_list = json.load(f)
     
     command_arg = command_arg.upper()
-    if is_valid_date(command_arg):
+    if utils.is_valid_date(command_arg):
         try:
             date_str = datetime.strptime(command_arg, "%m/%d/%y").strftime("%A, %B %d, %Y")
             command_arg = datetime.strptime(command_arg, "%m/%d/%y").strftime("%Y-%m-%d")
@@ -150,7 +147,7 @@ async def crime_send(interaction: Optional[discord.Interaction],
                     main_config: ConfigParser,
                     ) -> None:
 
-    engine = setup_db(main_config)
+    engine = utils.setup_db(main_config)
     # Check if command was sent to bot channel.
     if interaction is not None and not await is_channel(interaction, client, channel_id):
         return
@@ -175,7 +172,7 @@ async def list_locations(interaction: discord.Interaction, client: commands.Bot,
     embed = discord.Embed(title="All Locations in Database (Page " + str(page) + "):", color=discord.Color.blue())
     for key, val in locations.items():
         fieldCount += 1
-        if (fieldCount > 25):
+        if (fieldCount >= 25):
             page += 1
             embeds.append(embed)
             embed = discord.Embed(title="All Locations in Database (Page " + str(page) + "):", color=discord.Color.blue())
@@ -200,7 +197,7 @@ async def list_crimes(interaction: discord.Interaction, client: commands.Bot, ch
     embed = discord.Embed(title="All Crime Names in Database (Page " + str(page) + "):", color=discord.Color.blue())
     for key, value in crime_list.items():
         fieldCount += 1
-        if (fieldCount > 25):
+        if (fieldCount >= 25):
             page += 1
             await interaction.followup.send(embed=embed)
             embed = discord.Embed(title="All Crime Names in Database (Page " + str(page) + "):", color=discord.Color.blue())

@@ -5,7 +5,7 @@ Written by Jack Sweeney, Ethan Frakes
 
 '''
 
-from loadcrimes import setup_db
+from utils import setup_db
 import staticmaps
 from PIL import Image, ImageDraw
 import pandas as pd
@@ -63,7 +63,7 @@ async def generate_heatmap(interaction: discord.Interaction, command_arg: str, m
     else:
         return await interaction.followup.edit("Please choose from one of these campuses: Main, Downtown, or Rosen.")
 
-    m = folium.Map(location=coords, zoom_start=15)
+    m = folium.Map(location=coords, zoom_start=14)
     heat_map_data = []
 
     for row, coords in crime_coords.iterrows():
