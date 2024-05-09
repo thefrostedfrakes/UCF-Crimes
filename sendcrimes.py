@@ -39,7 +39,7 @@ async def crime_sender(channel: discord.TextChannel, crime: pd.Series) -> None:
     end_date_time = datetime.strptime(crime["end_dt"], "%Y-%m-%dT%H:%M:%SZ").strftime('%m/%d/%y %I:%M %p')
 
     # Format title
-    case_title = crime["title"]
+    case_title = crime["title"][0:255]
     # Get emojis
     case_emojis = utils.get_emojis(case_title)
     # Use language model AFTER formatting if enabled and AFTER emojis are retrieved
