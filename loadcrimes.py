@@ -10,6 +10,7 @@ from PyPDF2 import PdfReader
 from PyPDF2._page import PageObject
 import pandas as pd
 import requests
+import re
 from datetime import datetime, date
 import json
 from datetime import datetime
@@ -17,36 +18,32 @@ from configparser import ConfigParser
 from sqlalchemy import text
 from sqlalchemy.engine.base import Engine
 
+valid_campus_names = ["MAIN", "UCF", "ROSEN"]
+
 # Tokenizes each crime into separate elements of a 2D string array, where each 1st dimension
 # element is each crime and each 2nd dimension element is each space/newline delimited string.
 def tokenizer(page: PageObject) -> list:
-
     # Text extracted from page and split between spaces and newlines.
     crime_list = []
     text = page.extract_text()
+    rosen_delims = ["HOSPITALITY", "MANAGEMENT"]
+    patterns = [f'(?<=\S)(?:({"|".join(valid_campus_names)}))',
+                f'(?:({"|".join(rosen_delims)}))(?<=\S)']
+    
+    text = re.sub(patterns[0], r' \1', text)
+    text = re.sub(patterns[1], r'\1 ', text)
+
     textToken = text.split()
     buffer_list = []
-    valid_delimiters = ["Incident", "UNFOUNDED", "EXC", "ARREST", "INACTIVE", 
-                        "CLOSED", "OPEN", "ACTIVE", "REPORT"]
 
     # For each string in the textToken, if the string is one of the valid delimiters above
     # (end of one crime and beginning of another), buffer list is added to the crime list.
-    for elem in range(len(textToken)):
-        for delimiter in valid_delimiters:
-            if textToken[elem] == delimiter:
-                if delimiter == "ARREST" and textToken[elem+1] == "-":
-                    crime_list.append(buffer_list)
-                    buffer_list = []
-                
-                elif delimiter == "EXC" and textToken[elem+1] == "CLR":
-                    crime_list.append(buffer_list)
-                    buffer_list = []
-
-                elif delimiter != "ARREST" and utils.is_valid_case_id(textToken[elem+1]):
-                    crime_list.append(buffer_list)
-                    buffer_list = []
+    for elem in textToken:
+        if utils.is_valid_case_id(elem):
+            crime_list.append(buffer_list)
+            buffer_list = []
             
-        buffer_list.append(textToken[elem])
+        buffer_list.append(elem)
     
     crime_list.append(buffer_list)
     return crime_list
@@ -54,60 +51,65 @@ def tokenizer(page: PageObject) -> list:
 # Parses each crime element by grouping unjoined tokens together that correspond to the same
 # dictionary key.
 def parser(crime_list: list) -> list:
-    REP_DATE_INDEX = 2
-    REP_TIME_INDEX = 3
-    START_DATE_INDEX = 5
-    START_TIME_INDEX = 6
+    INCIDENT_INDEX = 1
+    CAMPUS_INDEX = 2
+    DISPOSITION_INDEX = 3
+    REP_DATE_INDEX = 4
+    REP_TIME_INDEX = 5
+    START_DATE_INDEX = 6
+    START_TIME_INDEX = 7
     END_DATE_INDEX = 8
     END_TIME_INDEX = 9
+    ADDRESS_INDEX = 10
 
+    valid_dispos = ["UNFOUNDED", "EXC", "ARREST", "INACTIVE", 
+                    "CLOSED", "OPEN", "ACTIVE", "REPORT"]
+    invalid_prelims = ["TRAFFIC", "TRESPASSING", "DRUG", "LAW"]
+    pattern = f'({"|".join(invalid_prelims)})'
     crime_list_len = len(crime_list)
 
     for i in range(crime_list_len):
         try:
-            for j, elem in enumerate(crime_list[i]):
-                if elem == "ARREST":
-                    crime_list[i][j] += " " + crime_list[i][j+1] + " " + crime_list[i][j+2]
-                    crime_list[i].remove(crime_list[i][j+1])
-                    crime_list[i].remove(crime_list[i][j+1])
-                
-                elif elem == "EXC":
-                    crime_list[i][j] += " " + crime_list[i][j+1] + " " + crime_list[i][j+2] + " " + crime_list[i][j+3]
-                    crime_list[i].remove(crime_list[i][j+1])
-                    crime_list[i].remove(crime_list[i][j+1])
-                    crime_list[i].remove(crime_list[i][j+1])
+            # Group incident title elements together until campus name is reached; or disposition if unspecified campus.
+            while crime_list[i][CAMPUS_INDEX] not in valid_campus_names and (crime_list[i][CAMPUS_INDEX] not in valid_dispos or re.search(pattern, crime_list[i][INCIDENT_INDEX])):
+                crime_list[i][INCIDENT_INDEX] += " " + crime_list[i][INCIDENT_INDEX+1]
+                crime_list[i].remove(crime_list[i][INCIDENT_INDEX+1])
 
-                elif utils.is_valid_time_label(crime_list[i][j]):
-                    j += 1
-                    while j + 1 < len(crime_list[i]) and not utils.is_valid_date(crime_list[i][j+1]) and not utils.is_valid_time_label(crime_list[i][j+1]):
-                        crime_list[i][j] += " " + crime_list[i][j+1]
-                        crime_list[i].remove(crime_list[i][j+1])
-        except IndexError: continue
+            # If the element in campus index contains disposition, then insert unspecified campus at campus index.
+            if crime_list[i][CAMPUS_INDEX] in valid_dispos:
+                crime_list[i].insert(CAMPUS_INDEX, "UNSPECIFIED CAMPUS")
 
-        try:
-            if utils.is_valid_date(crime_list[i][4][-8:]):
-                    crime_list[i].insert(5, crime_list[i][4][-8:])
-                    crime_list[i][4] = crime_list[i][4][:-8].strip()
-        except IndexError: pass
+            # Else, then group campus name elements together until first disposition element is reached.
+            else:
+                while crime_list[i][DISPOSITION_INDEX] not in valid_dispos:
+                    crime_list[i][CAMPUS_INDEX] += " " + crime_list[i][CAMPUS_INDEX+1]
+                    crime_list[i].remove(crime_list[i][CAMPUS_INDEX+1])
 
-        if len(crime_list[i]) == 10 and utils.is_valid_time_label(crime_list[i][-1]):
-            crime_list[i].append("UNSPECIFIED CAMPUS")
+            # Group disposition elements together until report date is reached (indicated if element at rep date index is a valid date)
+            while not utils.is_valid_date(crime_list[i][REP_DATE_INDEX]):
+                crime_list[i][DISPOSITION_INDEX] += " " + crime_list[i][DISPOSITION_INDEX+1]
+                crime_list[i].remove(crime_list[i][DISPOSITION_INDEX+1])
 
-        if len(crime_list[i]) == 11:
+            # Join all address elements together (everything from address index onwards is address element), then slice list.
+            crime_list[i][ADDRESS_INDEX] = ' '.join(crime_list[i][ADDRESS_INDEX:]) 
+            crime_list[i] = crime_list[i][0:ADDRESS_INDEX+1]
+
+            # Group corresponding date and time elements together for report, start, and end datetimes.
             crime_list[i][REP_DATE_INDEX] += " " + crime_list[i][REP_TIME_INDEX]
             crime_list[i][START_DATE_INDEX] += " " + crime_list[i][START_TIME_INDEX]
             crime_list[i][END_DATE_INDEX] += " " + crime_list[i][END_TIME_INDEX]
             del crime_list[i][REP_TIME_INDEX]
             del crime_list[i][START_TIME_INDEX - 1]
             del crime_list[i][END_TIME_INDEX - 2]
+        except IndexError: continue
 
     return crime_list
 
 def update_db(crime_list: list, engine: Engine, GMaps_API_KEY: str) -> None:
     # Columns dict to save key names and list indices.
-    columns = {"disposition": 0, "case_id": 1, "report_dt": 2, 
-                "title": 3, "start_dt": 4, "address": 5, 
-                "end_dt": 6, "campus": 7}
+    columns = {"case_id": 0, "title": 1, "campus": 2, 
+                "disposition": 3, "report_dt": 4, "start_dt": 5, 
+                "end_dt": 6, "address": 7}
 
     for crime in crime_list:
         if len(crime) == 8:
