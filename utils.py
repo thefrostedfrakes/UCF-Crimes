@@ -143,7 +143,8 @@ def get_lat_lng_from_address(address: str, google_maps_api_key: str) -> tuple[fl
         'PLAZA DR W': (28.6074074, -81.1980356),
         'GEMINI/SCORPIUS': (28.6018854, -81.1944728),
         'KINGS KNIGHT': (28.6104158, -81.2154757),
-        'KROSSING': (28.6113891, -81.2113697)
+        'KROSSING': (28.6113891, -81.2113697),
+        '410 TERRY AVE N': (28.537944, -81.386917)
     }
 
     endpoint = 'https://maps.googleapis.com/maps/api/geocode/json'
