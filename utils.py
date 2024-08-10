@@ -1,5 +1,5 @@
 '''
-UCF Crimes: etc.py
+UCF Crimes: utils.py
 Various functions to assist with backend & discord bot functionality.
 Written by Ethan Frakes and Maverick Reynolds
 
