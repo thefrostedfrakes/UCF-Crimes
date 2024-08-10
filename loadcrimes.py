@@ -19,6 +19,8 @@ from sqlalchemy import text
 from sqlalchemy.engine.base import Engine
 
 valid_campus_names = ["MAIN", "UCF", "ROSEN"]
+valid_dispos = ["UNFOUNDED", "EXC", "ARREST", "INACTIVE", 
+                "CLOSED", "OPEN", "ACTIVE", "REPORT"]
 
 # Tokenizes each crime into separate elements of a 2D string array, where each 1st dimension
 # element is each crime and each 2nd dimension element is each space/newline delimited string.
@@ -27,7 +29,7 @@ def tokenizer(page: PageObject) -> list:
     crime_list = []
     text = page.extract_text()
     rosen_delims = ["HOSPITALITY", "MANAGEMENT"]
-    patterns = [f'(?<=\S)(?:({"|".join(valid_campus_names)}))',
+    patterns = [f'(?<=\S)(?:({"|".join(valid_campus_names + valid_dispos)}))',
                 f'(?:({"|".join(rosen_delims)}))(?<=\S)']
     
     text = re.sub(patterns[0], r' \1', text)
@@ -62,10 +64,8 @@ def parser(crime_list: list) -> list:
     END_TIME_INDEX = 9
     ADDRESS_INDEX = 10
 
-    valid_dispos = ["UNFOUNDED", "EXC", "ARREST", "INACTIVE", 
-                    "CLOSED", "OPEN", "ACTIVE", "REPORT"]
-    invalid_prelims = ["TRAFFIC", "TRESPASSING", "DRUG", "LAW"]
-    pattern = f'({"|".join(invalid_prelims)})'
+    invalid_prelims = ["TRAFFIC", "TRESPASSING", "DRUG", "LAW", "WARRANT"]
+    pattern = r'\b(?:' + '|'.join(invalid_prelims) + r')\b'
     crime_list_len = len(crime_list)
 
     for i in range(crime_list_len):
@@ -110,10 +110,11 @@ def update_db(crime_list: list, engine: Engine, GMaps_API_KEY: str) -> None:
     columns = {"case_id": 0, "title": 1, "campus": 2, 
                 "disposition": 3, "report_dt": 4, "start_dt": 5, 
                 "end_dt": 6, "address": 7}
+    
+    connection = engine.connect()
 
     for crime in crime_list:
         if len(crime) == 8:
-            connection = engine.connect()
             case_id = crime[columns['case_id']]
             query = f"SELECT * FROM crimes WHERE case_id = '{case_id}'"
             result = connection.execute(text(query))
@@ -149,9 +150,9 @@ def update_db(crime_list: list, engine: Engine, GMaps_API_KEY: str) -> None:
 
             connection.execute(text(query))
             connection.commit()
-            connection.close()
 
     print("Crime database updated.")
+    connection.close()
 
 # Simple function to copy current database to pandas DataFrame, then insert that DataFrame to a
 # backup CSV file.
