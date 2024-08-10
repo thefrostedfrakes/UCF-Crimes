@@ -53,7 +53,8 @@ async def orlando_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChann
 
     for _, call in calls.iterrows():
         lat, lng = utils.get_lat_lng_from_address(call['location'], api_key)
-        heat_map_data.append([lat, lng, 0.3])
+        if lat and lng:
+            heat_map_data.append([lat, lng, 0.3])
 
     HeatMap(heat_map_data).add_to(m)
     img_data = m._to_png(5)
