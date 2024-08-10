@@ -250,7 +250,7 @@ async def send_orlando(interaction: discord.Interaction | None, date_hour: str, 
             embed = discord.Embed(title=title, color=color)
             fieldCount = 0
             
-        embed.add_field(name=call['description'], value=f"Date: {call['date']}\nAddress: {call['location']}", inline=False)
+        embed.add_field(name=call['description'], value=f"""Date: {call['date']}\nAddress: {call['location']}""", inline=False)
 
     await channel.send(embed=embed)
     await orlando_hourly_heatmap(calls, channel, main_config)
