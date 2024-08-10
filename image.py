@@ -5,7 +5,7 @@ Written by Jack Sweeney, Ethan Frakes
 
 '''
 
-from utils import setup_db
+import utils
 import staticmaps
 from PIL import Image, ImageDraw
 import pandas as pd
@@ -46,8 +46,24 @@ def generate_image(crime: pd.Series) -> None:
     draw.line((696, 700, 1080, 700), fill=(0, 0, 0), width=10)
     im1.save('caseout.png', quality=100)
 
+async def orlando_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChannel, main_config: ConfigParser):
+    m = folium.Map(location=[28.55, -81.39], zoom_start=12)
+    heat_map_data = []
+    api_key = main_config.get("DISCORD", "GMAPS_API_KEY")
+
+    for _, call in calls.iterrows():
+        lat, lng = utils.get_lat_lng_from_address(call['location'], api_key)
+        heat_map_data.append([lat, lng, 0.3])
+
+    HeatMap(heat_map_data).add_to(m)
+    img_data = m._to_png(5)
+    img = Image.open(io.BytesIO(img_data))
+    img.save('orlando_map.png')
+
+    await channel.send(file=discord.File("./orlando_map.png"))
+
 async def generate_heatmap(interaction: discord.Interaction, command_arg: str, main_config: ConfigParser) -> None:
-    engine = setup_db(main_config)
+    engine = utils.setup_db(main_config)
     await interaction.response.defer()
     await interaction.followup.send("Generating Heatmap... This May Take a Moment...")
 
@@ -66,7 +82,7 @@ async def generate_heatmap(interaction: discord.Interaction, command_arg: str, m
     m = folium.Map(location=coords, zoom_start=14)
     heat_map_data = []
 
-    for row, coords in crime_coords.iterrows():
+    for _, coords in crime_coords.iterrows():
         heat_map_data.append([float(coords["lat"]), float(coords["lng"]), 0.3])
 
     HeatMap(heat_map_data).add_to(m)
@@ -95,7 +111,7 @@ async def generate_heatmap_csv(interaction: discord.Interaction, command_arg: st
     m = folium.Map(location=coords, zoom_start=15)
     heat_map_data = []
 
-    for row, crime in crimes.iterrows():
+    for _, crime in crimes.iterrows():
         if "4000 CENTRAL FLORIDA BLVD" not in crime["place"]:
             if not math.isnan(crime["lat"]) and not math.isnan(crime["lng"]):
                 lat = float(crime["lat"])

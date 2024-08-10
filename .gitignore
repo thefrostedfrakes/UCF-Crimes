@@ -8,12 +8,14 @@ test_cases.json
 /__pycache__
 geckodriver.log
 heatmap.png
+orlando_map.png
 /backups
 /logs
 orlando_heatmap.png
 orlando.json
 crimes.json
 crimes.csv
+orlando.csv
 text_clip.py
 /old_scripts
 TODO.txt

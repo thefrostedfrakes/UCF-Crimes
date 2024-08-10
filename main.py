@@ -6,13 +6,11 @@ Written by Ethan Frakes
 '''
 
 import discord
-from discord.ext import commands
-import time
-from datetime import date, timedelta
-import asyncio
+from discord.ext import commands, tasks
+from datetime import date, datetime, timedelta
 from configparser import ConfigParser
 from loadcrimes import crime_load, backup_crimes, load_crime_and_status_lists
-from sendcrimes import crime_send, list_locations, list_crimes
+from sendcrimes import crime_send, list_locations, list_crimes, send_orlando
 from image import generate_heatmap
 from utils import bot_help, change_all_addresses
     
@@ -37,16 +35,20 @@ async def on_ready():
     except Exception as e:
         print(f"Error syncing commands: {e}")
 
-    while not client.is_closed():
-        t = time.localtime()
-        current_time = time.strftime("%H:%M:%S", t)
+    time_checker.start()
+        
+@tasks.loop(seconds=60)
+async def time_checker():
+    t = datetime.now()
 
-        if current_time == "00:15:00":
-            today = date.today()
-            yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
-            await crime_send(None, client, yesterday, bot_channel_id, main_config)
+    if t.minute == 0:
+        date_hour = (datetime.now() - timedelta(hours=1)).strftime("%-m/%d/%Y %H")
+        await send_orlando(None, date_hour, client, main_config)
 
-        await asyncio.sleep(1)
+    if t.hour == 0 and t.minute == 15:
+        today = date.today()
+        yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
+        await crime_send(None, client, yesterday, bot_channel_id, main_config)
 
 @client.tree.command(name='ping', description="Ping the bot! (Just to test)")
 async def ping(interaction: discord.Interaction):
@@ -70,6 +72,12 @@ async def locations(interaction: discord.Interaction):
 @client.tree.command(name='heatmap', description="View a heatmap of all reported crimes at the main campus, downtown campus, or Rosen.")
 async def heatmap(interaction: discord.Interaction, campus: str):
     await generate_heatmap(interaction, campus, main_config)
+
+@client.tree.command(name='orlando', description="List all orlando crime reports from the last hour.")
+@commands.has_permissions(administrator=True)
+async def orlando(interaction: discord.Interaction):
+    date_hour = (datetime.now() - timedelta(hours=1)).strftime("%-m/%d/%Y %H")
+    await send_orlando(interaction, date_hour, client, main_config)
 
 @client.tree.command(name='servers', description="List all servers")
 @commands.has_permissions(administrator=True)

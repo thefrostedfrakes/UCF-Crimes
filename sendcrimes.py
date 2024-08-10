@@ -13,13 +13,17 @@ from typing import Optional
 import discord
 from discord.ext import commands
 from datetime import datetime
-from image import generate_image
+from image import generate_image, orlando_hourly_heatmap
 from sqlalchemy.engine.base import Engine
+from sqlalchemy import text
 from discord import TextChannel
 from configparser import ConfigParser
 
-# Check if the channel is the permitted bot channel. Returns a message to user asking to use channel if false.
 async def is_channel(interaction: discord.Interaction, client: commands.Bot, channel_id: str) -> bool:
+    '''
+    Check if the channel is the permitted bot channel. Returns a message to user asking to use channel if false.
+    '''
+
     channel = client.get_channel(int(channel_id))
 
     if interaction.channel == channel:
@@ -29,8 +33,11 @@ async def is_channel(interaction: discord.Interaction, client: commands.Bot, cha
                                             ephemeral=True)
     return False
 
-# Wrapper for formatting Discord embed containing queried crime info to send to channel.
-async def crime_sender(channel: discord.TextChannel, crime: pd.Series) -> None:
+async def crime_sender(channel: TextChannel, crime: pd.Series) -> None:
+    '''
+    Wrapper for formatting Discord embed containing queried crime info to send to channel.
+    '''
+
     generate_image(crime)
 
     # Reformat dates and times
@@ -93,7 +100,7 @@ async def crime_send_sql(interaction: Optional[discord.Interaction],
 
         # Respond to interaction if the command was triggered by user. If not, then the command was
         # executed automatically for daily crime listing.
-        if interaction is not None:
+        if interaction:
             await interaction.response.send_message(f"Reported Crimes for {date_str}")
         else:
             await channel.send(f"Reported Crimes for {date_str}")
@@ -157,9 +164,10 @@ async def crime_send(interaction: Optional[discord.Interaction],
 
     await crime_send_sql(interaction, client, command_arg, channel, engine)
     
-
-# Locations json is listed as Discord embed pages.
 async def list_locations(interaction: discord.Interaction, client: commands.Bot, channel_id: str) -> None:
+    '''
+    Locations json is listed as Discord embed pages.
+    '''
     if not await is_channel(interaction, client, channel_id):
         return
     
@@ -183,8 +191,11 @@ async def list_locations(interaction: discord.Interaction, client: commands.Bot,
     embeds.append(embed)
     await interaction.response.send_message(embeds=embeds)
 
-# Crimes json is listed as Discord embed pages.
 async def list_crimes(interaction: discord.Interaction, client: commands.Bot, channel_id: str) -> None:
+    '''
+    Crimes json is listed as Discord embed pages.
+    '''
+
     if not await is_channel(interaction, client, channel_id):
         return
     
@@ -194,15 +205,55 @@ async def list_crimes(interaction: discord.Interaction, client: commands.Bot, ch
         
     fieldCount = 0
     page = 1
-    embed = discord.Embed(title="All Crime Names in Database (Page " + str(page) + "):", color=discord.Color.blue())
+    color = discord.Color.blue()
+
+    embed = discord.Embed(title=f"All Crime Names in Database (Page {page}):", color=color)
     for key, value in crime_list.items():
         fieldCount += 1
         if (fieldCount >= 25):
             page += 1
             await interaction.followup.send(embed=embed)
-            embed = discord.Embed(title="All Crime Names in Database (Page " + str(page) + "):", color=discord.Color.blue())
+            embed = discord.Embed(title=f"All Crime Names in Database (Page {page}):", color=color)
             fieldCount = 0
             
         embed.add_field(name=key, value=f"Number of crimes in database: {value}", inline=False)
 
     await interaction.followup.send(embed=embed)
+
+async def send_orlando(interaction: discord.Interaction | None, date_hour: str, client: commands.Bot, main_config: ConfigParser) -> None:
+    '''
+    Send all Orlando PD active calls within the last hour.
+    '''
+    
+    if interaction:
+        await interaction.response.defer()
+
+    engine = utils.setup_db(main_config)
+
+    channel_id = main_config.get("DISCORD", "ORLANDO_CHANNEL_ID")
+    channel = client.get_channel(int(channel_id))
+
+    query = text("SELECT * FROM orlando_crimes WHERE date LIKE :date_hour ORDER BY date ASC")
+    calls = pd.read_sql_query(query, engine, params={"date_hour": f"{date_hour}%"})
+    
+    fieldCount = 0
+    page = 1
+    color = discord.Color.blue()
+    title = "ALL ORLANDO PD ACTIVE CALLS WITHIN PAST HOUR"
+
+    embed = discord.Embed(title=title, color=color)
+    for _, call in calls.iterrows():
+        fieldCount += 1
+        if (fieldCount >= 25):
+            page += 1
+            await channel.send(embed=embed)
+            embed = discord.Embed(title=title, color=color)
+            fieldCount = 0
+            
+        embed.add_field(name=call['description'], value=f"Date: {call['date']}\n Address: {call['location']}", inline=False)
+
+    await channel.send(embed=embed)
+    await orlando_hourly_heatmap(calls, channel, main_config)
+
+    if interaction:
+        await interaction.followup.send("Hour report sent.", ephemeral=True)
