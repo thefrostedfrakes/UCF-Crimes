@@ -12,6 +12,7 @@ import pandas as pd
 import folium
 from folium.plugins import HeatMap
 from configparser import ConfigParser
+import os
 import io
 import discord
 import math
@@ -45,6 +46,23 @@ def generate_image(crime: pd.Series) -> None:
     draw.line((700, 700, 700, 1080), fill=(0, 0, 0), width=10)
     draw.line((696, 700, 1080, 700), fill=(0, 0, 0), width=10)
     im1.save('caseout.png', quality=100)
+
+    os.remove('casez.png')
+    os.remove('case.png')
+
+def generate_image_all(crimes: pd.DataFrame) -> None:
+    context = staticmaps.Context()
+    context.set_tile_provider(staticmaps.tile_provider_OSM)
+
+    for _, crime in crimes.iterrows():
+        lat, lng = crime["lat"], crime["lng"]
+
+        if not pd.isna(lat) and not pd.isna(lng):
+            loc = staticmaps.create_latlng(lat, lng)
+            context.add_object(staticmaps.Marker(loc, color=staticmaps.RED, size=12))
+            
+    image = context.render_cairo(1080, 1080)
+    image.write_to_png("caseall.png")
 
 async def orlando_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChannel, main_config: ConfigParser):
     m = folium.Map(location=[28.55, -81.39], zoom_start=12)

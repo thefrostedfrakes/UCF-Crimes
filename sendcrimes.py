@@ -13,7 +13,7 @@ from typing import Optional
 import discord
 from discord.ext import commands
 from datetime import datetime
-from image import generate_image, orlando_hourly_heatmap
+from image import generate_image, generate_image_all, orlando_hourly_heatmap
 from sqlalchemy.engine.base import Engine
 from sqlalchemy import text
 from discord import TextChannel
@@ -135,15 +135,20 @@ async def crime_send_sql(interaction: Optional[discord.Interaction],
     crimeCount = len(query_matches)
 
     # For all crimes in matches, crime_sender sends as Discord embed.
-    for index, crime in query_matches.iterrows():
+    for _, crime in query_matches.iterrows():
         await crime_sender(channel, crime)
+
+    generate_image_all(query_matches)
+    await channel.send(file=discord.File("./caseall.png"))
 
     # If number of crimes in query dataframe is 0, no reported crimes message is sent.
     # Number of reported crimes is sent otherwise.
-    if (crimeCount == 0):
-        await channel.send("No reported crimes.")
+    if crimeCount == 0:
+        await channel.send("No crime reports.")
+    elif crimeCount == 1:
+        await channel.send("1 crime report.")
     else:
-        await channel.send(f"{crimeCount} reported crimes.")
+        await channel.send(f"{crimeCount} crime reports.")
 
     print("Crimes retrieved.")
 
