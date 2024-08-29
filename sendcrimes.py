@@ -85,9 +85,6 @@ async def crime_send_sql(interaction: Optional[discord.Interaction],
 
     with open('crime_list.json', 'r') as f:
         crime_list = json.load(f)
-
-    with open('status_list.json', 'r') as f:
-        status_list = json.load(f)
     
     command_arg = command_arg.upper()
     if utils.is_valid_date(command_arg):
@@ -113,7 +110,7 @@ async def crime_send_sql(interaction: Optional[discord.Interaction],
         query_param = "title"
         await interaction.response.send_message(f"Reported Crimes for {command_arg.title()}")
 
-    elif status_list.get(command_arg):
+    elif len(pd.read_sql_query(f"SELECT * FROM crimes WHERE disposition = '{command_arg}';", engine)) > 0:
         query_param = "disposition"
         await interaction.response.send_message(f"Reported Crimes with status {command_arg.title()}")
 
