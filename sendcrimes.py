@@ -135,16 +135,17 @@ async def crime_send_sql(interaction: Optional[discord.Interaction],
     for _, crime in query_matches.iterrows():
         await crime_sender(channel, crime)
 
-    generate_image_all(query_matches)
-    await channel.send(file=discord.File("./caseall.png"))
-
     # If number of crimes in query dataframe is 0, no reported crimes message is sent.
     # Number of reported crimes is sent otherwise.
     if crimeCount == 0:
         await channel.send("No crime reports.")
     elif crimeCount == 1:
+        generate_image_all(query_matches)
+        await channel.send(file=discord.File("./caseall.png"))
         await channel.send("1 crime report.")
     else:
+        generate_image_all(query_matches)
+        await channel.send(file=discord.File("./caseall.png"))
         await channel.send(f"{crimeCount} crime reports.")
 
     print("Crimes retrieved.")
