@@ -19,12 +19,12 @@ from sqlalchemy import text
 from discord import TextChannel
 from configparser import ConfigParser
 
-async def is_channel(interaction: discord.Interaction, client: commands.Bot, channel_id: str) -> bool:
+async def is_channel(interaction: discord.Interaction, client: commands.Bot, channel_id: int) -> bool:
     '''
     Check if the channel is the permitted bot channel. Returns a message to user asking to use channel if false.
     '''
 
-    channel = client.get_channel(int(channel_id))
+    channel = client.get_channel(channel_id)
 
     if interaction.channel == channel:
         return True
@@ -153,7 +153,7 @@ async def crime_send_sql(interaction: Optional[discord.Interaction],
 async def crime_send(interaction: Optional[discord.Interaction], 
                     client: commands.Bot, 
                     command_arg: str, 
-                    channel_id: str, 
+                    channel_id: int, 
                     main_config: ConfigParser,
                     ) -> None:
 
@@ -163,11 +163,11 @@ async def crime_send(interaction: Optional[discord.Interaction],
         return
 
     # Get bot channel from id to send to channel. Sent after interaction response.
-    channel = client.get_channel(int(channel_id))
+    channel = client.get_channel(channel_id)
 
     await crime_send_sql(interaction, client, command_arg, channel, engine)
     
-async def list_locations(interaction: discord.Interaction, client: commands.Bot, channel_id: str) -> None:
+async def list_locations(interaction: discord.Interaction, client: commands.Bot, channel_id: int) -> None:
     '''
     Locations json is listed as Discord embed pages.
     '''
@@ -194,7 +194,7 @@ async def list_locations(interaction: discord.Interaction, client: commands.Bot,
     embeds.append(embed)
     await interaction.response.send_message(embeds=embeds)
 
-async def list_crimes(interaction: discord.Interaction, client: commands.Bot, channel_id: str) -> None:
+async def list_crimes(interaction: discord.Interaction, client: commands.Bot, channel_id: int) -> None:
     '''
     Crimes json is listed as Discord embed pages.
     '''
@@ -233,8 +233,8 @@ async def send_orlando(interaction: discord.Interaction | None, date_hour: str, 
 
     engine = utils.setup_db(main_config)
 
-    channel_id = main_config.get("DISCORD", "ORLANDO_CHANNEL_ID")
-    channel = client.get_channel(int(channel_id))
+    channel_id = main_config.getint("DISCORD", "ORLANDO_CHANNEL_ID")
+    channel = client.get_channel(channel_id)
 
     query = text("SELECT * FROM orlando_crimes WHERE date LIKE :date_hour ORDER BY date ASC")
     calls = pd.read_sql_query(query, engine, params={"date_hour": f"{date_hour}%"})
