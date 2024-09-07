@@ -21,7 +21,7 @@ client.remove_command('help')
 main_config = ConfigParser()
 main_config.read('config.ini')
 
-bot_channel_id = main_config.get("DISCORD", "CRIME_CHANNEL_ID")
+bot_channel_id = main_config.getint("DISCORD", "CRIME_CHANNEL_ID")
 
 @client.event
 async def on_ready():
@@ -40,12 +40,15 @@ async def on_ready():
 @tasks.loop(seconds=60)
 async def time_checker():
     t = datetime.now()
+    orlando_minute = main_config.getint("DISCORD", "ORLANDO_MINUTE")
+    ucf_hour = main_config.getint("DISCORD", "UCF_HOUR")
+    ucf_minute = main_config.getint("DISCORD", "UCF_MINUTE")
 
-    if t.minute == 0:
+    if t.minute == orlando_minute:
         date_hour = (datetime.now() - timedelta(hours=1)).strftime("%-m/%d/%Y %H")
         await send_orlando(None, date_hour, client, main_config)
 
-    if t.hour == 0 and t.minute == 15:
+    if t.hour == ucf_hour and t.minute == ucf_minute:
         today = date.today()
         yesterday = (today - timedelta(days=1)).strftime("%m/%d/%y")
         await crime_send(None, client, yesterday, bot_channel_id, main_config)
