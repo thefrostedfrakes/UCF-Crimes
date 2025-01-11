@@ -6,6 +6,7 @@ import utils
 from image import generate_image
 import pandas as pd
 from xed import XED
+from requests.exceptions import HTTPError
 
 def notify_crime(crime, main_config):
     # Reformat dates and times
@@ -35,20 +36,29 @@ def notify_crime(crime, main_config):
     # Post to socials
     photo_name = "caseout.png"
     if main_config.getboolean("META", "ENABLE"):
-        post_to_meta_both(main_config.get("META", "FB_PAGE_ID"), 
-                          main_config.get("META", "IG_USER_ID"), photo_name, 
-                          message, main_config.get("META", "ACCESS_TOKEN"))
+        try:
+            post_to_meta_both(main_config.get("META", "FB_PAGE_ID"), 
+                            main_config.get("META", "IG_USER_ID"), photo_name, 
+                            message, main_config.get("META", "ACCESS_TOKEN"))
+        except HTTPError as e:
+            print(f"HTTP Error: {e}")
         
     if main_config.getboolean("TELEGRAM", "ENABLE"):
-        photo = open(photo_name, "rb")
-        sendTeleg(message, main_config, photo)
+        try:
+            photo = open(photo_name, "rb")
+            sendTeleg(message, main_config, photo)
+        except HTTPError as e:
+            print(f"HTTP Error: {e}")
 
     if main_config.getboolean("TWITTER", "ENABLE"):
-        x_client = XED(main_config.get("TWITTER", "CONSUMER_KEY"), 
-                       main_config.get("TWITTER", "CONSUMER_SECRET"), 
-                       main_config.get("TWITTER", "ACCESS_TOKEN"), 
-                       main_config.get("TWITTER", "ACCESS_TOKEN_SECRET"))
-        x_client.post(message=message, media_list=[(photo_name, f"Map image over {crime['place']}")])
+        try:
+            x_client = XED(main_config.get("TWITTER", "CONSUMER_KEY"), 
+                        main_config.get("TWITTER", "CONSUMER_SECRET"), 
+                        main_config.get("TWITTER", "ACCESS_TOKEN"), 
+                        main_config.get("TWITTER", "ACCESS_TOKEN_SECRET"))
+            x_client.post(message=message, media_list=[(photo_name, f"Map image over {crime['place']}")])
+        except HTTPError as e:
+            print(f"HTTP Error: {e}")
 
     return None
 
