@@ -10,7 +10,7 @@ from discord.ext import commands, tasks
 from datetime import date, datetime, timedelta
 from configparser import ConfigParser
 from loadcrimes import crime_load, backup_crimes, load_crime_and_status_lists
-from sendcrimes import crime_send, list_locations, list_crimes, send_orlando
+from sendcrimes import crime_send, list_locations, list_crimes, send_hourly
 from image import generate_heatmap
 from utils import bot_help, change_all_addresses
     
@@ -46,7 +46,8 @@ async def time_checker():
 
     if t.minute == orlando_minute:
         date_hour = (datetime.now() - timedelta(hours=1)).strftime("%-m/%d/%Y %H")
-        await send_orlando(None, date_hour, client, main_config)
+        await send_hourly(None, date_hour, client, main_config, "orlando")
+        await send_hourly(None, date_hour, client, main_config, "orange")
 
     if t.hour == ucf_hour and t.minute == ucf_minute:
         today = date.today()

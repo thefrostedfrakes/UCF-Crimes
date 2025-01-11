@@ -64,7 +64,7 @@ def generate_image_all(crimes: pd.DataFrame) -> None:
     image = context.render_cairo(1080, 1080)
     image.write_to_png("caseall.png")
 
-async def orlando_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChannel, main_config: ConfigParser):
+async def generate_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChannel, main_config: ConfigParser):
     m = folium.Map(location=[28.55, -81.39], zoom_start=12)
     heat_map_data = []
     api_key = main_config.get("DISCORD", "GMAPS_API_KEY")
@@ -77,9 +77,9 @@ async def orlando_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChann
     HeatMap(heat_map_data).add_to(m)
     img_data = m._to_png(5)
     img = Image.open(io.BytesIO(img_data))
-    img.save('orlando_map.png')
+    img.save('hourly_map.png')
 
-    await channel.send(file=discord.File("./orlando_map.png"))
+    await channel.send(file=discord.File("./hourly_map.png"))
 
 async def generate_heatmap(interaction: discord.Interaction, command_arg: str, main_config: ConfigParser) -> None:
     engine = utils.setup_db(main_config)

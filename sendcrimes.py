@@ -13,7 +13,7 @@ from typing import Optional
 import discord
 from discord.ext import commands
 from datetime import datetime
-from image import generate_image, generate_image_all, orlando_hourly_heatmap
+from image import generate_image, generate_image_all, generate_hourly_heatmap
 from sqlalchemy.engine.base import Engine
 from sqlalchemy import text
 from discord import TextChannel
@@ -223,9 +223,9 @@ async def list_crimes(interaction: discord.Interaction, client: commands.Bot, ch
 
     await interaction.followup.send(embed=embed)
 
-async def send_orlando(interaction: discord.Interaction | None, date_hour: str, client: commands.Bot, main_config: ConfigParser) -> None:
+async def send_hourly(interaction: discord.Interaction | None, date_hour: str, client: commands.Bot, main_config: ConfigParser, policedpt: str) -> None:
     '''
-    Send all Orlando PD active calls within the last hour.
+    Send all Orlando PD or OCSO active calls within the last hour.
     '''
 
     if interaction:
@@ -233,16 +233,23 @@ async def send_orlando(interaction: discord.Interaction | None, date_hour: str, 
 
     engine = utils.setup_db(main_config)
 
-    channel_id = main_config.getint("DISCORD", "ORLANDO_CHANNEL_ID")
-    channel = client.get_channel(channel_id)
+    if policedpt == "orlando":
+        key = 'date'
+        channel_id = main_config.getint("DISCORD", "ORLANDO_CHANNEL_ID")
+        title = "ALL ORLANDO PD ACTIVE CALLS WITHIN PAST HOUR"
+        color = discord.Color.blue()
 
-    query = text("SELECT * FROM orlando_crimes WHERE date LIKE :date_hour ORDER BY date ASC")
-    calls = pd.read_sql_query(query, engine, params={"date_hour": f"{date_hour}%"})
+    elif policedpt == "orange":
+        key = 'entrytime'
+        channel_id = main_config.getint("DISCORD", "ORANGE_CHANNEL_ID")
+        title = "ALL ORANGE COUNTY SHERIFF'S OFFICE ACTIVE CALLS WITHIN PAST HOUR"
+        color = discord.Color.orange()
     
     fieldCount = 0
     page = 1
-    color = discord.Color.blue()
-    title = "ALL ORLANDO PD ACTIVE CALLS WITHIN PAST HOUR"
+    channel = client.get_channel(channel_id)
+    query = text(f"SELECT * FROM {policedpt}_crimes WHERE {key} LIKE :date_hour ORDER BY {key} ASC")
+    calls = pd.read_sql_query(query, engine, params={"date_hour": f"{date_hour}%"})
 
     embed = discord.Embed(title=title, color=color)
     for _, call in calls.iterrows():
@@ -253,10 +260,10 @@ async def send_orlando(interaction: discord.Interaction | None, date_hour: str, 
             embed = discord.Embed(title=title, color=color)
             fieldCount = 0
             
-        embed.add_field(name=call['description'], value=f"""Date: {call['date']}\nAddress: {call['location']}""", inline=False)
+        embed.add_field(name=call['description'], value=f"""Date: {call[key]}\nAddress: {call['location']}""", inline=False)
 
     await channel.send(embed=embed)
-    await orlando_hourly_heatmap(calls, channel, main_config)
+    await generate_hourly_heatmap(calls, channel, main_config)
 
     if interaction:
         await interaction.followup.send("Hour report sent.", ephemeral=True)

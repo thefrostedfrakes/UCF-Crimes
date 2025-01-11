@@ -77,7 +77,7 @@ def load_orlando_active_sql(engine: Engine) -> None:
 
         except Exception as e:
             print(f"Exception occurred: {type(e).__name__}: {str(e)}")
-            traceback.print_exc()
+            # traceback.print_exc()
 
     query = f"SELECT count(*) AS exact_count FROM orlando_crimes"
     result = connection.execute(text(query)).fetchone()
@@ -109,7 +109,7 @@ if __name__ == '__main__':
                 check_orlando_size_csv(csv_file)
             except Exception as e:
                 print(f"Exception occurred: {type(e).__name__}: {str(e)}")
-                traceback.print_exc()
+                # traceback.print_exc()
 
         orlando_counter += 1
 
