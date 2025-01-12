@@ -77,12 +77,6 @@ async def locations(interaction: discord.Interaction):
 async def heatmap(interaction: discord.Interaction, campus: str):
     await generate_heatmap(interaction, campus, main_config)
 
-@client.tree.command(name='orlando', description="List all orlando crime reports from the last hour.")
-@commands.has_permissions(administrator=True)
-async def orlando(interaction: discord.Interaction):
-    date_hour = (datetime.now() - timedelta(hours=1)).strftime("%-m/%d/%Y %H")
-    await send_orlando(interaction, date_hour, client, main_config)
-
 @client.tree.command(name='servers', description="List all servers")
 @commands.has_permissions(administrator=True)
 async def servers(interaction: discord.Interaction):
