@@ -64,8 +64,8 @@ def generate_image_all(crimes: pd.DataFrame) -> None:
     image = context.render_cairo(1080, 1080)
     image.write_to_png("caseall.png")
 
-async def generate_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChannel, main_config: ConfigParser):
-    m = folium.Map(location=[28.55, -81.39], zoom_start=12)
+async def generate_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChannel, main_config: ConfigParser, zoom: int):
+    m = folium.Map(location=[28.55, -81.39], zoom_start=zoom)
     heat_map_data = []
     api_key = main_config.get("DISCORD", "GMAPS_API_KEY")
 

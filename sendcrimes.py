@@ -223,7 +223,7 @@ async def list_crimes(interaction: discord.Interaction, client: commands.Bot, ch
 
     await interaction.followup.send(embed=embed)
 
-async def send_hourly(interaction: discord.Interaction | None, date_hour: str, client: commands.Bot, main_config: ConfigParser, policedpt: str) -> None:
+async def send_hourly(interaction: discord.Interaction | None, date_hour: str, client: commands.Bot, main_config: ConfigParser, policedpt: str, zoom: int) -> None:
     '''
     Send all Orlando PD or OCSO active calls within the last hour.
     '''
@@ -263,7 +263,7 @@ async def send_hourly(interaction: discord.Interaction | None, date_hour: str, c
         embed.add_field(name=call['description'], value=f"""Date: {call[key]}\nAddress: {call['location']}""", inline=False)
 
     await channel.send(embed=embed)
-    await generate_hourly_heatmap(calls, channel, main_config)
+    await generate_hourly_heatmap(calls, channel, main_config, zoom)
 
     if interaction:
         await interaction.followup.send("Hour report sent.", ephemeral=True)

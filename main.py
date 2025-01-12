@@ -46,8 +46,8 @@ async def time_checker():
 
     if t.minute == orlando_minute:
         date_hour = (datetime.now() - timedelta(hours=1)).strftime("%-m/%d/%Y %H")
-        await send_hourly(None, date_hour, client, main_config, "orlando")
-        await send_hourly(None, date_hour, client, main_config, "orange")
+        await send_hourly(None, date_hour, client, main_config, "orlando", 12)
+        await send_hourly(None, date_hour, client, main_config, "orange", 11)
 
     if t.hour == ucf_hour and t.minute == ucf_minute:
         today = date.today()
