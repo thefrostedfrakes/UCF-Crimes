@@ -20,4 +20,6 @@ orlando.csv
 text_clip.py
 /old_scripts
 TODO.txt
+crime_list.json
+status_list.json
 Pipfile.lock
