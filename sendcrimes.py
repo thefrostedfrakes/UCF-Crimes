@@ -52,11 +52,9 @@ async def crime_sender(channel: TextChannel, crime: pd.Series) -> None:
     # Use language model AFTER formatting if enabled and AFTER emojis are retrieved
     # Append emojis to title
     case_title += case_emojis
-
-    place = crime["place"] # replace_address already called in loadcrimes.py
     
     # Compose message
-    description = f"Occurred at {utils.titlize(crime['campus'])}, {place} \n" \
+    description = f"Occurred at {utils.titlize(crime['campus'])}, {crime['place']} \n" \
                   f"Case: {crime['case_id']} \n" \
                   f"Reported on {report_date_time} \n" \
                   f"Between {start_date_time} - {end_date_time} \n" \

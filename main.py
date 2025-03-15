@@ -9,7 +9,6 @@ import discord
 from discord.ext import commands, tasks
 from datetime import date, datetime, timedelta
 from configparser import ConfigParser
-from loadcrimes import crime_load, backup_crimes, load_crime_and_status_lists
 from sendcrimes import crime_send, list_locations, list_crimes, send_hourly
 from image import generate_heatmap
 from utils import bot_help, change_all_addresses
@@ -92,25 +91,7 @@ async def on_message(message: discord.Message):
     except AttributeError as e:
         print(f"Error displaying message sent by {message.author}: {e}")
 
-    # if message.content.startswith('-loadcrimes') or message.content.startswith('-addcrimes'):
-    #     if not message.author.guild_permissions.administrator:
-    #         await message.reply('Sorry, you do not have permission to use this command!')
-    #         return
-    #     crime_load(message.content, main_config.get("DISCORD", "GMAPS_API_KEY"))
-
-    if message.content.startswith('-backup'):
-        if not message.author.guild_permissions.administrator:
-            await message.reply('Sorry, you do not have permission to use this command!')
-            return
-        backup_crimes()
-
-    elif message.content.startswith('-crime-status-list'):
-        if not message.author.guild_permissions.administrator:
-            await message.reply('Sorry, you do not have permission to use this command!')
-            return
-        load_crime_and_status_lists()
-
-    elif message.content.startswith('-change_all_places'):
+    if message.content.startswith('-change_all_places'):
         if not message.author.guild_permissions.administrator:
             await message.reply('Sorry, you do not have permission to use this command!')
             return
