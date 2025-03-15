@@ -22,14 +22,18 @@ def load_orange_active(engine: Engine) -> None:
             query = f"""SELECT * FROM orange_crimes WHERE incident = '{expanded_incident}'"""
             result = connection.execute(text(query))
             entrytime = datetime.strptime(crime["ENTRYTIME"], "%m/%d/%Y %I:%M:%S %p").strftime("%-m/%d/%Y %H:%M:%S")
+            if crime['LOCATION']:
+                location = crime['LOCATION'].replace("'", "''")
+            else:
+                location = crime['LOCATION']
 
             if result.rowcount == 0:
                 query = f"""INSERT INTO orange_crimes (incident, entrytime, description, location, sector, zone, rd)""" \
-                        f"""VALUES ('{expanded_incident}', '{entrytime}', '{crime['DESC']}', '{crime['LOCATION'].replace("'", "''")}', '{crime['SECTOR']}', '{crime["ZONE"]}', '{crime["RD"]}')"""
+                        f"""VALUES ('{expanded_incident}', '{entrytime}', '{crime['DESC']}', '{location}', '{crime['SECTOR']}', '{crime["ZONE"]}', '{crime["RD"]}')"""
 
             else:
                 query = f"""UPDATE orange_crimes SET entrytime = '{entrytime}', description = '{crime['DESC']}', """ \
-                        f"""location = '{crime['LOCATION'].replace("'", "''")}', sector = '{crime['SECTOR']}', zone = '{crime["ZONE"]}', rd = '{crime["RD"]}' WHERE incident = '{expanded_incident}'"""
+                        f"""location = '{location}', sector = '{crime['SECTOR']}', zone = '{crime["ZONE"]}', rd = '{crime["RD"]}' WHERE incident = '{expanded_incident}'"""
                 
             connection.execute(text(query))
             connection.commit()
