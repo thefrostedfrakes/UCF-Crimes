@@ -20,35 +20,7 @@ from configparser import ConfigParser
 from sqlalchemy import text
 from sqlalchemy.engine.base import Engine
 
-def load_orlando_active_csv(csv_file: str) -> None:
-    '''
-    Load XML file from Orlando PD website with BeautifulSoup and parse the file to a CSV.
-    '''
-
-    active_req = requests.get('https://www1.cityoforlando.net/opd/activecalls/activecadpolice.xml')
-    soup = BeautifulSoup(active_req.content, "lxml-xml")
-    active_dict = xmltodict.parse(str(soup))
-
-    crimes_csv = pd.read_csv(csv_file, index_col=0)
-    new_rows = []
-        
-    for crime in active_dict["CALLS"]["CALL"]:
-        if crime["@incident"] not in crimes_csv["incident"].values:
-            crime_data = {
-                'incident': crime["@incident"],
-                'date': crime["DATE"],
-                'desc': crime["DESC"],
-                'location': crime["LOCATION"],
-                'district': crime["DISTRICT"],
-            }
-            new_rows.append(crime_data)
-           
-    crimes_csv = pd.concat([pd.DataFrame(new_rows), crimes_csv], ignore_index=True)
-    crimes_csv.to_csv(csv_file, index=True)   
-
-    print("orlando.csv refreshed.")
-
-def load_orlando_active_sql(engine: Engine) -> None:
+def load_orlando_active(engine: Engine) -> None:
     '''
     Load XML file from Orlando PD website with BeautifulSoup and parse the file to SQL table.
     '''
@@ -84,12 +56,6 @@ def load_orlando_active_sql(engine: Engine) -> None:
     print("Orlando crimes database updated.")
     print(f"Current number of entries in database: {result[0]}")
     connection.close()
-
-def check_orlando_size_csv(csv_file: str) -> None:
-    crimes_csv = pd.read_csv(csv_file)
-    csv_size = crimes_csv.shape[0]
-
-    print(f"Current number of entries in orlando.csv: {csv_size}")
 
 def load_orange_active(engine: Engine) -> None:
     '''
@@ -134,6 +100,21 @@ def load_orange_active(engine: Engine) -> None:
     print(f"Current number of entries in database: {result[0]}")
     connection.close()
 
+def backup_tables(engine: Engine) -> None:
+    orlando_list = pd.read_sql_table("orlando_crimes", engine)
+    orlando_list['date'] = pd.to_datetime(orlando_list['date'], format='%m/%d/%Y %H:%M')
+    orlando_list = orlando_list.sort_values(by='date')
+    orlando_list = orlando_list.reset_index(drop=True)
+    orlando_list.to_csv("./backups/orlando_backup.csv", index=True)
+
+    orange_list = pd.read_sql_table("orange_crimes", engine)
+    orange_list['entrytime'] = pd.to_datetime(orange_list['entrytime'], format='%m/%d/%Y %H:%M:%S')
+    orange_list = orange_list.sort_values(by='entrytime')
+    orange_list = orange_list.reset_index(drop=True)
+    orange_list.to_csv("./backups/orange_backup.csv", index=True)
+
+    print("OPD & OSCO tables backed up to CSV files.")
+
 if __name__ == '__main__':
     main_config = ConfigParser()
     main_config.read('config.ini')
@@ -141,20 +122,21 @@ if __name__ == '__main__':
 
     counter = 0
 
-    print("Starting Orlando PD & OCSO time counter (every 10 mins)")
+    print("Starting OPD & OCSO time counter (every 10 mins)")
     while True:
         if counter >= 600:
             counter = 0
             try:
-                csv_file = "orlando.csv"
-                load_orlando_active_sql(engine)
-                load_orlando_active_csv(csv_file)
-                check_orlando_size_csv(csv_file)
+                load_orlando_active(engine)
                 load_orange_active(engine)
             except Exception as e:
                 print(f"Exception occurred: {type(e).__name__}: {str(e)}")
                 # traceback.print_exc()
-
+        
         counter += 1
+
+        now = datetime.now()
+        if now.hour == 1 and now.minute == 0 and now.second == 0:
+            backup_tables(engine)
 
         sleep(1)
