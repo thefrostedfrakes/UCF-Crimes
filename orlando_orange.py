@@ -69,11 +69,11 @@ def load_orange_active(engine: Engine) -> None:
 
     for crime in active_dict["CALLS"]["CALL"]:
         try:
-            year_date = datetime.now().strftime("%Y-%j")
+            year_date = datetime.strptime(crime["ENTRYTIME"], "%m/%d/%Y %I:%M:%S %p").strftime("%Y-%j")
+            entrytime = datetime.strptime(crime["ENTRYTIME"], "%m/%d/%Y %I:%M:%S %p").strftime("%-m/%d/%Y %H:%M:%S")
             expanded_incident = f"{year_date}-{crime['@INCIDENT']}"
             query = f"""SELECT * FROM orange_crimes WHERE incident = '{expanded_incident}'"""
             result = connection.execute(text(query))
-            entrytime = datetime.strptime(crime["ENTRYTIME"], "%m/%d/%Y %I:%M:%S %p").strftime("%-m/%d/%Y %H:%M:%S")
             if crime['LOCATION']:
                 location = crime['LOCATION'].replace("'", "''")
             else:
