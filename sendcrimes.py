@@ -261,7 +261,7 @@ async def send_hourly(interaction: discord.Interaction | None, date_hour: str, c
         embed.add_field(name=call['description'], value=f"""Date: {call[key]}\nAddress: {call['location']}""", inline=False)
 
     await channel.send(embed=embed)
-    await generate_hourly_heatmap(calls, channel, main_config, zoom)
+    await generate_hourly_heatmap(calls, channel, main_config.get('DISCORD', 'OSM_USER_AGENT'), zoom)
 
     if interaction:
         await interaction.followup.send("Hour report sent.", ephemeral=True)

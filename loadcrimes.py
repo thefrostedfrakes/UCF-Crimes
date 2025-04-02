@@ -139,7 +139,7 @@ class UCFCrimeLogLoader:
                 # are called to generate lat, lng, and place name from address. If the crime's already present, they are not updated
                 # when the crime is updated instead of inserted.
                 if result.rowcount == 0:
-                    lat, lng = utils.get_lat_lng_from_address(f"{crime[columns['address']]}, ORLANDO, FL", self.GMAPS_API_KEY)
+                    lat, lng = utils.google_geocoder(f"{crime[columns['address']]}, ORLANDO, FL", self.GMAPS_API_KEY)
                     place = utils.address_to_place(crime[columns['address']], lat, lng, self.GMAPS_API_KEY).replace("'", "''")
 
                     lat_lng_header = f", lat, lng" if lat and lng else ""

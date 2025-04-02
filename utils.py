@@ -125,9 +125,72 @@ def get_emojis(title: str) -> str:
 
     return emojis_suffix
 
-def get_lat_lng_from_address(address: str, google_maps_api_key: str) -> tuple[float, float] | tuple[None, None]:
+def osm_geocoder(address: str, OSM_USER_AGENT: str) -> tuple[float, float] | tuple[None, None]:
     '''
-    Uses google geocoding endpoint to get lat, lng from address.
+    Uses OpenStreetMap’s Nominatim geocoder to get latitude and longitude from an address.
+    It prefers locations within a bounding box (roughly covering UCF and Downtown).
+    If the address includes predetermined keyword(s), it returns preset coordinates.
+    '''
+
+    BL_BOUND = (28.0, -82.0)  # (lat, lon) bottom-left
+    TR_BOUND = (29.0, -80.9)  # (lat, lon) top-right
+    KEY_PHRASES = {
+        'B8': (28.5939606, -81.2014182),
+        '36 PINE ST W': (28.5412345, -81.3797360),
+        'ON CAMPUS': (28.6024367, -81.2000568),
+        'PLAZA DR E': (28.6069698, -81.1967868),
+        'PLAZA DR W': (28.6074074, -81.1980356),
+        'GEMINI/SCORPIUS': (28.6018854, -81.1944728),
+        'KINGS KNIGHT': (28.6104158, -81.2154757),
+        'KROSSING': (28.6113891, -81.2113697),
+        '410 TERRY AVE N': (28.537944, -81.386917)
+    }
+
+    # Return preset coordinates if a key phrase is found in the address
+    for phrase in KEY_PHRASES:
+        if phrase in address:
+            return KEY_PHRASES[phrase]
+
+    # Nominatim API endpoint
+    endpoint = 'https://nominatim.openstreetmap.org/search'
+    
+    # Construct the viewbox.
+    # Nominatim expects the viewbox as: left (min lon), top (max lat), right (max lon), bottom (min lat)
+    viewbox = f"{BL_BOUND[1]},{TR_BOUND[0]},{TR_BOUND[1]},{BL_BOUND[0]}"
+
+    params = {
+        'q': address,
+        'format': 'json',
+        'limit': 1,
+        'viewbox': viewbox,
+        'bounded': 1
+    }
+    
+    # Nominatim requires a valid User-Agent header
+    headers = {
+        'User-Agent': OSM_USER_AGENT
+    }
+
+    response = requests.get(endpoint, params=params, headers=headers)
+
+    if response.status_code not in range(200, 299):
+        return None, None
+
+    data = response.json()
+    if not data:
+        return None, None
+
+    try:
+        lat = float(data[0]['lat'])
+        lon = float(data[0]['lon'])
+    except (KeyError, ValueError):
+        return None, None
+
+    return round(lat, 7), round(lon, 7)
+
+def google_geocoder(address: str, google_maps_api_key: str) -> tuple[float, float] | tuple[None, None]:
+    '''
+    Uses Google geocoding endpoint to get lat, lng from address.
     Will prefer locations within box containing UCF and Downtown
     (Does not totally restrict results to this box).
     If address includes predetermined keyword(s), it will use given results
@@ -218,7 +281,7 @@ def change_all_addresses(GMAPS_API_KEY: str) -> None:
 
     for idx, row in crimes.iterrows():
         if row["address"] == row["place"].upper():
-            lat, lng = get_lat_lng_from_address(row["address"], GMAPS_API_KEY)
+            lat, lng = osm_geocoder(row["address"], GMAPS_API_KEY)
             if place_name := get_place_name(lat, lng, GMAPS_API_KEY):
                 crimes.at[idx, "place"] = f"near {place_name}"
                 print(place_name)
