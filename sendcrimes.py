@@ -247,7 +247,9 @@ async def send_hourly(interaction: discord.Interaction | None, date_hour: str, c
     page = 1
     channel = client.get_channel(channel_id)
     query = text(f"SELECT * FROM {policedpt}_crimes WHERE {key} LIKE :date_hour ORDER BY {key} ASC")
+    print(date_hour)
     calls = pd.read_sql_query(query, engine, params={"date_hour": f"{date_hour}%"})
+    print(calls)
 
     embed = discord.Embed(title=title, color=color)
     for _, call in calls.iterrows():

@@ -114,4 +114,8 @@ if __name__ == "__main__":
     query = f"SELECT * FROM crimes WHERE report_dt::date = '{yesterday}';"
     query_matches = pd.read_sql_query(query, engine)
     for index, crime in query_matches.iterrows():
-        notify_crime(crime, main_config)
+        try:
+            notify_crime(crime, main_config)
+        except Exception as e:
+            print(e)
+            

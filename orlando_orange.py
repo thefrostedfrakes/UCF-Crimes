@@ -33,6 +33,7 @@ def load_orlando_active(engine: Engine) -> None:
         
     for crime in active_dict["CALLS"]["CALL"]:
         try:
+            print(crime)
             query = f"""SELECT * FROM orlando_crimes WHERE incident = '{crime["@incident"]}'"""
             result = connection.execute(text(query))
 
@@ -69,6 +70,7 @@ def load_orange_active(engine: Engine) -> None:
 
     for crime in active_dict["CALLS"]["CALL"]:
         try:
+            print(crime)
             year_date = datetime.strptime(crime["ENTRYTIME"], "%m/%d/%Y %I:%M:%S %p").strftime("%Y-%j")
             entrytime = datetime.strptime(crime["ENTRYTIME"], "%m/%d/%Y %I:%M:%S %p").strftime("%-m/%d/%Y %H:%M:%S")
             expanded_incident = f"{year_date}-{crime['@INCIDENT']}"
