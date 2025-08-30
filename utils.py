@@ -15,6 +15,7 @@ from math import radians, sin, cos, sqrt, atan2
 from datetime import datetime
 from sqlalchemy import create_engine
 from sqlalchemy.engine.base import Engine
+from sqlalchemy import text
 from configparser import ConfigParser
 
 async def bot_help(interaction: discord.Interaction):
@@ -124,6 +125,29 @@ def get_emojis(title: str) -> str:
                     emojis_suffix += f'{emoji}'
 
     return emojis_suffix
+
+def better_geocoder(address: str, google_maps_api_key: str) -> tuple[float, float] | tuple[None, None]:
+    '''
+    Uses a lookup table with the addrerss in the database that has addres, plaxe name, lat, and long
+    
+    '''
+
+    #address lookup right here
+    address_query = f'SELECT * FROM address WHERE address = {address}}'
+    #select * from addresses where addressname = @address
+    address_result = connection.execute(text(address_query))
+
+    #if the address is not found in the database then we can call the google decoder
+    if address_query.rowcount == 0:
+        lat_long_google = google_geocoder(address,google_maps_api_key)
+        return lat_long_google
+    else:
+        print('pull from database')
+
+
+        
+
+
 
 def osm_geocoder(address: str, OSM_USER_AGENT: str) -> tuple[float, float] | tuple[None, None]:
     '''
