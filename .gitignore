@@ -23,3 +23,5 @@ TODO.txt
 crime_list.json
 status_list.json
 Pipfile.lock
+userdetails
+/.venv

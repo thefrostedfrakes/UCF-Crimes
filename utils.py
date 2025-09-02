@@ -126,29 +126,6 @@ def get_emojis(title: str) -> str:
 
     return emojis_suffix
 
-def better_geocoder(address: str, google_maps_api_key: str) -> tuple[float, float] | tuple[None, None]:
-    '''
-    Uses a lookup table with the addrerss in the database that has addres, plaxe name, lat, and long
-    
-    '''
-
-    #address lookup right here
-    address_query = f'SELECT * FROM address WHERE address = {address}}'
-    #select * from addresses where addressname = @address
-    address_result = connection.execute(text(address_query))
-
-    #if the address is not found in the database then we can call the google decoder
-    if address_query.rowcount == 0:
-        lat_long_google = google_geocoder(address,google_maps_api_key)
-        return lat_long_google
-    else:
-        print('pull from database')
-
-
-        
-
-
-
 def osm_geocoder(address: str, OSM_USER_AGENT: str) -> tuple[float, float] | tuple[None, None]:
     '''
     Uses OpenStreetMap’s Nominatim geocoder to get latitude and longitude from an address.
@@ -313,16 +290,15 @@ def change_all_addresses(GMAPS_API_KEY: str) -> None:
     crimes.to_csv('crimes.csv')
 
 def address_to_place(address: str, 
-                     lat: float, lng: float, 
                      GMAPS_API_KEY: str, 
-                     typo_tolerance=1) -> str | None:
+                     typo_tolerance=1) -> tuple[float, float,str] | tuple[None, None,None]:
     '''
     Takes address and compares it to the locations.json file
     Robust against varying word positions and typo errors
     If selenium scraping is enabled and a path is given, the function will use that as a backup
     Otherwise, returns the titled version of the address
     '''
-
+    connection = Engine.connect()
     # Make proper substitutions to change cardinal directions and other syntax
     address = ' ' + address + ' '
     address = re.sub('\.', '', address)   # Remove periods
@@ -339,37 +315,24 @@ def address_to_place(address: str,
         address = re.sub(key, value, address, flags=re.IGNORECASE)
     address = address.strip()
 
-    # Tokenize address
-    txt_tokens = address.split()
-
     # Start by looking through the address
-    with open('locations.json') as f:
-        locations: dict[str] = json.load(f)
+    query = f'SELECT place,lat,long FROM crime_address WHERE address = {address}'
+    result = connection.execute(text(query))
 
-    # Do this with every key
-    for key in locations.keys():
-        key_tokens = key.split()
-        is_match = True
+    #if the address is not found in the database then we can call the google decoder
+    #update the database with the address, lat and long, we need to work on the place WIP
+    if result.rowcount == 0:
+        #get lat and long
+        lat,long = google_geocoder(address,GMAPS_API_KEY)
+        #get the place
+        place = get_place_name(lat, long, GMAPS_API_KEY)
+        query = f'INSERT INTO address (address,place,lat,long) VALUES {address},{place},{lat},{long}'
+        print(query)
+        return lat,long,place
 
-        # If numerical start, make sure it matches exactly
-        if re.match('\d', txt_tokens[0]) and re.match('\d', key_tokens[0]) and txt_tokens[0] != key_tokens[0]:
-            is_match = False
-            continue
-
-        # Go through each token in key
-        for key_token in key_tokens:
-            token_distances = [editdistance.eval(key_token, txt_token) for txt_token in txt_tokens]
-            # Fail if no token is within tokerance for all key tokens
-            if min(token_distances) > typo_tolerance:
-                is_match = False
-                break
-
-        # If all tokens are within tolerance, locations is found
-        if is_match:
-            return locations[key]
-    
-    if (place_name := get_place_name(lat, lng, GMAPS_API_KEY)):
-            print(place_name)
-            return f"near {place_name}"
-    
+    #If the address is found
+    elif result.rowcount != 0:
+            address_row = result.fetchone()
+            return address_row
+     #base case if we cannot find any address   
     return titlize(address)
