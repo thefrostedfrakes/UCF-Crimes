@@ -33,8 +33,8 @@ class UCFCrimeLogLoader:
         crime_list = []
         text = page.extract_text()
         rosen_delims = ["HOSPITALITY", "MANAGEMENT"]
-        patterns = [f'(?<=\S)(?:({"|".join(self.valid_campus_names + self.valid_dispos)}))',
-                    f'(?:({"|".join(rosen_delims)}))(?<=\S)']
+        patterns = [fr'(?<=\S)(?:({"|".join(self.valid_campus_names + self.valid_dispos)}))',
+                    fr'(?:({"|".join(rosen_delims)}))(?<=\S)']
         
         text = re.sub(patterns[0], r' \1', text)
         text = re.sub(patterns[1], r'\1 ', text)

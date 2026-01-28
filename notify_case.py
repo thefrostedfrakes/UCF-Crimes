@@ -7,6 +7,7 @@ from image import generate_image
 import pandas as pd
 from xed import XED
 from requests.exceptions import HTTPError
+import time
 
 def sendTeleg(message, config, photo=None):
     sent = False
@@ -77,12 +78,17 @@ def notify_crime(crime, main_config):
     # Post to socials
     photo_name = "caseout.png"
     if main_config.getboolean("META", "ENABLE"):
-        try:
-            post_to_meta_both(main_config.get("META", "FB_PAGE_ID"), 
-                            main_config.get("META", "IG_USER_ID"), photo_name, 
-                            message, main_config.get("META", "ACCESS_TOKEN"))
-        except HTTPError as e:
-            print(f"HTTP Error: {e}")
+        trys = 0
+        while trys < 5:
+            try:
+                post_to_meta_both(main_config.get("META", "FB_PAGE_ID"), 
+                                main_config.get("META", "IG_USER_ID"), photo_name, 
+                                message, main_config.get("META", "ACCESS_TOKEN"))
+                break
+            except HTTPError as e:
+                print(f"HTTP Error: {e}")
+                trys += 1
+                time.sleep(5)
         
     if main_config.getboolean("TELEGRAM", "ENABLE"):
         try:

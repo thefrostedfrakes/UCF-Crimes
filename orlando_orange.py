@@ -128,12 +128,16 @@ if __name__ == '__main__':
     while True:
         if counter >= 600:
             counter = 0
-            try:
-                load_orlando_active(engine)
-                load_orange_active(engine)
-            except Exception as e:
-                print(f"Exception occurred: {type(e).__name__}: {str(e)}")
-                # traceback.print_exc()
+            attempts = 0
+            while attempts < 5:
+                try:
+                    load_orlando_active(engine)
+                    load_orange_active(engine)
+                    break
+                except Exception as e:
+                    print(f"Exception occurred: {type(e).__name__}: {str(e)}")
+                    attempts += 1
+                    sleep(1)
         
         counter += 1
 

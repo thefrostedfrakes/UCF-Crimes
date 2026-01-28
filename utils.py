@@ -301,7 +301,7 @@ def address_to_place(address: str,
 
     # Make proper substitutions to change cardinal directions and other syntax
     address = ' ' + address + ' '
-    address = re.sub('\.', '', address)   # Remove periods
+    address = re.sub(r'\.', '', address)   # Remove periods
 
     subs = {
         ' W ': ' WEST ',
@@ -309,7 +309,7 @@ def address_to_place(address: str,
         ' N ': ' NORTH ',
         ' S ': ' SOUTH ',
         'BLD' : 'BLVD',
-        ' ?(?: and |\/) ?': ' & '     # Change intersection of streets to &
+        r' ?(?: and |\/) ?': ' & '     # Change intersection of streets to &
     }
     for key, value in subs.items():
         address = re.sub(key, value, address, flags=re.IGNORECASE)
@@ -328,7 +328,7 @@ def address_to_place(address: str,
         is_match = True
 
         # If numerical start, make sure it matches exactly
-        if re.match('\d', txt_tokens[0]) and re.match('\d', key_tokens[0]) and txt_tokens[0] != key_tokens[0]:
+        if re.match(r'\d', txt_tokens[0]) and re.match(r'\d', key_tokens[0]) and txt_tokens[0] != key_tokens[0]:
             is_match = False
             continue
 
