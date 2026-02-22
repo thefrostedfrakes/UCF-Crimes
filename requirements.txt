@@ -39,7 +39,7 @@ propcache==0.4.1
 psycopg2==2.9.11
 py-staticmaps==0.4.0
 pycairo==1.29.0
-PyPDF2==3.0.1
+pypdf==6.7.2
 PySocks==1.7.1
 python-dateutil==2.9.0.post0
 python-slugify==8.0.4

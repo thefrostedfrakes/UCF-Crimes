@@ -6,8 +6,8 @@ Written by Ethan Frakes
 '''
 
 import utils
-from PyPDF2 import PdfReader
-from PyPDF2._page import PageObject
+from pypdf import PdfReader
+from pypdf._page import PageObject
 import pandas as pd
 import requests
 import re
