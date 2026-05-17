@@ -65,7 +65,7 @@ def generate_image_all(crimes: pd.DataFrame) -> None:
     image.write_to_png("caseall.png")
 
 async def generate_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChannel, OSM_USER_AGENT: str, OSM_REFERER: str, zoom: int):
-    m = folium.Map(location=[28.55, -81.39], zoom_start=zoom, tiles="CartoDB Positron")
+    m = folium.Map(location=[28.55, -81.39], zoom_start=zoom, tiles="CartoDB Voyager")
     heat_map_data = []
 
     for _, call in calls.iterrows():
