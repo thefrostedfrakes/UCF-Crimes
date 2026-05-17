@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 from utils import setup_db
 import xmltodict
 import pandas as pd
+import json
 from time import sleep
 from datetime import datetime
 from configparser import ConfigParser
@@ -102,6 +103,97 @@ def load_orange_active(engine: Engine) -> None:
     print(f"Current number of entries in database: {result[0]}")
     connection.close()
 
+def load_orange_active_davnit(engine: Engine) -> None:
+    """
+    Load active incidents from ESMap API and upsert OCSO calls into orange_crimes.
+    """
+    connection = engine.connect()
+
+    r = requests.get("https://www.davnit.net/esmap/api/incidents/active", headers={"User-Agent": "Mozilla/5.0"}, timeout=30)
+    r.raise_for_status()
+    data = json.loads(r.text)
+    for feature in data.get('features', []):
+        try:
+            crime = feature.get('properties')
+
+            if crime.get('source') == "OCSO":
+                print(crime)
+                dt = datetime.strptime(crime.get("time"), "%Y-%m-%d %H:%M:%S")
+                if 1 <= dt.hour <= 11 and (datetime.now().hour >= 13 or datetime.now().hour == 0):
+                    dt = dt.replace(hour=dt.hour + 12)
+                elif dt.hour == 12 and datetime.now().hour in (0, 1):
+                    dt = dt.replace(hour=0)
+                    
+                print(dt)
+                year_date = dt.strftime("%Y-%j")
+                entrytime = dt.strftime("%-m/%d/%Y %H:%M:%S")
+                source_id = str(crime.get("source_id", "")).strip()
+                key = str(crime.get("key", "")).strip()
+                incident_key = f"{source_id}/{key}" if (source_id and key) else (key or "unknown")
+                expanded_incident = f"{year_date}-{incident_key}"
+                description = crime.get('description')
+
+                if crime.get('location'):
+                    location = crime['location'].replace("'", "''")
+                else:
+                    location = crime['location']
+
+                query = f"""SELECT * FROM orange_crimes WHERE incident = '{expanded_incident}'"""
+                result = connection.execute(text(query))
+
+                if result.rowcount == 0:
+                    connection.execute(
+                    text("""
+                        INSERT INTO orange_crimes
+                          (incident, entrytime, description, location, sector, zone, rd)
+                        VALUES
+                          (:incident, :entrytime, :description, :location, :sector, :zone, :rd)
+                    """),
+                    {
+                        "incident": expanded_incident,
+                        "entrytime": entrytime,
+                        "description": description,
+                        "location": location,
+                        "sector": None,
+                        "zone": None,
+                        "rd": None,
+                    },
+                )
+
+                else:
+                    connection.execute(
+                        text("""
+                            UPDATE orange_crimes
+                            SET description = :description,
+                                location = :location,
+                                sector = :sector,
+                                zone = :zone,
+                                rd = :rd
+                            WHERE incident = :incident
+                        """),
+                        {
+                            "incident": expanded_incident,
+                            "description": description,
+                            "location": location,
+                            "sector": None,
+                            "zone": None,
+                            "rd": None,
+                        },
+                    )
+                    
+                connection.execute(text(query))
+                connection.commit()
+
+        except Exception as e:
+            print(f"Exception occurred: {type(e).__name__}: {str(e)}")
+            # traceback.print_exc()
+
+    query = f"SELECT count(*) AS exact_count FROM orange_crimes"
+    result = connection.execute(text(query)).fetchone()
+    print("Orange County crimes database updated.")
+    print(f"Current number of entries in database: {result[0]}")
+    connection.close()
+
 def backup_tables(engine: Engine) -> None:
     orlando_list = pd.read_sql_table("orlando_crimes", engine)
     orlando_list['date'] = pd.to_datetime(orlando_list['date'], format='%m/%d/%Y %H:%M')
@@ -132,7 +224,7 @@ if __name__ == '__main__':
             while attempts < 5:
                 try:
                     load_orlando_active(engine)
-                    load_orange_active(engine)
+                    load_orange_active_davnit(engine)
                     break
                 except Exception as e:
                     print(f"Exception occurred: {type(e).__name__}: {str(e)}")

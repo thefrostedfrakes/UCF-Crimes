@@ -64,13 +64,13 @@ def generate_image_all(crimes: pd.DataFrame) -> None:
     image = context.render_cairo(1080, 1080)
     image.write_to_png("caseall.png")
 
-async def generate_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChannel, OSM_USER_AGENT: str, zoom: int):
-    m = folium.Map(location=[28.55, -81.39], zoom_start=zoom)
+async def generate_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChannel, OSM_USER_AGENT: str, OSM_REFERER: str, zoom: int):
+    m = folium.Map(location=[28.55, -81.39], zoom_start=zoom, tiles="CartoDB Positron")
     heat_map_data = []
 
     for _, call in calls.iterrows():
         location = utils.titlize(call['location'].replace("BLOCK ", ""))
-        lat, lng = utils.osm_geocoder(location, OSM_USER_AGENT)
+        lat, lng = utils.osm_geocoder(location, OSM_USER_AGENT, OSM_REFERER)
         if lat and lng:
             heat_map_data.append([lat, lng, 0.3])
 

@@ -125,7 +125,7 @@ def get_emojis(title: str) -> str:
 
     return emojis_suffix
 
-def osm_geocoder(address: str, OSM_USER_AGENT: str) -> tuple[float, float] | tuple[None, None]:
+def osm_geocoder(address: str, OSM_USER_AGENT: str, OSM_REFERER: str) -> tuple[float, float] | tuple[None, None]:
     '''
     Uses OpenStreetMap’s Nominatim geocoder to get latitude and longitude from an address.
     It prefers locations within a bounding box (roughly covering UCF and Downtown).
@@ -168,7 +168,8 @@ def osm_geocoder(address: str, OSM_USER_AGENT: str) -> tuple[float, float] | tup
     
     # Nominatim requires a valid User-Agent header
     headers = {
-        'User-Agent': OSM_USER_AGENT
+        'User-Agent': OSM_USER_AGENT,
+        'Referer': OSM_REFERER
     }
 
     response = requests.get(endpoint, params=params, headers=headers)
