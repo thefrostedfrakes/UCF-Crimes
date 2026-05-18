@@ -17,9 +17,17 @@ import io
 import discord
 import math
 
+CARTODB_VOYAGER_TILE_PROVIDER = staticmaps.TileProvider(
+    "cartodb-voyager",
+    url_pattern="https://$s.basemaps.cartocdn.com/rastertiles/voyager/$z/$x/$y.png",
+    shards=["a", "b", "c", "d"],
+    attribution="Maps (C) CARTO (C) OpenStreetMap.org contributors",
+    max_zoom=20,
+)
+
 def generate_image(crime: pd.Series) -> None:
     context = staticmaps.Context()
-    context.set_tile_provider(staticmaps.tile_provider_OSM)
+    context.set_tile_provider(CARTODB_VOYAGER_TILE_PROVIDER)
 
     lat = crime["lat"]
     lng = crime["lng"]
@@ -52,7 +60,7 @@ def generate_image(crime: pd.Series) -> None:
 
 def generate_image_all(crimes: pd.DataFrame) -> None:
     context = staticmaps.Context()
-    context.set_tile_provider(staticmaps.tile_provider_OSM)
+    context.set_tile_provider(CARTODB_VOYAGER_TILE_PROVIDER)
 
     for _, crime in crimes.iterrows():
         lat, lng = crime["lat"], crime["lng"]
