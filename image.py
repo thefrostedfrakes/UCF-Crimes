@@ -17,11 +17,31 @@ import io
 import discord
 import math
 
+# CARTO basemap key. Kept in config.ini so it stays out of source. Without it
+# CARTO still serves tiles, but stamped "API KEY REQUIRED", so warn rather than
+# fail silently. Also honours a CARTO_API_KEY environment variable.
+_carto_config = ConfigParser()
+_carto_config.read(["config.ini", os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.ini")])
+
+# raw=True so a '%' in the key isn't treated as configparser interpolation
+CARTO_API_KEY = (os.environ.get("CARTO_API_KEY", "").strip()
+                 or _carto_config.get("CARTO", "CARTO_API_KEY", raw=True, fallback="").strip())
+
+if not CARTO_API_KEY:
+    print("WARNING: [CARTO] CARTO_API_KEY not found in config.ini - basemap tiles will be watermarked.")
+
+CARTO_ATTRIBUTION = "Maps (C) CARTO (C) OpenStreetMap.org contributors"
+
+# CARTO hands out .../{z}/{x}/{y}.png?key=<key>, which is the form folium and
+# Leaflet want. py-staticmaps templates with string.Template instead, so it takes
+# $z/$x/$y and fills $k from its api_key argument. Same endpoint either way.
+CARTO_VOYAGER_FOLIUM_URL = "https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png?key=" + CARTO_API_KEY
+
 CARTODB_VOYAGER_TILE_PROVIDER = staticmaps.TileProvider(
     "cartodb-voyager",
-    url_pattern="https://$s.basemaps.cartocdn.com/rastertiles/voyager/$z/$x/$y.png",
-    shards=["a", "b", "c", "d"],
-    attribution="Maps (C) CARTO (C) OpenStreetMap.org contributors",
+    url_pattern="https://basemaps.cartocdn.com/rastertiles/voyager/$z/$x/$y.png?key=$k",
+    api_key=CARTO_API_KEY,
+    attribution=CARTO_ATTRIBUTION,
     max_zoom=20,
 )
 
@@ -73,7 +93,14 @@ def generate_image_all(crimes: pd.DataFrame) -> None:
     image.write_to_png("caseall.png")
 
 async def generate_hourly_heatmap(calls: pd.DataFrame, channel: discord.TextChannel, OSM_USER_AGENT: str, OSM_REFERER: str, zoom: int):
-    m = folium.Map(location=[28.55, -81.39], zoom_start=zoom, tiles="CartoDB Voyager")
+    # folium's built-in "CartoDB Voyager" is the unkeyed endpoint, which comes back
+    # watermarked, so use the keyed URL built above.
+    m = folium.Map(
+        location=[28.55, -81.39],
+        zoom_start=zoom,
+        tiles=CARTO_VOYAGER_FOLIUM_URL,
+        attr=CARTO_ATTRIBUTION,
+    )
     heat_map_data = []
 
     for _, call in calls.iterrows():
@@ -104,7 +131,7 @@ async def generate_heatmap(interaction: discord.Interaction, command_arg: str, m
     elif command_arg.title().startswith('Rosen'):
         coords = [28.43, -81.44]
     else:
-        return await interaction.followup.edit("Please choose from one of these campuses: Main, Downtown, or Rosen.")
+        return await interaction.followup.send("Please choose from one of these campuses: Main, Downtown, or Rosen.")
 
     m = folium.Map(location=coords, zoom_start=14)
     heat_map_data = []
@@ -133,7 +160,7 @@ async def generate_heatmap_csv(interaction: discord.Interaction, command_arg: st
     elif command_arg.title().startswith('Rosen'):
         coords = [28.43, -81.44]
     else:
-        return await interaction.followup.edit("Please choose from one of these campuses: Main, Downtown, or Rosen.")
+        return await interaction.followup.send("Please choose from one of these campuses: Main, Downtown, or Rosen.")
 
     m = folium.Map(location=coords, zoom_start=15)
     heat_map_data = []
@@ -152,4 +179,3 @@ async def generate_heatmap_csv(interaction: discord.Interaction, command_arg: st
     img.save('heatmap.png')
 
     await interaction.followup.send(file=discord.File("./heatmap.png"))
-    
